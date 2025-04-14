@@ -10,7 +10,10 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: "FICS - Forum for Innovation and Creative Solutions",
+  title: "FICS - Finding Innovative & Creative Solutions",
+  authors: [{ name: "FICS" }],
+  creator: "FICS",
+  keywords: ["FICS", "Forum for Innovation and Creative Solutions", "Entrepreneurship", "Innovation"],
   description:
     "FICS promotes entrepreneurship and innovation by allowing participants to address the most pressing social and environmental issues.",
   icons: {
