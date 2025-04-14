@@ -1,23 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+
+const VIDEO_URL = "https://res.cloudinary.com/dxh8rsy7p/video/upload/f_auto,q_auto/v1744663859/ltjf9v2gpz7xkgsyypdj.mp4"
 
 export default function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
-  // Handle cases where video might not load properly
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVideoLoaded(true)
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <section className="relative w-full h-screen bg-gray-900 overflow-hidden">
-      {/* Video Background */}
+      {/* Optimized Cloudinary Video Background */}
       <div className="absolute inset-0">
         <video
           autoPlay
@@ -25,22 +18,26 @@ export default function HeroSection() {
           loop
           playsInline
           preload="auto"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoadedData={() => setIsVideoLoaded(true)}
+          // Cloudinary optimization parameters
+          src={`${VIDEO_URL}?fm=mp4&q=70`} // Further optimize with format and quality
         >
-          <source src="/video/fics-intro.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+          Your browser does not support the video tag.
         </video>
+        {!isVideoLoaded && (
+          <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
+        )}
       </div>
 
-      {/* Content container for better accessibility */}
+      {/* Content container */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-        {/* You can add your hero content here */}
+        {/* Hero content can go here */}
       </div>
 
-      {/* Registration notification - improved positioning and responsiveness */}
-      <div className="absolute bottom-0 right-1  sm:right-4 z-20 w-full max-w-xs sm:max-w-sm px-4 sm:px-0">
-        <div className="bg-[#3498db] p-4 text-white shadow-lg">
+      {/* Optimized Registration Notification */}
+      <div className="absolute bottom-0 right-1 sm:right-4 z-20 w-full max-w-xs sm:max-w-sm px-4 sm:px-0">
+        <div className="bg-[#3498db]/90 hover:bg-[#3498db] p-4 text-white shadow-lg transition-all duration-300 backdrop-blur-sm">
           <p className="mb-3 font-medium text-sm sm:text-base">
             FICS 2025 Registrations are open now!
           </p>
