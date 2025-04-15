@@ -48,12 +48,12 @@ export default function SuccessStoriesSection() {
   }, [isMounted])
 
   return (
-    <section className="bg-white border border-gray-100 rounded-lg shadow-sm overflow-hidden">
-      <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
+    <section className="mb-5 overflow-hidden bg-white border border-gray-200 shadow-sm ">
+      <div className="grid gap-8 p-8 md:grid-cols-2 md:p-12">
         {/* Left Content */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Success Stories</h1>
-          <h2 className="text-xl text-gray-700 mb-6">Finding Innovative & Creative Solutions</h2>
+          <h1 className="mb-2 text-3xl font-bold text-gray-900 md:text-4xl">Success Stories</h1>
+          <h2 className="mb-6 text-xl text-gray-700">Finding Innovative & Creative Solutions</h2>
 
           <div className="space-y-4 text-gray-600">
             <p>
@@ -70,24 +70,17 @@ export default function SuccessStoriesSection() {
             </p>
           </div>
 
-          <div className="mt-8">
-            <Link
-              href="/consultation"
-              className="inline-flex items-center bg-[#2980b9] hover:bg-[#3498db] text-white px-6 py-3 rounded-md transition-colors"
-            >
-              Book a Consultation <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
+         
         </div>
 
         {/* Right Video */}
-        <div className="relative rounded-lg overflow-hidden bg-gray-100 aspect-video flex items-center justify-center">
+        <div className="relative flex items-center justify-center overflow-hidden bg-gray-100 rounded-lg aspect-video">
           {isMounted && (
             <>
               <video
                 ref={videoRef}
-                className="w-full h-full object-cover"
-                poster="/placeholder.svg?height=400&width=600"
+                className="object-cover w-full h-full"
+                
                 controls={false}
               >
                 <source src="https://res.cloudinary.com/dxh8rsy7p/video/upload/f_auto,q_auto/v1744663859/ltjf9v2gpz7xkgsyypdj.mp4" type="video/mp4" />
@@ -97,9 +90,9 @@ export default function SuccessStoriesSection() {
               {/* Custom play/pause button */}
               <button
                 onClick={togglePlayPause}
-                className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"
+                className="absolute inset-0 flex items-center justify-center transition-colors bg-black/30 hover:bg-black/40"
               >
-                <div className="bg-white/90 rounded-full p-4 shadow-lg">
+                <div className="p-4 rounded-full shadow-lg bg-white/90">
                   {isPlaying ? (
                     <Pause className="h-8 w-8 text-[#2980b9]" />
                   ) : (

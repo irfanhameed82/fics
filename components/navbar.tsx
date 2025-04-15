@@ -1,5 +1,4 @@
 "use client"
-
 import Link from "next/link"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import Image from "next/image"
@@ -15,20 +14,20 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container flex items-center justify-between px-4 py-4 mx-auto">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="FICS Logo" priority width={100} height={50} />
         </Link>
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="items-center hidden space-x-6 md:flex">
           <Link href="/" className="text-gray-600 hover:text-gray-800">
             Home
           </Link>
           <div className="relative group">
-            <Link href="/about" className="text-gray-600 py-4 hover:text-gray-800 flex items-center">
-              About <ChevronDown className="ml-1 h-4 w-4" />
+            <Link href="/about" className="flex items-center py-4 text-gray-600 hover:text-gray-800">
+              About <ChevronDown className="w-4 h-4 ml-1" />
             </Link>
             {/* Dropdown menu list */}
-            <div className="absolute left-0 hidden  w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block z-10">
+            <div className="absolute left-0 z-10 hidden w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block">
               <Link href="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 About FICS
               </Link>
@@ -41,11 +40,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="relative group">
-            <Link href="/competition" className="text-gray-600 py-4 hover:text-gray-800 flex items-center">
-              Competition <ChevronDown className="ml-1 h-4 w-4" />
+            <Link href="/competition" className="flex items-center py-4 text-gray-600 hover:text-gray-800">
+              Competition <ChevronDown className="w-4 h-4 ml-1" />
             </Link>
             {/* Dropdown menu list */}
-            <div className="absolute left-0 hidden  w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block z-10">
+            <div className="absolute left-0 z-10 hidden w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block">
               <Link href="/stages" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Stages
               </Link>
@@ -55,11 +54,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="relative group">
-            <Link href="/best-projects" className="text-gray-600 py-4 hover:text-gray-800 flex items-center">
-              Best Projects <ChevronDown className="ml-1 h-4 w-4" />
+            <Link href="/best-projects" className="flex items-center py-4 text-gray-600 hover:text-gray-800">
+              Best Projects <ChevronDown className="w-4 h-4 ml-1" />
             </Link>
             {/* Dropdown menu list */}
-            <div className="absolute left-0 hidden  w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block z-10">
+            <div className="absolute left-0 z-10 hidden w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block">
               <Link href="/best-projects-2023" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Best Projects 2023
               </Link>
@@ -69,11 +68,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="relative group">
-            <Link href="/fics-2025" className="text-gray-600 py-4 hover:text-gray-800 flex items-center">
-              FICS 2025 <ChevronDown className="ml-1 h-4 w-4" />
+            <Link href="/fics-2025" className="flex items-center py-4 text-gray-600 hover:text-gray-800">
+              FICS 2025 <ChevronDown className="w-4 h-4 ml-1" />
             </Link>
             {/* Dropdown menu list */}
-            <div className="absolute left-0 hidden  w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block z-10">
+            <div className="absolute left-0 z-10 hidden w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block">
               <Link href="/ideas-submit" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Ideas Submit
               </Link>
@@ -83,11 +82,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="relative group">
-            <Link href="/contact-us" className="text-gray-600 py-4 hover:text-gray-800 flex items-center">
-              Contact Us <ChevronDown className="ml-1 h-4 w-4" />
+            <Link href="/contact-us" className="flex items-center py-4 text-gray-600 hover:text-gray-800">
+              Contact Us <ChevronDown className="w-4 h-4 ml-1" />
             </Link>
             {/* Dropdown menu list */}
-            <div className="absolute right-0 hidden  w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block z-10">
+            <div className="absolute right-0 z-10 hidden w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block">
               <Link href="/contact-organizers" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                 Contact the Organizers
               </Link>
@@ -102,7 +101,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <button className="md:hidden flex items-center" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button className="flex items-center md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -117,7 +116,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden px-4 py-2 pb-4 bg-white">
+        <div className="px-4 py-2 pb-4 bg-white md:hidden">
           <Link href="/" className="block py-2 text-gray-600 hover:text-gray-800">
             Home
           </Link>
@@ -129,7 +128,7 @@ export default function Navbar() {
               className="flex items-center justify-between w-full text-gray-600 hover:text-gray-800"
             >
               About
-              {activeDropdown === "about" ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+              {activeDropdown === "about" ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
             </button>
             {activeDropdown === "about" && (
               <div className="pl-4 mt-2 border-l-2 border-gray-200">
@@ -154,9 +153,9 @@ export default function Navbar() {
             >
               Competition
               {activeDropdown === "competition" ? (
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="w-4 h-4" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="w-4 h-4" />
               )}
             </button>
             {activeDropdown === "competition" && (
@@ -179,9 +178,9 @@ export default function Navbar() {
             >
               Best Projects
               {activeDropdown === "best-projects" ? (
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="w-4 h-4" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="w-4 h-4" />
               )}
             </button>
             {activeDropdown === "best-projects" && (
@@ -204,9 +203,9 @@ export default function Navbar() {
             >
               FICS 2025
               {activeDropdown === "fics-2025" ? (
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="w-4 h-4" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="w-4 h-4" />
               )}
             </button>
             {activeDropdown === "fics-2025" && (
@@ -229,9 +228,9 @@ export default function Navbar() {
             >
               Contact Us
               {activeDropdown === "contact-us" ? (
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="w-4 h-4" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="w-4 h-4" />
               )}
             </button>
             {activeDropdown === "contact-us" && (
