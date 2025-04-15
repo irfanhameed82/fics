@@ -12,20 +12,21 @@ export default function HeroSection() {
     <section className="relative w-full h-screen overflow-hidden bg-gray-900">
       {/* Optimized Cloudinary Video Background */}
       <div className="absolute inset-0">
-      <video
-           autoPlay
-           muted
-           loop
-           playsInline
-           preload="auto"
-           className={`w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-           onLoadedData={() => setIsVideoLoaded(true)}
-         >
-           <source src="/video/fics-intro.mp4" type="video/mp4" />
-             Your browser does not support the video tag.
-         </video>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className={`w-full h-full object-cover ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoadedData={() => setIsVideoLoaded(true)}
+          // Cloudinary optimization parameters
+          src={`${VIDEO_URL}?fm=mp4&q=70`} // Further optimize with format and quality
+        >
+          Your browser does not support the video tag.
+        </video>
         {!isVideoLoaded && (
-          <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
+          <div className="absolute inset-0 animate-pulse"></div>
         )}
       </div>
 
