@@ -55,7 +55,7 @@ const events = [
 
 export default function Turkey() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 my-5 md:grid-cols-2 lg:grid-cols-3">
       {events.map((event) => (
         <EventCard
           key={event.id}
@@ -91,15 +91,7 @@ function EventCard({ image, title, date, description }: EventCardProps) {
           <div className="flex-1">
             <h3 className="mb-1 text-lg font-bold">{title}</h3>
             <p className="mb-3 text-sm opacity-90">{description}</p>
-            <div className="flex justify-end">
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-white text-[#0288D1] hover:bg-gray-100 hover:text-[#0288D1] border-white"
-              >
-                Learn more
-              </Button>
-            </div>
+          
           </div>
         </div>
       </div>

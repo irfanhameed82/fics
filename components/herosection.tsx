@@ -26,7 +26,7 @@ export default function HeroSection() {
           Your browser does not support the video tag.
         </video>
         {!isVideoLoaded && (
-          <div className="absolute inset-0 bg-gray-800 animate-pulse">loading</div>
+          <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
         )}
       </div>
 
