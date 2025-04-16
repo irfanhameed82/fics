@@ -5,48 +5,48 @@ import { Button } from "@/components/ui/button"
 const events = [
   {
     id: 1,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/prorector.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 2,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/azerbaijaan.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 3,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/azerbaijaan1.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 4,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/azerbaijaan2.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 5,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/azerbaijaan3.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 6,
-    image: "/ficsazerbaijan.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsazerbaijan/azerbaijaan4.jpg",
+    title: "FICS Azerbaijaan Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",

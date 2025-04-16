@@ -53,23 +53,28 @@ export default function StatisticsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section className="pb-10 bg-white ">
+    <section className="py-10 bg-white">
       <div className="container px-4 mx-auto">
         {/* Title with icon */}
-        <div className="flex justify-center mb-16 ">
-          <div className="relative inline-block px-12 py-4 border-2 border-gray-800 rounded-full cursor-pointer hover:border-gray-400 hover:bg-gray-100">
-            <Rocket className="absolute w-5 h-5 transform -translate-y-1/2 left-4 top-1/2" />
-            <h2 className="text-2xl font-bold text-center">Our Statics</h2>
+        <div className="flex justify-center mb-8 sm:mb-12">
+          <div className="relative inline-flex items-center px-8 py-3 transition-colors duration-300 border-2 border-gray-800 rounded-full group hover:border-blue-500 hover:bg-blue-50">
+            <Rocket className="absolute w-5 h-5 -translate-y-1/2 left-3 top-1/2 group-hover:text-blue-600" />
+            <h2 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 sm:text-2xl">
+              Our Statistics
+            </h2>
           </div>
         </div>
 
         {/* Statistics grid */}
-        <div ref={ref} className="grid grid-cols-2 gap-y-12 md:grid-cols-4 lg:grid-cols-7">
+        <div 
+          ref={ref} 
+          className="grid gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7"
+        >
           {statistics.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="mb-2 text-center">
+            <div key={index} className="flex flex-col items-center p-4 sm:p-0">
+              <div className="flex items-end mb-2 text-center">
                 <motion.span
-                  className="text-4xl font-bold text-[#0288D1]"
+                  className="text-3xl font-bold text-blue-600 sm:text-4xl"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -77,7 +82,7 @@ export default function StatisticsSection() {
                   {isInView ? <Counter from={0} to={stat.value} duration={2} /> : 0}
                 </motion.span>
                 <motion.span
-                  className="text-4xl font-bold text-[#0288D1]"
+                  className="text-2xl font-bold text-blue-600 sm:text-3xl"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
@@ -86,13 +91,13 @@ export default function StatisticsSection() {
                 </motion.span>
               </div>
               <motion.div
-                className="w-16 h-0.5 bg-gray-300 mb-2"
+                className="w-16 h-0.5 bg-gray-300 mb-2 sm:mb-3"
                 initial={{ width: 0 }}
-                animate={isInView ? { width: 64 } : { width: 0 }}
+                animate={isInView ? { width: "100%" } : { width: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
               />
               <motion.p
-                className="text-sm text-center max-w-[120px]"
+                className="text-sm text-center text-gray-600 sm:text-base max-w-[120px]"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}

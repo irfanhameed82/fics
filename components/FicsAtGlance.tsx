@@ -121,7 +121,7 @@ export default function FicsAtGlance() {
             >
               <div
                 className={`p-8 h-full flex flex-col items-center text-center transition-all duration-300 ${
-                  hoveredCard === index ? "bg-[#2a9d8f]" : "bg-[#3a7ca5]"
+                  hoveredCard === index ? "bg-[#2a9d8f] " : "bg-[#3a7ca5]"
                 }`}
               >
                 <div className="flex items-center justify-center w-20 h-20 mb-6 bg-white rounded-full shadow-md">

@@ -120,3 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
+.outlined-text {
+  color: white;
+  -webkit-text-stroke: 2px black; /* For Safari/Chrome */
+  text-stroke: 2px black; /* Standard property */
+  font-size: 3rem;
+}

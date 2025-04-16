@@ -9,7 +9,7 @@ export default function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gray-900">
+    <section className="relative w-full h-screen overflow-hidden bg-gray-600">
       {/* Optimized Cloudinary Video Background */}
       <div className="absolute inset-0">
         <video
@@ -26,7 +26,7 @@ export default function HeroSection() {
           Your browser does not support the video tag.
         </video>
         {!isVideoLoaded && (
-          <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
+          <div className="absolute inset-0 animate-pulse"></div>
         )}
       </div>
 

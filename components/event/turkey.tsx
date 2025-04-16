@@ -5,48 +5,48 @@ import { Button } from "@/components/ui/button"
 const events = [
   {
     id: 1,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey1.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 2,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey2.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 3,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey3.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 4,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey4.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 5,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey5.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
   },
   {
     id: 6,
-    image: "/ficsturkey.jpg",
-    title: "FICS Science Summit 2025",
+    image: "/ficsturkey/turkey6.jpg",
+    title: "FICS Turkey Summit 2025",
     date: "Mar 27",
     description:
       "Lorem ipsum dolor sit amet consectetur. Ac tortor congue morbi blandit orci pretium molestie tincidunt placerat.",
