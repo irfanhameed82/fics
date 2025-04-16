@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils"
 
 export default function Timeline() {
   const [isMobile, setIsMobile] = useState(false)
-  const [hoveredYear, setHoveredYear] = useState(null)
+  const [hoveredYear, setHoveredYear] = useState<string | null>(null)
+
 
   // Hardcoded timeline data
   const timelineData = {
