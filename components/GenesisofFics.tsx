@@ -69,12 +69,8 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
         >
           <motion.h2
-            className="text-3xl font-bold tracking-wider md:text-5xl"
-            style={{
-              color: 'white',
-              WebkitTextStroke: '2px black',
-              textStroke: '2px black'
-            }}
+            className="text-3xl font-bold tracking-wider md:text-5xl outlined-text"
+            
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
