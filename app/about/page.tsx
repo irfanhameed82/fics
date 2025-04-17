@@ -2,7 +2,10 @@ import { Objectives } from "@/components/objective"
 import Image from "next/image"
 import { ArrowRight, Globe, Rocket, Target } from "lucide-react"
 import Link from "next/link"
-
+const metadata = {
+    title: "About FICS",
+    description: "Finding Innovative & Creative Solutions for a sustainable future",
+    }
 export default function Page() {
   return (
     <div className="flex flex-col max-w-full min-h-screen bg-gradient-to-b from-white to-slate-50">
