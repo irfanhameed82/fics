@@ -32,8 +32,8 @@ export default function Navbar() {
       key: "about",
       links: [
         { href: "/about", label: "About FICS" },
-        { href: "/testimonials", label: "Testimonials" },
-        { href: "/vision-2025", label: "Vision 2025" },
+        { href: "/about/testimonials", label: "Testimonials" },
+        { href: "/about/vision", label: "Vision 2025" },
       ],
     },
     {
