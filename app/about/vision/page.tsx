@@ -12,28 +12,28 @@ export default function page() {
       title: "Putting People First; Developing Human and Social Capital",
       description: "A society where every citizen can transform their quality of life through strengthened human and social capital.",
       icon: <UsersIcon className="w-8 h-8" />,
-      color: "bg-blue-100 dark:bg-blue-900"
+      color: "bg-blue-100 "
     },
     {
       id: 2,
       title: "Democratic Governance & Institutional Reform",
       description: "Modernizing the public sector for efficient service delivery and transparent governance.",
       icon: <ShieldCheckIcon className="w-8 h-8" />,
-      color: "bg-green-100 dark:bg-green-900"
+      color: "bg-green-100 "
     },
     {
       id: 3,
       title: "Energy, Water and Food Security",
       description: "Ensuring reliable, clean and cost-effective availability of essential resources for sustainable growth.",
       icon: <ZapIcon className="w-8 h-8" />,
-      color: "bg-yellow-100 dark:bg-yellow-900"
+      color: "bg-yellow-100"
     },
     {
       id: 4,
       title: "Private Sector & Entrepreneurship-led Growth",
       description: "Enabling private investment and entrepreneurship to lead the country's development.",
       icon: <BriefcaseIcon className="w-8 h-8" />,
-      color: "bg-purple-100 dark:bg-purple-900"
+      color: "bg-purple-100"
     },
     {
       id: 5,

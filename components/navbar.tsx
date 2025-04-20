@@ -60,16 +60,18 @@ export default function Navbar() {
         { href: "/projects-shortlisted", label: "Projects Shortlisted" },
       ],
     },
-    {
-      label: "Contact Us",
-      key: "contact-us",
-      links: [
-        { href: "/contact-organizers", label: "Contact the Organizers" },
-        { href: "/global-contacts", label: "Global Points of Contact" },
-        { href: "/nust-contacts", label: "NUST Points of Contact" },
-      ],
-    },
-  ];
+    ];
+    const contactlist = [
+      {
+        label: "Contact Us",
+        key: "contact-us",
+        links: [
+          { href: "/contact-organizers", label: "Contact the Organizers" },
+          { href: "/global-contacts", label: "Global Points of Contact" },
+          { href: "/nust-contacts", label: "NUST Points of Contact" },
+        ],
+      }
+    ];
 
   return (
     <nav className="bg-white shadow-md" ref={navRef}>
@@ -128,6 +130,45 @@ export default function Navbar() {
               </div>
             </div>
           ))}
+             {contactlist.map((item) => (
+            <div
+              key={item.key}
+              className="relative"
+              ref={(el) => {
+                dropdownRefs.current[`${item.key}-desktop`] = el;
+              }}
+            >
+              <button
+                onClick={() => toggleDropdown(`${item.key}-desktop`)}
+                className="flex items-center py-4 text-gray-600 transition-colors duration-200 cursor-pointer hover:text-gray-800"
+              >
+                {item.label}
+                <ChevronDown
+                  className={`w-4 h-4 ml-1 transition-transform ${
+                    activeDropdown === `${item.key}-desktop` ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`absolute right-0 z-10 w-48 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
+                  activeDropdown === `${item.key}-desktop`
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-1 pointer-events-none"
+                }`}
+              >
+                {item.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block px-4 py-2 text-gray-700 transition-colors duration-200 cursor-pointer hover:bg-gray-100"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+
         </div>
 
         {/* Mobile menu button */}
