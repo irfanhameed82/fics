@@ -20,7 +20,7 @@ export default function Page() {
                 <Globe className="w-4 h-4 mr-2" />
                 Global Innovation Platform
               </div>
-              <h1 className="text-4xl font-bold tracking-wide text-[#248ABD] sm:text-5xl md:text-6xl">
+              <h1 className="text-3xl font-semibold tracking-wide text-[#248ABD] sm:text-5xl md:text-6xl">
                 About FICS
               </h1>
               <p className="text-lg font-medium text-slate-700">

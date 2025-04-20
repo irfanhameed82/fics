@@ -48,8 +48,9 @@ export default function Navbar() {
       label: "Best Projects",
       key: "best-projects",
       links: [
-        { href: "/best-projects-2023", label: "Best Projects 2023" },
-        { href: "/best-projects-2022", label: "Best Projects 2022" },
+        { href: "/bestproject-2024", label: "Best Projects 2024" },
+        { href: "/bestproject-2023", label: "Best Projects 2023" },
+        { href: "/bestproject-2022", label: "Best Projects 2022" },
       ],
     },
     {

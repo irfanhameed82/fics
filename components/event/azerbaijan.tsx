@@ -86,10 +86,10 @@ function EventCard({ image, title, date, description }: EventCardProps) {
         <div className="flex items-start gap-3">
           <div className="text-center">
             <div className="text-sm font-medium">Mar</div>
-            <div className="text-2xl font-bold">27</div>
+            <div className="text-2xl font-semi">27</div>
           </div>
           <div className="flex-1">
-            <h3 className="mb-1 text-lg font-bold">{title}</h3>
+            <h3 className="mb-1 text-lg font-semibold">{title}</h3>
             <p className="mb-3 text-sm opacity-90">{description}</p>
             
           </div>

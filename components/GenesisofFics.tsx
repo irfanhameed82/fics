@@ -53,15 +53,16 @@ export default function Timeline() {
   }, [])
 
   return (
-    <div className="relative w-full py-12">
-      <div className="container flex items-center justify-center px-4 mx-auto mb-12">
+    <div className="relative py-12">
+      <div className="flex items-center justify-center mx-auto mb-12 ">
         <motion.div
-          className="flex items-start"
+          className="flex items-start "
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
+          <div className="flex flex-col sm:flex-row">
           <h2
             className="text-3xl font-bold tracking-wider md:text-5xl outlined-text"
 
@@ -69,10 +70,11 @@ export default function Timeline() {
             GENESIS OF
           </h2>
           <h2
-            className="ml-2 text-4xl font-bold tracking-widest text-[#248ABD] md:text-5xl"
+            className="sm:ml-2 text-4xl font-bold tracking-widest text-[#248ABD] md:text-5xl"
           >
             FICS
           </h2>
+          </div>
         </motion.div>
       </div>
 
@@ -80,7 +82,7 @@ export default function Timeline() {
         <div className="container hidden px-4 mx-auto md:block">
           <div className="relative">
             {/* Top Descriptions */}
-            <div className="flex justify-between mb-8">
+            <div className="flex justify-between mb-4">
               {timelineData.events.map((event, index) => (
                 <div key={`top-${index}`} className="w-full px-2 text-center">
                   {event.position === "top" && (
@@ -101,7 +103,7 @@ export default function Timeline() {
             </div>
 
             {/* Timeline Line + Years */}
-            <div className="relative flex items-center justify-between">
+            <div className="relative flex items-center justify-between mx-8">
               <motion.div
                 className="absolute left-0 right-0 h-px bg-gray-300"
                 initial={{ scaleX: 0, opacity: 0 }}

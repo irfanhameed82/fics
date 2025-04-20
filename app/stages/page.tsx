@@ -44,7 +44,7 @@ export default function Stage() {
   return (
     <div>
       <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-5">
-        <h1 className="text-4xl font-bold tracking-widest text-white">Stages</h1>
+        <h1 className="text-4xl font-semibold tracking-widest text-white">Stages</h1>
       
       </div>
       <div className="grid grid-cols-1 gap-4 px-5 mb-10 md:grid-cols-2 lg:grid-cols-3">
@@ -58,7 +58,7 @@ export default function Stage() {
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <div className="text-[#248ABD] text-4xl mb-4">{stage.icons}</div>
-            <h2 className="mb-2 text-xl font-bold">{stage.StageType}</h2>
+            <h2 className="mb-2 text-xl font-semibold">{stage.StageType}</h2>
             <p className="text-center text-gray-700">{stage.description}</p>
           </motion.div>
         ))}

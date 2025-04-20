@@ -33,7 +33,7 @@ export default function StagesSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-4xl font-bold text-center text-slate-800"
+          className="mb-16 text-4xl font-semibold text-center text-slate-800"
         >
           Stages
         </motion.h2>
@@ -61,7 +61,7 @@ export default function StagesSection() {
 
               {/* Content */}
               <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-bold text-cyan-600">Prizes</h3>
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Prizes</h3>
 
                 <div className="p-6 bg-transparent">
                   <p className="mb-4 text-slate-600">
@@ -98,13 +98,13 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="font-semibold text-white">Stage 1</div>
+                  <div className="items-center text-white ">Stage 1</div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-bold text-cyan-600">Online Idea Submission</h3>
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Online Idea Submission</h3>
 
                 <div className="p-6 bg-transparent">
                   <p className="mb-4 text-slate-600">
@@ -138,13 +138,13 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="font-semibold text-white">Stage 2</div>
+                  <div className="text-white ">Stage 2</div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-bold text-cyan-600">Pitching Session</h3>
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Pitching Session</h3>
 
                 <div className="p-6 bg-transparent">
                   <p className="mb-4 text-slate-600">
@@ -178,13 +178,13 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="font-semibold text-white">Stage 3</div>
+                  <div className="text-white ">Stage 3</div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-bold text-cyan-600">Prototype Development</h3>
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Prototype Development</h3>
 
                 <div className="p-6 bg-transparent">
                   <p className="mb-4 text-slate-600">
@@ -218,13 +218,13 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="font-semibold text-white">FICS</div>
+                  <div className="text-white ">FICS</div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-bold text-cyan-600">FICS International </h3>
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">FICS International </h3>
 
                 <div className="p-6 bg-transparent">
                   <p className="mb-4 text-slate-600">

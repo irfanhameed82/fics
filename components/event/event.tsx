@@ -19,9 +19,9 @@ export default function Event() {
         {/* Centered Event Text */}
         <div className="flex justify-center flex-1">
           <div className="relative">
-            <h2 className="text-3xl font-bold text-center text-gray-800 md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-semibold text-center text-gray-800 md:text-4xl lg:text-5xl">
               Event
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#248ABD]" />
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-[#248ABD]" />
             </h2>
           </div>
         </div>

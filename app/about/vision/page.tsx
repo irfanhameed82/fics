@@ -40,24 +40,24 @@ export default function page() {
       title: "Developing a Competitive Knowledge Economy",
       description: "Improving competitiveness through innovation, value addition across all sectors.",
       icon: <LightbulbIcon className="w-8 h-8" />,
-      color: "bg-red-100 dark:bg-red-900"
+      color: "bg-red-100 "
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 dark:opacity-5"></div>
+        <div className="absolute inset-0 opacity-10 "></div>
         <div className="container relative z-10 px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="outline" className="mb-4 text-[#248ABD] bg-transparent ">
               Pakistan Vision 2025
             </Badge>
-            <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl dark:text-white">
+            <h1 className="mb-6 text-4xl font-semibold text-gray-900 md:text-5xl ">
               One Nation, <span className="text-[#248ABD]">One Vision</span>
             </h1>
-            <p className="max-w-3xl mx-auto mb-8 text-xl text-gray-600 dark:text-gray-300">
+            <p className="max-w-3xl mx-auto mb-8 text-xl text-gray-600 ">
               Transforming Pakistan into one of the top economies through sustainable development and innovation.
             </p>
           </div>
@@ -65,13 +65,13 @@ export default function page() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-white ">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="mb-12 text-3xl font-bold text-center text-gray-900 dark:text-white">
+            <h2 className="mb-12 text-3xl font-semibold text-center text-gray-900 ">
               About <span className="text-[#248ABD]">Pakistan Vision 2025</span>
             </h2>
-            <div className="space-y-6 text-gray-600 dark:text-gray-300">
+            <div className="space-y-6 text-gray-600 ">
               <p>
                 Pakistan Vision 2025, prepared by the Planning Commission of Pakistan, lays down a foundation to put Pakistan on a fast track of development with the ultimate goal of transforming it to become one of top economies in the world.
               </p>
@@ -87,12 +87,12 @@ export default function page() {
       </section>
 
       {/* Pillars Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50 ">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-4 text-3xl font-bold text-center text-gray-900 dark:text-white">
+          <h2 className="mb-4 text-3xl font-semibold text-center text-gray-900 ">
             The <span className="text-[#248ABD]">7 Pillars</span> of Vision 2025
           </h2>
-          <p className="max-w-2xl mx-auto mb-12 text-center text-gray-600 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto mb-12 text-center text-gray-600 ">
             The realization of the Vision requires simultaneous attention to these key priority areas.
           </p>
 
@@ -103,7 +103,7 @@ export default function page() {
                   <div className={`${pillar.color} w-16 h-16 rounded-full flex items-center justify-center mb-4`}>
                     {pillar.icon}
                   </div>
-                  <CardTitle className="text-xl">{pillar.title}</CardTitle>
+                  <CardTitle className="text-xl text-[#248ABD]">{pillar.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>{pillar.description}</CardDescription>

@@ -52,7 +52,7 @@ export default function SuccessStoriesSection() {
       <div className="grid gap-8 p-8 md:grid-cols-2 md:p-12">
         {/* Left Content */}
         <div className="flex flex-col justify-center">
-          <h1 className="mb-2 text-3xl font-bold text-gray-900 md:text-4xl">Success Stories</h1>
+          <h1 className="mb-2 text-3xl font-semibold text-gray-900 md:text-4xl">Success Stories</h1>
           <h2 className="mb-6 text-xl text-gray-700">Finding Innovative & Creative Solutions</h2>
 
           <div className="space-y-4 text-gray-600">

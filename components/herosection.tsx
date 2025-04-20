@@ -9,7 +9,7 @@ export default function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   return (
-    <section className="relative w-full h-screen bg-gray-600">
+    <section className="relative w-full bg-gray-600 h-80 sm:h-screen">
       {/* Optimized Cloudinary Video Background */}
       <div className="absolute inset-0">
         <video
@@ -18,7 +18,7 @@ export default function HeroSection() {
           loop
           playsInline
           preload="auto"
-          className={`w-full h-full object-cover `}
+          className={`w-full h-full object-fill`}
           onLoadedData={() => setIsVideoLoaded(true)}
           // Cloudinary optimization parameters
           src={`${VIDEO_URL}?fm=mp4&q=70`} // Further optimize with format and quality

@@ -59,7 +59,7 @@ export default function StatisticsSection() {
         <div className="flex justify-center mb-8 sm:mb-12">
           <div className="relative inline-flex items-center px-12 py-3 transition-colors duration-300 border-2 border-gray-800 rounded-full group hover:border-blue-500 hover:bg-blue-50">
             <Rocket className="absolute w-5 h-5 -translate-y-1/2 left-3 top-1/2 group-hover:text-blue-600" />
-            <h2 className="text-xl font-bold text-gray-800 group-hover:text-blacks sm:text-2xl">
+            <h2 className="text-xl font-semibold text-gray-800 group-hover:text-blacks sm:text-2xl">
               Our Statistics
             </h2>
           </div>
@@ -74,7 +74,7 @@ export default function StatisticsSection() {
             <div key={index} className="flex flex-col items-center p-4 sm:p-0">
               <div className="flex items-end mb-2 text-center">
                 <motion.span
-                  className="text-3xl font-bold text-blue-600 sm:text-4xl"
+                  className="text-3xl font-bold text-[#248ABD] sm:text-4xl"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -82,7 +82,7 @@ export default function StatisticsSection() {
                   {isInView ? <Counter from={0} to={stat.value} duration={2} /> : 0}
                 </motion.span>
                 <motion.span
-                  className="text-2xl font-bold text-blue-600 sm:text-3xl"
+                  className="text-2xl font-bold text-[#248ABD] sm:text-3xl"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}

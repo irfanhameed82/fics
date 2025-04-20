@@ -64,10 +64,10 @@ export default function FicsAtGlance() {
 
           <div className="flex flex-col items-start justify-center w-full h-full pt-3">
             {/* Text container with overflow hidden */}
-            <div className="relative h-16 mx-20 overflow-hidden ">
+            <div className="relative h-16 ml-20 overflow-hidden ">
               {/* Text sliding in from left */}
               <motion.h2
-                className="text-xl font-bold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
+                className="text-xl font-semibold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
                 initial={{ x: -400, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{
@@ -93,7 +93,7 @@ export default function FicsAtGlance() {
 
             {/* "At a Glance" appearing after */}
             <motion.h2
-              className="mx-20 text-xl font-bold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
+              className="mx-20 text-xl font-semibold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -126,7 +126,7 @@ export default function FicsAtGlance() {
                 <div className="flex items-center justify-center w-20 h-20 mb-6 bg-white rounded-full ">
                   <card.icon className={`w-10 h-10 ${hoveredCard === index ? "text-[#2a9d8f]" : "text-[#3a7ca5]"}`} />
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-white">{card.title}</h3>
+                <h3 className="mb-3 text-xl font-semibold text-white">{card.title}</h3>
                 <p className="leading-relaxed text-white/90">{card.description}</p>
               </div>
             </motion.div>

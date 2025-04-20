@@ -67,7 +67,7 @@ We welcome project ideas that integrate interdisciplinary strengths from differe
   return (
     <section className="py-12 bg-white">
       <div className="container max-w-5xl px-4 mx-auto">
-        <h2 className="mb-10 text-2xl font-bold text-center md:text-3xl">Frequently Asked Questions (FAQs)</h2>
+        <h2 className="mb-10 text-2xl font-semibold text-center md:text-3xl">Frequently Asked Questions (FAQs)</h2>
 
         <Accordion
           type="single"

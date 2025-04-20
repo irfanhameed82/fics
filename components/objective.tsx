@@ -72,7 +72,7 @@ export function Objectives() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               {/* Title with decorative line */}
               
-              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
                 Project
                 <br />
                 Objective

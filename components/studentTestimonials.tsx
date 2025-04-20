@@ -119,7 +119,7 @@ export function StudentTestimonials() {
         transition={{ duration: 0.6 }}
         className="mb-16 text-center"
       >
-        <h2 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">What our Student say ?</h2>
+        <h2 className="mb-4 text-4xl font-semibold tracking-tight text-gray-900">What our Student say ?</h2>
       </motion.div>
 
       {/* Slider container */}
