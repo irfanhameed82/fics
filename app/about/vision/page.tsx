@@ -48,14 +48,14 @@ export default function page() {
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10 dark:opacity-5"></div>
+        <div className="absolute inset-0 opacity-10 dark:opacity-5"></div>
         <div className="container relative z-10 px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4 text-green-800 bg-green-100 dark:bg-green-900 dark:text-green-200">
+            <Badge variant="outline" className="mb-4 text-[#248ABD] bg-transparent ">
               Pakistan Vision 2025
             </Badge>
             <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl dark:text-white">
-              One Nation, <span className="text-green-600 dark:text-green-400">One Vision</span>
+              One Nation, <span className="text-[#248ABD]">One Vision</span>
             </h1>
             <p className="max-w-3xl mx-auto mb-8 text-xl text-gray-600 dark:text-gray-300">
               Transforming Pakistan into one of the top economies through sustainable development and innovation.
@@ -69,7 +69,7 @@ export default function page() {
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <h2 className="mb-12 text-3xl font-bold text-center text-gray-900 dark:text-white">
-              About <span className="text-green-600 dark:text-green-400">Pakistan Vision 2025</span>
+              About <span className="text-[#248ABD]">Pakistan Vision 2025</span>
             </h2>
             <div className="space-y-6 text-gray-600 dark:text-gray-300">
               <p>
@@ -90,7 +90,7 @@ export default function page() {
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container px-4 mx-auto">
           <h2 className="mb-4 text-3xl font-bold text-center text-gray-900 dark:text-white">
-            The <span className="text-green-600 dark:text-green-400">7 Pillars</span> of Vision 2025
+            The <span className="text-[#248ABD]">7 Pillars</span> of Vision 2025
           </h2>
           <p className="max-w-2xl mx-auto mb-12 text-center text-gray-600 dark:text-gray-300">
             The realization of the Vision requires simultaneous attention to these key priority areas.

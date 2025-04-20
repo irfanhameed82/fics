@@ -9,10 +9,10 @@ import SuccessStoriesSection from "@/components/successstories";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center max-w-full min-h-screen bg-white ">
+    <div className="overflow-hidden overflow-y-hidden" >
       
       <HeroSection/>
-      <div className="max-w-7xl">
+      <div className="container mx-auto">
       <FicsAtGlance/>
       <SuccessStoriesSection/>
       <Event/>

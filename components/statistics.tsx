@@ -57,9 +57,9 @@ export default function StatisticsSection() {
       <div className="container px-4 mx-auto">
         {/* Title with icon */}
         <div className="flex justify-center mb-8 sm:mb-12">
-          <div className="relative inline-flex items-center px-8 py-3 transition-colors duration-300 border-2 border-gray-800 rounded-full group hover:border-blue-500 hover:bg-blue-50">
+          <div className="relative inline-flex items-center px-12 py-3 transition-colors duration-300 border-2 border-gray-800 rounded-full group hover:border-blue-500 hover:bg-blue-50">
             <Rocket className="absolute w-5 h-5 -translate-y-1/2 left-3 top-1/2 group-hover:text-blue-600" />
-            <h2 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 sm:text-2xl">
+            <h2 className="text-xl font-bold text-gray-800 group-hover:text-blacks sm:text-2xl">
               Our Statistics
             </h2>
           </div>

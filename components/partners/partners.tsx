@@ -126,7 +126,7 @@ function InfiniteLoopSlider({ duplicatedPartners }: InfiniteLoopSliderProps) {
         </div>
 
         {/* Duplicated set for seamless looping */}
-        <div className="flex items-center gap-12 px-4">
+        <div className="flex items-center gap-12 px-4 py-8 mt-5">
           {partners.map((partner, index) => (
             <div key={`partner-2-${index}`} className="flex items-center justify-center h-20 min-w-[150px]">
               <Image

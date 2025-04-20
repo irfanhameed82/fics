@@ -11,13 +11,7 @@ export default function Page() {
     <div className="flex flex-col max-w-full min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div className="absolute bg-purple-500 rounded-full top-20 left-10 w-72 h-72 filter blur-3xl"></div>
-            <div className="absolute rounded-full top-40 right-10 w-80 h-80 bg-cyan-400 filter blur-3xl"></div>
-          </div>
-        </div>
+  
 
         <div className="container px-4 py-20 mx-auto">
           <div className="grid items-center gap-12 md:grid-cols-2">
@@ -26,7 +20,7 @@ export default function Page() {
                 <Globe className="w-4 h-4 mr-2" />
                 Global Innovation Platform
               </div>
-              <h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600 sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-bold tracking-wide text-[#248ABD] sm:text-5xl md:text-6xl">
                 About FICS
               </h1>
               <p className="text-lg font-medium text-slate-700">
@@ -35,7 +29,7 @@ export default function Page() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="#objectives"
-                  className="inline-flex items-center px-6 py-3 font-medium text-white transition-all rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
+                  className="inline-flex items-center px-6 py-3 font-medium text-white transition-all rounded-lg bg-gradient-to-r from-cyan-500 to-[#248ABD] hover:from-cyan-600 hover:to-blue-700"
                 >
                   Our Objectives
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -45,7 +39,7 @@ export default function Page() {
             <div className="relative flex items-center justify-center">
               <div className="relative w-full overflow-hidden shadow-2xl h-80 rounded-xl">
                 <Image
-                  src="/logo.png"
+                  src="/ficsimage.jpg"
                   alt="FICS Global Innovation"
                   fill
                   className="object-cover"

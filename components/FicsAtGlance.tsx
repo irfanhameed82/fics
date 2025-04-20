@@ -43,9 +43,9 @@ export default function FicsAtGlance() {
   ]
 
   return (
-    <section className="px-4 py-8 bg-transparent">
-      <div className="relative mx-auto">
-      <div className="flex items-center w-full gap-4 mb-24">
+    <section className="px-4 pt-8 bg-transparent sm:py-12">
+    <div className="relative mx-auto">
+      <div className="flex items-center w-full mb-8 sm:mb-10">
           {/* Logo with appearing animation */}
           <motion.div
             className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16"
@@ -67,7 +67,7 @@ export default function FicsAtGlance() {
             <div className="relative h-16 mx-20 overflow-hidden ">
               {/* Text sliding in from left */}
               <motion.h2
-                className="text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl"
+                className="text-xl font-bold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
                 initial={{ x: -400, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{
@@ -93,7 +93,7 @@ export default function FicsAtGlance() {
 
             {/* "At a Glance" appearing after */}
             <motion.h2
-              className="mx-20 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl"
+              className="mx-20 text-xl font-bold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -105,8 +105,7 @@ export default function FicsAtGlance() {
             </motion.h2>
           </div>
         </div>
-         
-
+    
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, index) => (
             <motion.div
@@ -124,7 +123,7 @@ export default function FicsAtGlance() {
                   hoveredCard === index ? "bg-[#2a9d8f] " : "bg-[#3a7ca5]"
                 }`}
               >
-                <div className="flex items-center justify-center w-20 h-20 mb-6 bg-white rounded-full shadow-md">
+                <div className="flex items-center justify-center w-20 h-20 mb-6 bg-white rounded-full ">
                   <card.icon className={`w-10 h-10 ${hoveredCard === index ? "text-[#2a9d8f]" : "text-[#3a7ca5]"}`} />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white">{card.title}</h3>

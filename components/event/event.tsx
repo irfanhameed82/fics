@@ -21,7 +21,7 @@ export default function Event() {
           <div className="relative">
             <h2 className="text-3xl font-bold text-center text-gray-800 md:text-4xl lg:text-5xl">
               Event
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#2a9d8f]" />
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#248ABD]" />
             </h2>
           </div>
         </div>
@@ -43,19 +43,19 @@ export default function Event() {
       <TabsList className="flex flex-col justify-center w-full gap-2 my-10 bg-gray-100 sm:py-1 sm:flex-row ">
             <TabsTrigger
                 value="Pakistan"
-                className="data-[state=active]:bg-[#2a9d8f] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
+                className="data-[state=active]:bg-[#248ABD] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
                 Pakistan
             </TabsTrigger>
             <TabsTrigger
                 value="Turkey"
-                className="data-[state=active]:bg-[#2a9d8f] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
+                className="data-[state=active]:bg-[#248ABD] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
                 Turkey
             </TabsTrigger>
             <TabsTrigger
                 value="Azerbaijan"
-                className="data-[state=active]:bg-[#2a9d8f] tracking-widest text-xl data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg text-gray-700 hover:bg-[#2a9d8f]/20 transition-all duration-300"
+                className="data-[state=active]:bg-[#248ABD] tracking-widest text-xl data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
                 Azerbaijan
             </TabsTrigger>
