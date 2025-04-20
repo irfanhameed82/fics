@@ -1,5 +1,6 @@
 import { projectData } from "@/app/data/project"
 import { ProjectCard } from "@/components/project-card"
+import { notFound } from "next/navigation"
 
 type Props = {
   params: {
@@ -8,21 +9,13 @@ type Props = {
 }
 
 export default function BestProjectPage({ params }: Props) {
-  const { bestprojectyear } = params
-
-  // Extract year from slug e.g., bestproject-2023 → 2023
-  const year = bestprojectyear.split("-")[1]
+  const slug = params.bestprojectyear
+  const year = slug.split("-")[1]
 
   const data = projectData[year]
 
   if (!data) {
-    return (
-      <div className="px-4 py-12 mx-auto max-w-7xl">
-        <div className="p-6 text-center text-red-600 border border-red-200 rounded-lg bg-red-50">
-          No projects found for year {year}
-        </div>
-      </div>
-    )
+    notFound()
   }
 
   return (
