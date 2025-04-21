@@ -8,7 +8,7 @@ type Props = {
   }
 }
 
-export default function BestProjectPage({ params }: Props) {
+export default async function BestProjectPage({ params }: Props) {
   const slug = params.bestprojectyear
   const year = slug.split("-")[1]
 
@@ -22,7 +22,9 @@ export default function BestProjectPage({ params }: Props) {
     <div className="min-h-screen pb-16 bg-slate-50">
       <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-10">
         <div className="text-center">
-          <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">BEST PROJECTS {year}</h1>
+          <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
+            BEST PROJECTS {year}
+          </h1>
         </div>
       </div>
 
