@@ -1,4 +1,4 @@
-// app/[bestprojectyear]/page.tsx
+import React from "react"
 import { projectData } from "@/app/data/project"
 import { ProjectCard } from "@/components/project-card"
 import { notFound } from "next/navigation"
