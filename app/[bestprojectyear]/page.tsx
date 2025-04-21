@@ -1,16 +1,18 @@
+// app/[bestprojectyear]/page.tsx
+
 import { projectData } from "@/app/data/project"
 import { ProjectCard } from "@/components/project-card"
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
 
-type Props = {
-  params: {
-    bestprojectyear: string
-  }
+type Params = {
+  bestprojectyear: string
 }
 
-export default async function BestProjectPage({ params }: Props) {
+// Correct type is just an object with `params`
+export default async function BestProjectPage({ params }: { params: Params }) {
   const slug = params.bestprojectyear
-  const year = slug.split("-")[1]
+  const year = slug.split("-")[1] // e.g., best-2024 => 2024
 
   const data = projectData[year]
 
