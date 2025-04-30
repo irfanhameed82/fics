@@ -78,10 +78,10 @@ We welcome project ideas that integrate interdisciplinary strengths from differe
         >
           {faqs.map((faq) => (
             <AccordionItem key={faq.id} value={faq.id} className="overflow-hidden border rounded-md border-slate-200">
-              <AccordionTrigger className="px-6 py-4 font-medium text-left hover:bg-slate-50">
+              <AccordionTrigger className="px-6 py-4 sm:text-[18px] font-medium text-left hover:bg-slate-50">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="px-6 py-4 text-sm leading-relaxed text-slate-700">
+              <AccordionContent className="px-6 py-4 text-sm sm:text-[16px] leading-relaxed text-slate-800">
                 <div className="whitespace-pre-wrap">{faq.answer}</div>
               </AccordionContent>
             </AccordionItem>

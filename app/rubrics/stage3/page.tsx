@@ -93,7 +93,7 @@ export default function StageThreeRubric() {
   return (
     <div className="space-y-6">
          <div className="pb-5 bg-white">
-             <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-5">
+         <div className="relative h-40 w-full bg-gradient-to-r from-[#248ABD] via-[#1a6f89] to-[#44aadd] animate-gradient-x flex items-center justify-center mb-5 overflow-hidden">
         <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
         Evaluation for Stage - 3
         </h1>

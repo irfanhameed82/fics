@@ -1,10 +1,12 @@
 import { FAQSection } from "@/components/faqsquestionaire";
+import { CircleHelp } from "lucide-react";
 
 export default function page (){
     return (
         <div className="pb-5 bg-white">
-             <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-5">
+             <div className="relative h-40 w-full bg-[#248ABD] flex items-center justify-center mb-5">
         <h1 className="text-4xl font-semibold tracking-widest text-white">FAQ</h1>
+        <CircleHelp size={50} color="#fafafa" strokeWidth={3} className="mx-4 mt-1 transition-all animation animate-float-spin"/>
       </div>
         <FAQSection/>
         </div>

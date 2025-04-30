@@ -5,13 +5,14 @@ import { Facebook, Instagram, Home, Info, Phone } from "lucide-react"
 export default function Footer() {
   return (
     <footer className="w-full">
-      <div className="bg-[#2980b9] opacity-90 text-white py-4 px-4 md:px-8">
+      <div className="relative bg-[#2980b9] opacity-90 text-white py-4 px-4 md:px-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Logo and Social Media */}
             <div className="flex flex-col items-start">
               <div className="p-4 mb-8 bg-transparent rounded-b-lg">
-                <Image src="/logo.png" alt="FICS Logo" width={120} height={60} />
+              <Image src="/Rectangle8.png" alt="logo background" width={220} height={100} className="absolute -top-1 left-10" />
+                <Image src="/logo.png" alt="FICS Logo" width={120} height={60}  className="absolute z-10 top-1 left-23"/>
               </div>
 
               <h3 className="mb-6 text-xl font-semibold">Connect With Us</h3>
@@ -33,7 +34,7 @@ export default function Footer() {
 
             {/* Links */}
             <div className="flex flex-col">
-              <h3 className="mb-6 text-xl font-semibold">Links</h3>
+              <h3 className="mb-6 text-xl font-semibold underline underline-offset-4 ">Links</h3>
               <ul className="space-y-4">
                 <li>
                   <Link href="/" className="flex items-center transition-colors hover:text-gray-200">
@@ -58,7 +59,7 @@ export default function Footer() {
 
             {/* Contact Information */}
             <div className="flex flex-col">
-              <h3 className="mb-6 text-xl font-semibold">Have a Question?</h3>
+              <h3 className="mb-6 text-xl font-semibold underline underline-offset-4 ">Have a Question? </h3>
               <div className="space-y-4">
                 <p className="transition-colors hover:text-gray-200">
                   <Link href="https://facebook.com/NUSTFICS">facebook.com/NUSTFICS</Link>

@@ -38,14 +38,14 @@ export default function Partners() {
 
         {/* Title */}
         <motion.h2
-          className="text-xl font-semibold text-gray-800 md:text-3xl lg:text-5xl"
+          className="text-3xl font-semibold text-gray-800 lg:text-5xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           Our Partners
           <motion.span
-            className="absolute -bottom-2 left-1/2 w-16 h-1 bg-[#248ABD] -translate-x-1/2"
+            className="absolute -bottom-2 sm:-bottom-4 left-1/2 w-20 sm:w-32  h-1 bg-[#248ABD] -translate-x-1/2"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{

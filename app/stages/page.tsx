@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ReactElement } from "react";
 import Image from "next/image";
 import StagesSection from "@/components/StagesSection";
-
+import stagesicons from "@/public/stagesicons.png";
 interface StageInfo {
   title: string;
   icons: ReactElement;
@@ -33,7 +33,7 @@ const stagesInfo: StageInfo[] = [
   {
     title: "Stage 3",
     icons: <Users className="w-5 h-5" />,
-    StageType: "Prototype Development",
+    StageType: "Grand Finale",
     bgcolor: "#E3F6FF",
     description:
       "In Stage 3, the student teams develop a prototype of their project ideas. The prototypes are developed under the guidance of mentors from the industry and academia. The prototypes are then presented to a panel of judges who assess their feasibility and impact.",
@@ -43,9 +43,9 @@ const stagesInfo: StageInfo[] = [
 export default function Stage() {
   return (
     <div>
-      <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-5">
-        <h1 className="text-4xl font-semibold tracking-widest text-white">Stages</h1>
-      
+      <div className="relative h-32 sm:h-40 w-full bg-gradient-to-r from-[#248ABD] via-[#5bcaec] to-[#44aadd] animate-gradient-x flex items-center justify-center mb-5 overflow-hidden">
+        <h1 className="pb-4 text-4xl font-semibold tracking-widest text-white text-border-1 text-border-black">Stages</h1>
+        <Image alt="stages" src={stagesicons} width={120}  className="absolute right-4 sm:right-12 bottom-1/11 sm:bottom-1/6"/>
       </div>
       <div className="grid grid-cols-1 gap-4 px-5 mb-10 md:grid-cols-2 lg:grid-cols-3">
         {stagesInfo.map((stage, index) => (

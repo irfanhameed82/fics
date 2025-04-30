@@ -43,48 +43,7 @@ export default function StagesSection() {
           <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-300"></div>
 
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative">
-            {/* Prizes Section */}
-            <motion.div variants={itemVariants} className="relative mb-20">
-              {/* Timeline dot */}
-              <div className="absolute z-10 w-5 h-5 bg-white left-[15px] top-12">
-                <div className="w-full h-full border-2 border-gray-400 rounded-full p-0.5 box-border">
-                  <div className="w-full h-full rounded-full bg-cyan-500"></div>
-                </div>
-              </div>
-
-              {/* Circle extension with icon */}
-              <div className="absolute top-7 left-10">
-                <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Prizes</h3>
-
-                <div className="p-6 bg-transparent">
-                  <p className="mb-4 text-slate-600">
-                    Cash prizes will be awarded to the following winning teams of Stage 3
-                  </p>
-
-                  <ul className="pl-5 mb-4 space-y-2 list-disc text-slate-700">
-                    <li>Winner FICS - (Cash Prize *)</li>
-                    <li>First Runner-Up - (Cash Prize *)</li>
-                    <li>Second Runner-Up - (Cash Prize *)</li>
-                    <li>Special Prize Categories</li>
-                  </ul>
-
-                  <p className="mb-4 text-slate-600">Prize amounts will be announced soon.</p>
-
-                  <p className="mb-4 text-slate-600">
-                    Since this Stage witnesses a high level of interest and attendance from the Industry, students also
-                    have the incentive of finding a long-term mentor and possibly sponsor for their idea. We also offer
-                    free incubation space to the winner in our TechOne incubation space.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            
 
             {/* Stage 1 Section */}
             <motion.div variants={itemVariants} className="relative mb-20">
@@ -98,15 +57,15 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="items-center text-white ">Stage 1</div>
+                  <div className="items-center text-4xl font-bold text-white ">1</div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="ml-32">
+              <div className="pt-8 ml-32">
                 <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Online Idea Submission</h3>
 
-                <div className="p-6 bg-transparent">
+                <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
                     A complete synopsis for review, according to the provided outline. The teams are also encouraged to
                     submit a presentation or a video of their idea along with the synopsis. Any additional materials
@@ -138,15 +97,15 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="text-white ">Stage 2</div>
+                  <div className="text-4xl font-bold text-white">2</div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="ml-32">
+              <div className="pt-8 ml-32">
                 <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Pitching Session</h3>
 
-                <div className="p-6 bg-transparent">
+                <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
                     A complete synopsis for review, according to the provided outline. The teams are also encouraged to
                     submit a presentation or a video of their idea along with the synopsis. Any additional materials
@@ -178,15 +137,15 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="text-white ">Stage 3</div>
+                  <div className="text-4xl font-bold text-white ">3</div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="ml-32">
-                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Prototype Development</h3>
+              <div className="pt-8 ml-32">
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Grand Finale</h3>
 
-                <div className="p-6 bg-transparent">
+                <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
                     A complete synopsis for review, according to the provided outline. The teams are also encouraged to
                     submit a presentation or a video of their idea along with the synopsis. Any additional materials
@@ -218,15 +177,15 @@ export default function StagesSection() {
               {/* Circle extension with icon */}
               <div className="absolute top-7 left-10">
               <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
-                  <div className="text-white ">FICS</div>
+                  <div className="text-xl font-bold text-white ">FICS</div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="ml-32">
+              <div className="pt-8 ml-32">
                 <h3 className="mb-4 text-2xl font-semibold text-cyan-600">FICS International </h3>
 
-                <div className="p-6 bg-transparent">
+                <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
                   FICS took a step ahead and expanded its reach globally and opened its doors to international participants and had partner universities from various regions including Turkey, Malaysia, Egypt, Azerbaijan, and Libya. The first ever FICS International Event was held in Türkiye, where 20 universities participated and presented their ideas. The program aims to expand its reach even further. This year not only are we collaborating with universities from all around the world for participation of students internationally, but we are also connecting with foreign experts, judges and mentors who are well-versed in international markets and strategies. This will prove to be a huge step forward towards developing global connections and to provide our youth with opportunities that are not restricted to their own countries only, but instead allow them to expand their potential and reach the relevant target market anywhere in the world.
                   </p>
@@ -234,6 +193,48 @@ export default function StagesSection() {
                   <Link href="/rubrics/stage3" className="font-medium transition-colors text-cyan-600 hover:text-cyan-800">
                     Rubric for Stage 3
                   </Link>
+                </div>
+              </div>
+            </motion.div>
+            {/* Prizes Section */}
+            <motion.div variants={itemVariants} className="relative mb-20">
+              {/* Timeline dot */}
+              <div className="absolute z-10 w-5 h-5 bg-white left-[15px] top-12">
+                <div className="w-full h-full border-2 border-gray-400 rounded-full p-0.5 box-border">
+                  <div className="w-full h-full rounded-full bg-cyan-500"></div>
+                </div>
+              </div>
+
+              {/* Circle extension with icon */}
+              <div className="absolute top-7 left-10">
+                <div className="flex items-center justify-center rounded-full w-14 h-14 bg-cyan-500">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="pt-8 ml-32">
+                <h3 className="mb-4 text-2xl font-semibold text-cyan-600">Awards</h3>
+
+                <div className="py-2 bg-transparent">
+                  <p className="mb-4 text-slate-600">
+                    Cash prizes will be awarded to the following winning teams of Stage 3
+                  </p>
+
+                  <ul className="pl-5 mb-4 space-y-2 list-disc text-slate-700">
+                    <li>Winner FICS - (Cash Prize *)</li>
+                    <li>First Runner-Up - (Cash Prize *)</li>
+                    <li>Second Runner-Up - (Cash Prize *)</li>
+                    <li>Special Prize Categories</li>
+                  </ul>
+
+                  <p className="mb-4 text-slate-600">Prize amounts will be announced soon.</p>
+
+                  <p className="mb-4 text-slate-600">
+                    Since this Stage witnesses a high level of interest and attendance from the Industry, students also
+                    have the incentive of finding a long-term mentor and possibly sponsor for their idea. We also offer
+                    free incubation space to the winner in our TechOne incubation space.
+                  </p>
                 </div>
               </div>
             </motion.div>

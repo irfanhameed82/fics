@@ -75,7 +75,7 @@ export default function Navbar() {
     ];
 
   return (
-    <nav className="bg-white shadow-md" ref={navRef}>
+    <nav className="z-10 bg-white shadow-md" ref={navRef}>
       <div className="container flex items-center justify-between px-4 py-4 mx-auto">
         <Link
           href="/"
@@ -113,7 +113,7 @@ export default function Navbar() {
                 />
               </button>
               <div
-                className={`absolute left-0 z-10 w-48 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
+                className={`absolute left-0 z-100 w-48 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
                   activeDropdown === `${item.key}-desktop`
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-1 pointer-events-none"

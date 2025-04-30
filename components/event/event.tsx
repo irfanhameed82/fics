@@ -40,37 +40,37 @@ export default function Event() {
 
       {/* Tabs Section */}
       <Tabs defaultValue="Pakistan" className="w-full ">
-      <TabsList className="flex flex-col justify-center w-full gap-2 my-10 bg-gray-100 sm:py-1 sm:flex-row ">
+      <TabsList className="flex flex-col justify-center w-full gap-2 my-10 sm:py-1 sm:flex-row ">
             <TabsTrigger
                 value="Pakistan"
                 className="data-[state=active]:bg-[#248ABD] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
-                Pakistan
+                National Events
             </TabsTrigger>
             <TabsTrigger
                 value="Turkey"
                 className="data-[state=active]:bg-[#248ABD] tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
-                Turkey
+                International Events
             </TabsTrigger>
-            <TabsTrigger
+            {/* <TabsTrigger
                 value="Azerbaijan"
                 className="data-[state=active]:bg-[#248ABD] tracking-widest text-xl data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 hover:bg-[#2a9d8f]/20 transition-all duration-300"
             >
                 Azerbaijan
-            </TabsTrigger>
+            </TabsTrigger> */}
         </TabsList>
 
 
         <TabsContent value="Pakistan">
-          <Pakistan />
+        <Azerbaijan />
         </TabsContent>
         <TabsContent value="Turkey">
           <Turkey />
         </TabsContent>
-        <TabsContent value="Azerbaijan">
+        {/* <TabsContent value="Azerbaijan">
           <Azerbaijan />
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
     </div>
   )
