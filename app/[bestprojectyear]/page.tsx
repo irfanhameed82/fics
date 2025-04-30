@@ -1,41 +1,46 @@
-import React from "react"
-import { projectData } from "@/app/data/project"
-import { ProjectCard } from "@/components/project-card"
-import { notFound } from "next/navigation"
+import { notFound } from "next/navigation";
+import { projectData } from "@/app/data/project";
+import { ProjectCard } from "@/components/project-card";
 
-interface ProjectPageParams {
-  params: {
-    bestprojectyear: string
-  }
+interface BestProjectPageProps {
+  // Next.js passes params as a Promise in v15+
+  params: Promise<{ bestprojectyear: string }>;
+  // Likewise for searchParams (even if you don’t use it)
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function BestProjectPage({ params }: ProjectPageParams) {
-  const slug = params.bestprojectyear
-  const year = slug.split("-")[1]
+export default async function BestProjectPage({
+  params,
+  searchParams,
+}: BestProjectPageProps) {
+  // Await the incoming params promise
+  const { bestprojectyear } = await params;
+  // If you need any query strings:
+  // const queries = await searchParams;
 
-  const data = projectData[year]
+  // Parse out the year from your slug, e.g. "bestproject-2024"
+  const year = bestprojectyear.split("-")[1];
+  const data = projectData[year];
 
   if (!data) {
-    notFound()
+    return notFound();
   }
 
   return (
     <div className="min-h-screen pb-16 bg-slate-50">
       <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-10">
-        <div className="text-center">
-          <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
-            BEST PROJECTS {year}
-          </h1>
-        </div>
+        <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
+          BEST PROJECTS {year}
+        </h1>
       </div>
 
       <div className="px-4 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+          {data.map((project, idx) => (
+            <ProjectCard key={idx} project={project} />
           ))}
         </div>
       </div>
-    </div>
-  )
+    </div>
+  );
 }
