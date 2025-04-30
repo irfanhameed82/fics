@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npx lightningcss"
+    // "postinstall": "node -e "require(\"lightningcss\").install()"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.7",
