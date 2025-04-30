@@ -37,11 +37,7 @@
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
     "tailwindcss": "^4",
-<<<<<<< HEAD
     "typescript": "^5",
     "typescript-eslint": "^8.30.1"
-=======
-    "typescript": "5.8.3"
->>>>>>> 2aec54b (Backend commit)
   }
 }

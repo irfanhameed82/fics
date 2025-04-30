@@ -12,7 +12,7 @@ export default defineConfig([
       globals: globals.browser,
     },
     rules: {
-      "react/react-in-jsx-scope": "off", // ✅ turn off the rule here
+      "react/react-in-jsx-scope": "off", 
     },
     extends: ["js/recommended"],
   },
