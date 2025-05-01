@@ -1,88 +1,407 @@
+"use client"
+
 import Image from "next/image"
-import { Mail, Clock, CircleUserRound } from "lucide-react"
+import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub } from "lucide-react"
+import { motion } from "framer-motion"
+
+// Define TypeScript interface for team members
+interface TeamMember {
+  name: string
+  designation: string
+  email: string
+  image: string
+}
+
+// Executive members data
+const ExecutiveMembers: TeamMember[] = [
+  {
+    name: "Zainab Zahra",
+    designation: "President",
+    email: "zanaibz.b22nbs@student.nust.edu.pk",
+    image: "/ficsteam/Zainab Zahra(President).png",
+  },
+  {
+    name: "Haleema Saleem",
+    designation: "Vice President Outreach",
+    email: "haleema.bsaf22nbs@student.nust.edu.pk",
+    image: "/ficsteam/Haleema Saleem(VPoutreach).png",
+  },
+  {
+    name: "Zainab Baloch",
+    designation: "Vice President Finance and Registration",
+    email: "zainabh.b22nbs@student.nust.edu.pk",
+    image: "/ficsteam/Zainab Baloch(VPF&R).jpg",
+  },
+  {
+    name: "Ayesha Shahid",
+    designation: "Head of Human Resources",
+    email: "ayesha.bpa21s3h@student.nust.edu.pk",
+    image: "/ficsteam/ayesha Shahid(HoHR).jpg",
+  },
+  {
+    name: "Muhammad Mutahir",
+    designation: "Vice President Operations",
+    email: "mmutahir097@gmail.com",
+    image: "/ficsteam/Muhammad Mutahir(VPOperations).jpg",
+  },
+  {
+    name: "Muhammad Sadiq",
+    designation: "Head of Web & IT",
+    email: "msadiqmfaisal@gmail.com",
+    image: "/ficsteam/Muhammad Sadiq(HoW&IT).jpg",
+  },
+  {
+    name: "Amen Tufail",
+    designation: "Vice President Media",
+    email: "atufail.ug22smme@student.nust.edu.pk",
+    image: "/ficsteam/Amen Tufail(VP media).jpg",
+  },
+]
+
+// Interface for organization leaders
+interface OrganizationLeader {
+  name: string
+  designation: string
+  department: string
+}
+
+// Organization leaders data
+const organizationLeaders: OrganizationLeader[] = [
+  {
+    name: "Ms Sana Maqbool",
+    designation: "Acting Director",
+    department: "Innovation & Commercialization Office NUST (ICON)",
+  },
+  {
+    name: "Ms Sundas",
+    designation: "Senior Manager",
+    department: "CAC",
+  },
+  {
+    name: "Mrs Fawad kashan",
+    designation: "Senior Manager Corporate Relations",
+    department: "ICON",
+  },
+  {
+    name: "Mrs Muhammad Shahzada Ali",
+    designation: "Assistant Manager",
+    department: "ICON",
+  },
+]
 
 export default function ContactPage() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  }
+
   return (
-    <div className="min-h-screen bg-white">
-        <div className="pb-5 bg-white">
-             <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-5">
-        <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">Contact the Organisers</h1>
-      </div>
-      </div>
-      <div>
-      
-
-        {/* Team Members */}
-        <div className="flex flex-col items-center justify-center gap-8 mb-16 md:flex-row md:gap-16 lg:gap-24">
-          {/* Team Member 1 */}
-          <div className="flex flex-col items-center">
-          <CircleUserRound size={40} strokeWidth={0.75} />
-            {/* <div className="w-32 h-32 mb-4 overflow-hidden border-4 rounded-full border-cyan-500">
-              <Image
-                src="/placeholder.svg?height=128&width=128"
-                alt="Ms. Sana Maqbool"
-                width={128}
-                height={128}
-                className="object-cover w-full h-full"
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Hero Section with Tech-inspired Background */}
+      <div className="relative overflow-hidden bg-[#248ABD]">
+        {/* Tech Pattern Background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute bg-white rounded-full"
+                style={{
+                  width: `${Math.random() * 5 + 1}px`,
+                  height: `${Math.random() * 5 + 1}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.5 + 0.3,
+                }}
               />
-              <CircleUserRound strokeWidth={1.5} />
-            </div> */}
-            <h2 className="text-lg font-medium text-cyan-700">Ms. Sana Maqbool</h2>
-            <p className="text-sm text-slate-600">General Manager</p>
-            <p className="text-sm text-slate-600">CAC</p>
+            ))}
           </div>
-
-          {/* Team Member 2 */}
-          <div className="flex flex-col items-center">
-          <CircleUserRound size={40} strokeWidth={0.75} />
-            {/* <div className="w-32 h-32 mb-4 overflow-hidden border-4 rounded-full border-cyan-500">
-              <Image
-                src="/placeholder.svg?height=128&width=128"
-                alt="Ms. Sundas Imran"
-                width={128}
-                height={128}
-                className="object-cover w-full h-full"
-              />
-              <CircleUserRound strokeWidth={1.5} />
-            </div> */}
-            <h2 className="text-lg font-medium text-cyan-700">Ms. Sundas Imran</h2>
-            <p className="text-sm text-slate-600">Manager</p>
-            <p className="text-sm text-slate-600">CAC</p>
-          </div>
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute border border-white rounded-full"
+              style={{
+                width: `${Math.random() * 300 + 100}px`,
+                height: `${Math.random() * 300 + 100}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: 0.1,
+              }}
+            />
+          ))}
         </div>
 
-        {/* Contact Information */}
-        <div className="flex flex-col items-center justify-between w-full p-12 bg-white md:flex-row">
-          {/* Left Side - Contact Info */}
-          <div className="w-full sm:w-1/2 lg:w-2/5">
-            <h3 className="mb-4 text-xl font-medium text-cyan-600">For any issues or Queries</h3>
-            <div className="flex items-center gap-2 text-slate-700">
-              <Mail className="w-5 h-5 text-cyan-600" />
-              <a href="mailto:fics.nust.25@gmail.com" className="transition-colors hover:text-cyan-600">
-                fics.nust.25@gmail.com
-              </a>
-            </div>
-
-            <div className="flex items-center gap-2 mt-6 text-slate-700">
-              <Clock className="w-5 h-5 text-cyan-600" />
-              <p>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
-            </div>
-          </div>
-
-          {/* Right Side - Illustration */}
-          <div className="justify-center hidden sm:flex md:w-1/2 lg:w-3/5 md:justify-end">
-           
-             
-                <Image
-                  src="/contactus.png"
-                  alt="Contact Illustration"
-                  width={240}
-                  height={240}
-                  className="object-contain"
-                />
-             
-          </div>
+        <div className="relative z-10 px-4 py-8 mx-auto text-center max-w-7xl">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl font-semibold tracking-tight text-white sm:text-4xl"
+          >
+            Our Team
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-2xl mx-auto mt-4 text-xl text-blue-100"
+          >
+            Meet the innovative minds behind our technology solutions
+          </motion.p>
         </div>
+      </div>
+
+      <div className="container px-4 py-16 mx-auto">
+        {/* Leadership Section */}
+        <section className="mb-24">
+          <div className="flex flex-col items-center mb-16">
+            <div className="inline-block px-3 py-1 mb-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+              Leadership
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900">Organization Leaders</h2>
+            <div className="w-20 h-1 mt-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+          </div>
+
+          {/* Main Leader - Featured */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="p-8 mb-16 overflow-hidden bg-white border-t-4 border-blue-500 rounded-lg shadow-xl"
+          >
+            <div className="flex flex-col items-center text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 mb-6 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">{organizationLeaders[0].name}</h3>
+              <div className="px-4 py-1 mt-2 mb-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+                {organizationLeaders[0].designation}
+              </div>
+              <p className="mt-2 text-gray-600">{organizationLeaders[0].department}</p>
+            </div>
+          </motion.div>
+
+          {/* Other Leaders */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-8 md:grid-cols-3"
+          >
+            {organizationLeaders.slice(1).map((leader, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative p-6 overflow-hidden transition-all bg-white border-t-4 border-blue-400 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <h3 className="text-xl font-bold text-gray-900">{leader.name}</h3>
+                  <div className="px-3 py-1 mt-2 mb-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full">
+                    {leader.designation}
+                  </div>
+                  <p className="mt-2 text-sm text-gray-600">{leader.department}</p>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-16 h-16 -mt-6 -mr-6 bg-blue-100 rounded-full opacity-20"></div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
+
+        {/* Contact Information Section */}
+        <section className="p-8 mb-24 overflow-hidden bg-white rounded-lg shadow-lg">
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+            {/* Left Side - Contact Info */}
+            <div className="w-full md:w-1/2">
+              <div className="inline-block px-3 py-1 mb-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+                Get in Touch
+              </div>
+              <h3 className="mb-6 text-2xl font-bold text-gray-900">Contact Information</h3>
+              <div className="flex items-center gap-3 p-4 mb-4 transition-colors rounded-lg bg-gray-50 hover:bg-blue-50">
+                <div className="flex items-center justify-center w-10 h-10 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <a href="mailto:fics.nust.25@gmail.com" className="text-gray-700 transition-colors hover:text-blue-600">
+                  fics.nust.25@gmail.com
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 p-4 transition-colors rounded-lg bg-gray-50 hover:bg-blue-50">
+                <div className="flex items-center justify-center w-10 h-10 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-gray-700">Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+
+            {/* Right Side - Illustration */}
+            <div className="flex justify-center md:w-1/2 md:justify-end">
+              <div className="relative w-64 h-64 overflow-hidden ">
+                <Image src="/contactus.png" alt="Contact Illustration" fill className="object-cover rounded-full" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Executive Council Section */}
+        <section className="mb-24">
+          <div className="flex flex-col items-center mb-16">
+            <div className="inline-block px-3 py-1 mb-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+              Our Team
+            </div>
+            <h2 className="text-3xl font-bold text-center text-gray-900">Executive Council</h2>
+            <p className="max-w-2xl mt-4 text-center text-gray-600">
+              Meet our dedicated team working behind the scenes to drive innovation and excellence
+            </p>
+            <div className="w-20 h-1 mt-4 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+          </div>
+
+          {/* Featured Member (President) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="mb-16 overflow-hidden bg-white shadow-2xl rounded-xl"
+          >
+            <div className="flex flex-col md:flex-row">
+              <div className="relative w-full md:w-2/5">
+                <div className="relative w-full h-96 md:h-full">
+                  <Image
+                    src={ExecutiveMembers[0].image || "/placeholder.svg"}
+                    alt={ExecutiveMembers[0].name}
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r"></div>
+                </div>
+                {/* Mobile info overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white md:hidden">
+                  <div className="inline-block px-3 py-1 mb-2 text-xs font-medium text-blue-100 rounded-full bg-blue-500/80">
+                    {ExecutiveMembers[0].designation}
+                  </div>
+                  <h3 className="text-2xl font-bold">{ExecutiveMembers[0].name}</h3>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center p-8 md:w-3/5">
+                {/* Desktop info */}
+                <div className="hidden md:block">
+                  <div className="inline-block px-3 py-1 mb-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+                    {ExecutiveMembers[0].designation}
+                  </div>
+                  <h3 className="mb-4 text-3xl font-bold text-gray-900">{ExecutiveMembers[0].name}</h3>
+                </div>
+                <p className="mb-6 text-gray-600">
+                  Leading our team with vision and expertise, driving innovation and excellence in all our initiatives.
+                </p>
+                <div className="flex items-center gap-3 p-4 transition-colors rounded-lg bg-gray-50 hover:bg-blue-50">
+                  <div className="flex items-center justify-center w-10 h-10 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <a
+                    href={`mailto:${ExecutiveMembers[0].email}`}
+                    className="text-gray-700 transition-colors hover:text-blue-600"
+                  >
+                    {ExecutiveMembers[0].email}
+                  </a>
+                </div>
+               
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Other Executive Members */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {ExecutiveMembers.slice(1).map((member, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-xl hover:shadow-xl hover:-translate-y-2"
+              >
+                <div className="relative h-72">
+                  <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 transition-opacity bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-80 group-hover:opacity-90"></div>
+
+                  {/* Info overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                   
+                    <h3 className="text-xl font-bold">{member.name}</h3>
+
+                    {/* Contact info with slide-up animation */}
+                    <div className="mb-5 transition-all duration-300 transform translate-y-8 sm:mb-0 sm:mt-3 sm:opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="inline-block p-1 px-3 mb-2 text-xs font-medium text-blue-100 rounded-full sm:py-1 bg-blue-500/80">
+                      {member.designation}
+                    </div>
+                      <div className="flex items-center gap-2 text-blue-100">
+                        <Mail className="w-4 h-4" />
+                        <a href={`mailto:${member.email}`} className="text-sm truncate hover:underline">
+                          {member.email}
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute w-20 h-20 border-t-2 border-r-2 top-4 right-4 border-blue-400/30 rounded-tr-xl"></div>
+                <div className="absolute w-20 h-20 border-b-2 border-l-2 bottom-4 left-4 border-blue-400/30 rounded-bl-xl"></div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
       </div>
     </div>
   )

@@ -75,7 +75,7 @@ export default function Navbar() {
     ];
 
   return (
-    <nav className="z-10 bg-white shadow-md" ref={navRef}>
+    <nav className="bg-white shadow-md z-100" ref={navRef}>
       <div className="container flex items-center justify-between px-4 py-4 mx-auto">
         <Link
           href="/"
@@ -113,7 +113,7 @@ export default function Navbar() {
                 />
               </button>
               <div
-                className={`absolute left-0 z-100 w-48 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
+                className={`absolute left-0 z-10 w-48 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
                   activeDropdown === `${item.key}-desktop`
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-1 pointer-events-none"
@@ -206,6 +206,44 @@ export default function Navbar() {
           </Link>
 
           {navItems.map((item) => (
+            <div
+              key={item.key}
+              className="py-1"
+              ref={(el) => {
+                dropdownRefs.current[`${item.key}-mobile`] = el;
+              }}
+            >
+              <button
+                onClick={() => toggleDropdown(`${item.key}-mobile`)}
+                className="flex items-center justify-between w-full px-2 py-2 text-gray-600 transition-colors duration-200 rounded cursor-pointer hover:text-gray-800 hover:bg-gray-100"
+              >
+                <span>{item.label}</span>
+                {activeDropdown === `${item.key}-mobile` ? (
+                  <ChevronDown className="w-4 h-4" />
+                ) : (
+                  <ChevronRight className="w-4 h-4" />
+                )}
+              </button>
+              {activeDropdown === `${item.key}-mobile` && (
+                <div className="pl-4 mt-1 border-l-2 border-gray-200">
+                  {item.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-2 py-2 text-gray-600 transition-colors duration-200 rounded cursor-pointer hover:text-gray-800 hover:bg-gray-100"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setActiveDropdown(null);
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+          {contactlist.map((item) => (
             <div
               key={item.key}
               className="py-1"
