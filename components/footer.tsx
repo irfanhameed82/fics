@@ -5,7 +5,7 @@ import { Facebook, Instagram, Home, Info, Phone } from "lucide-react"
 export default function Footer() {
   return (
     <footer className="w-full">
-      <div className="relative bg-[#2980b9] opacity-90 text-white py-4 px-4 md:px-8">
+      <div className="relative bg-[#2980b9]  text-white py-4 px-4 md:px-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Logo and Social Media */}
@@ -82,7 +82,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Bar */}
-      <div className="bg-[#1e6091] text-white py-4 px-4 md:px-8">
+      <div className="bg-[#2980b9] text-white py-4 px-4 md:px-8">
         <div className="container mx-auto text-center">
           <p>Copyright © 2015-2024 NUST. All rights reserved.</p>
         </div>

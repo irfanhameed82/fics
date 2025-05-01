@@ -12,14 +12,14 @@ export default function Home() {
     <div className="overflow-hidden overflow-y-hidden" >
       
       <HeroSection/>
-      <div className="container mx-auto">
+      <div >
       <FicsAtGlance/>
       <SuccessStoriesSection/>
       <Event/>
       <Timeline/>
       <Partners/>
       <StatisticsSection/>
-    </div>
+      </div>
     </div>
   );
 }
