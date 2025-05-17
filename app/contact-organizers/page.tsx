@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub } from "lucide-react"
+import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 
 // Define TypeScript interface for team members
@@ -73,19 +73,19 @@ const organizationLeaders: OrganizationLeader[] = [
     department: "Innovation & Commercialization Office NUST (ICON)",
   },
   {
-    name: "Ms Sundas",
+    name: "Ms Sundas Imran",
     designation: "Senior Manager",
-    department: "CAC",
+    department: "CAC - ICON",
   },
   {
     name: "Mrs Fawad kashan",
     designation: "Senior Manager Corporate Relations",
-    department: "ICON",
+    department: "CAC - ICON",
   },
   {
     name: "Mrs Muhammad Shahzada Ali",
     designation: "Assistant Manager",
-    department: "ICON",
+    department: "CAC - ICON",
   },
 ]
 
@@ -173,14 +173,7 @@ export default function ContactPage() {
       <div className="container px-4 py-16 mx-auto">
         {/* Leadership Section */}
         <section className="mb-24">
-          <div className="flex flex-col items-center mb-16">
-            <div className="inline-block px-3 py-1 mb-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-              Leadership
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900">Organization Leaders</h2>
-            <div className="w-20 h-1 mt-2 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
-          </div>
-
+      
           {/* Main Leader - Featured */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -253,9 +246,17 @@ export default function ContactPage() {
                 <div className="flex items-center justify-center w-10 h-10 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
                   <Mail className="w-5 h-5" />
                 </div>
-                <a href="mailto:fics.nust.25@gmail.com" className="text-gray-700 transition-colors hover:text-blue-600">
-                  fics.nust.25@gmail.com
+                <a href="mailto:fics_nust@icon.nust.edu.pk" className="text-gray-700 transition-colors hover:text-blue-600">
+                  fics_nust@icon.nust.edu.pk
                 </a>
+              </div>
+              <div className="flex items-center gap-3 p-4 mb-4 transition-colors rounded-lg bg-gray-50 hover:bg-blue-50">
+                <div className="flex items-center justify-center w-10 h-10 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
+                <MapPin />
+                </div>
+                <p  className="text-gray-700 transition-colors hover:text-blue-600">
+                  RIC, Building NUST University H-12 Islamabad
+                </p>
               </div>
 
               <div className="flex items-center gap-3 p-4 transition-colors rounded-lg bg-gray-50 hover:bg-blue-50">

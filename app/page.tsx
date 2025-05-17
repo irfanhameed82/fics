@@ -1,24 +1,26 @@
 import Event from "@/components/event/event";
 import FicsAtGlance from "@/components/FicsAtGlance";
 import Timeline from "@/components/GenesisofFics";
-import HeroSection from "@/components/herosection";
+import HeroSection from "@/components/herosection/Herosection";
 import Partners from "@/components/partners/partners";
 import StatisticsSection from "@/components/statistics";
+import StatisticsFics from "@/components/statsfics";
 import SuccessStoriesSection from "@/components/successstories";
 
 
 export default function Home() {
   return (
     <div className="overflow-hidden overflow-y-hidden" >
-      
       <HeroSection/>
       <div >
+        <StatisticsFics/>
       <FicsAtGlance/>
-      <SuccessStoriesSection/>
+      
       <Event/>
-      <Timeline/>
+      <SuccessStoriesSection/>
+
       <Partners/>
-      <StatisticsSection/>
+      {/* <StatisticsSection/> */}
       </div>
     </div>
   );

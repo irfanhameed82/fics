@@ -20,7 +20,7 @@ const stagesInfo: StageInfo[] = [
     StageType: "Online idea submission",
     bgcolor: "#E3F6FF",
     description:
-      "In Stage 1, student teams submit project synopsis of their unique ideas with positive social impact. These ideas are endorsed by FICS Management after the approval of the respective supervisor. Subsequently, the ideas shortlisted in Stage 1 make it to the next stage.",
+      "The process begins with student teams submitting a synopsis of their innovative ideas that address pressing social challenges. Each idea is reviewed and endorsed by FICS Management following the approval of the respective faculty supervisor. Approved ideas are shortlisted for the next phase based on their originality, relevance, and potential impact.",
   },
   {
     title: "Stage 2",
@@ -28,7 +28,7 @@ const stagesInfo: StageInfo[] = [
     StageType: "Pitching Session",
     bgcolor: "#F7F7F7",
     description:
-      "In Stage 2 the student teams present their ideas to a wider audience in the form of PowerPoint presentation. The judges at this stage include Industry partners; they assess the impact and practicability of the project ideas, as well as their ability to be commercialized.",
+      "Shortlisted teams are then invited to present their ideas in structured pitching sessions held at both local and international levels. These sessions are organized in collaboration with partner universities, providing student teams the opportunity to showcase their projects to a wider audience. Using PowerPoint presentations, teams highlight the social impact, innovation, and feasibility of their proposed solutions. A panel of judges comprising industry experts evaluates the ideas based on their practicality, scalability, and potential for commercialization. These pitching evaluations not only foster healthy competition but also help integrate the local student community into the global innovation ecosystem.",
   },
   {
     title: "Stage 3",
@@ -36,14 +36,14 @@ const stagesInfo: StageInfo[] = [
     StageType: "Grand Finale",
     bgcolor: "#E3F6FF",
     description:
-      "In Stage 3, the student teams develop a prototype of their project ideas. The prototypes are developed under the guidance of mentors from the industry and academia. The prototypes are then presented to a panel of judges who assess their feasibility and impact.",
+      "In the final phase, selected teams develop working prototypes of their ideas under the mentorship of professionals from both academia and industry. These prototypes are showcased before a distinguished panel of judges, who assess each project’s technical soundness, market readiness, and potential to create real-world impact. The Grand Finale takes place at NUST Campus in Islamabad, Pakistan, where the winning teams are awarded cash prizes along with 6-months mentoring & incubation support.",
   },
 ];
 
 export default function Stage() {
   return (
     <div>
-      <div className="relative h-32 sm:h-40 w-full bg-gradient-to-r from-[#248ABD] via-[#5bcaec] to-[#44aadd] animate-gradient-x flex items-center justify-center mb-5 overflow-hidden">
+      <div className="relative h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] animate-gradient-x flex items-center justify-center mb-5 overflow-hidden">
         <h1 className="pb-4 text-4xl font-semibold tracking-widest text-white text-border-1 text-border-black">Stages</h1>
         <Image alt="stages" src={stagesicons} width={120}  className="absolute right-4 sm:right-12 bottom-1/11 sm:bottom-1/6"/>
       </div>

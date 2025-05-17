@@ -11,34 +11,46 @@ export default function Timeline() {
   const timelineData = {
     events: [
       {
-        year: "2013",
-        description: "Established Pakistan's first innovative center, NUST",
+        year: "2013 - Inception",
+        description:
+          "Launched at NUST as a platform to harness student potential in solving real-world challenges through tech-driven, innovative solutions.",
         position: "top",
       },
       {
-        year: "2012",
-        description: "FICS project approved by ICONS Board of Governors.",
+        year: "2016 - National Expansion",
+        description:
+          "Opened to universities across Pakistan, transforming into a national-level competition and fostering cross-institutional collaboration.",
         position: "bottom",
       },
       {
-        year: "2016",
-        description: "Deloitte's feasibility study confirmed FICS's potential.",
+        year: "2022 - International Expansion",
+        description:
+          "Became Pakistan's first international student innovation program, inviting global participation and collaborations.",
         position: "top",
       },
       {
-        year: "2019",
-        description: "Approved as Pakistan's first science park under Public Private Partnership (P3A).",
+        year: "2023 -  Launch of FICS Türkiye Chapter",
+        description:
+          "Established its first international chapter in Türkiye, marking the beginning of its global chapter initiative.",
         position: "bottom",
       },
       {
-        year: "2020",
-        description: "Declared Pakistan's first Tech hi-tech and competitive tech solution.",
+        year: "2024 – Launch of FICS Azerbaijan Chapter",
+        description:
+          "Continuing its global outreach, the FICS Azerbaijan Chapter was launched, promoting cross-border innovation among youth.",
         position: "top",
       },
       {
-        year: "2024",
-        description: "Inauguration of Center for Emerging Technologies (CEMTECH) with master plan for 5-6 high-rise towers to be completed.",
+        year: "2025 – Launch of FICS Sri Lanka, Russia & Thailand Chapters",
+        description:
+          "Expanded further into Asia and Eastern Europe, with new chapters launched in Sri Lanka, Russia, and Thailand.",
         position: "bottom",
+      },
+      {
+        year: "2025 – Launch of FICS Junior",
+        description:
+          "FICS Junior introduced as Pakistan's first and only international entrepreneurial competition for school students (Grade 8 to A-Levels), nurturing innovation at an early age.",
+        position: "top",
       },
     ],
   }
@@ -63,17 +75,8 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex flex-col sm:flex-row">
-          <h2
-            className="text-3xl font-bold tracking-wider md:text-5xl outlined-text"
-
-          >
-            GENESIS OF
-          </h2>
-          <h2
-            className="sm:ml-2 text-4xl font-bold tracking-widest text-[#248ABD] md:text-5xl"
-          >
-            FICS
-          </h2>
+            <h2 className="text-3xl font-bold tracking-wider md:text-5xl outlined-text">GENESIS OF</h2>
+            <h2 className="sm:ml-2 text-4xl font-bold tracking-widest text-[#248ABD] md:text-5xl">FICS</h2>
           </div>
         </motion.div>
       </div>
@@ -82,21 +85,39 @@ export default function Timeline() {
         <div className="container hidden px-4 mx-auto md:block">
           <div className="relative">
             {/* Top Descriptions */}
-            <div className="flex justify-between mb-4">
+            <div className="relative flex justify-between mb-4">
               {timelineData.events.map((event, index) => (
                 <div key={`top-${index}`} className="w-full px-2 text-center">
                   {event.position === "top" && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      className={`max-w-[200px] mx-auto transition-colors duration-300 ${
-                        hoveredYear === event.year ? 'text-[#248ABD]' : 'text-gray-700'
-                      }`}
-                    >
-                      {event.description}
-                    </motion.p>
+                    <>
+                      <motion.p
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                        className={`max-w-[200px] mx-auto transition-colors duration-300 ${
+                          hoveredYear === event.year ? "text-[#248ABD]" : "text-gray-700"
+                        }`}
+                      >
+                        {event.description}
+                      </motion.p>
+                      <motion.div
+                        className="absolute bottom-0 left-1/2 w-0.5 bg-gray-400 transform -translate-x-1/2"
+                        style={{ height: "40px", top: "100%" }}
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      >
+                        <motion.div
+                          className="absolute bottom-0 w-2 h-2 transform -translate-x-1/2 bg-gray-400 rounded-full left-1/2"
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                        ></motion.div>
+                      </motion.div>
+                    </>
                   )}
                 </div>
               ))}
@@ -123,16 +144,20 @@ export default function Timeline() {
                     onHoverEnd={() => setHoveredYear(null)}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className={`flex items-center justify-center w-16 h-16 text-lg font-bold rounded-full shadow-md transition-colors duration-300 ${
-                      hoveredYear === event.year ? 'bg-blue-500 text-white' : 'bg-black text-white'
+                      hoveredYear === event.year ? "bg-[#248ABD] text-white" : "bg-black text-white"
                     }`}
                   >
-                    {event.year}
+                    {event.year.split(" ")[0]}
                   </motion.div>
 
                   {index < timelineData.events.length - 1 && (
                     <motion.div
-                      className="absolute h-px border-t border-dotted border-gray-400 top-1/2 left-[calc(50%+32px)] transform -translate-y-1/2"
-                      style={{ width: "calc(100% - 64px)" }}
+                      className="absolute h-px border-t border-gray-400 border-dotted top-1/2"
+                      style={{
+                        width: "calc(100% - 64px)",
+                        left: "calc(50% + 32px)",
+                        transform: "translateY(-50%)",
+                      }}
                       initial={{ scaleX: 0, opacity: 0 }}
                       whileInView={{ scaleX: 1, opacity: 1 }}
                       viewport={{ once: true }}
@@ -144,21 +169,39 @@ export default function Timeline() {
             </div>
 
             {/* Bottom Descriptions */}
-            <div className="flex justify-between mt-8">
+            <div className="relative flex justify-between mt-8">
               {timelineData.events.map((event, index) => (
                 <div key={`bottom-${index}`} className="w-full px-2 text-center">
                   {event.position === "bottom" && (
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      className={`max-w-[200px] mx-auto transition-colors duration-300 ${
-                        hoveredYear === event.year ? 'text-blue-500' : 'text-gray-700'
-                      }`}
-                    >
-                      {event.description}
-                    </motion.p>
+                    <>
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                        className={`max-w-[200px] mx-auto transition-colors duration-300 ${
+                          hoveredYear === event.year ? "text-[#248ABD]" : "text-gray-700"
+                        }`}
+                      >
+                        {event.description}
+                      </motion.p>
+                      <motion.div
+                        className="absolute top-0 left-1/2 w-0.5 bg-gray-400 transform -translate-x-1/2"
+                        style={{ height: "40px", bottom: "100%" }}
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      >
+                        <motion.div
+                          className="absolute top-0 w-2 h-2 transform -translate-x-1/2 bg-gray-400 rounded-full left-1/2"
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                        ></motion.div>
+                      </motion.div>
+                    </>
                   )}
                 </div>
               ))}
@@ -198,10 +241,10 @@ export default function Timeline() {
                   onHoverEnd={() => setHoveredYear(null)}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
                   className={`absolute z-10 flex items-center justify-center w-16 h-16 text-lg font-bold transform -translate-x-1/2 rounded-full shadow-md left-1/2 transition-colors duration-300 ${
-                    hoveredYear === event.year ? 'bg-blue-500 text-white' : 'bg-black text-white'
+                    hoveredYear === event.year ? "bg-[#248ABD] text-white" : "bg-black text-white"
                   }`}
                 >
-                  {event.year}
+                  {event.year.split(" ")[0]}
                 </motion.div>
 
                 <div className={`w-full flex ${index % 2 === 0 ? "justify-end" : "justify-start"}`}>
@@ -209,16 +252,18 @@ export default function Timeline() {
                     className={cn(
                       "w-[calc(50%-32px)] p-4 bg-white rounded-lg shadow-sm transition-colors duration-300",
                       index % 2 === 0 ? "mr-[calc(50%+32px)]" : "ml-[calc(50%+32px)]",
-                      hoveredYear === event.year ? 'border-blue-500 border-2' : ''
+                      hoveredYear === event.year ? "border-[#248ABD] border-2" : "",
                     )}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                   >
-                    <p className={`text-sm transition-colors duration-300 ${
-                      hoveredYear === event.year ? 'text-blue-500' : 'text-gray-700'
-                    }`}>
+                    <p
+                      className={`text-sm transition-colors duration-300 ${
+                        hoveredYear === event.year ? "text-[#248ABD]" : "text-gray-700"
+                      }`}
+                    >
                       {event.description}
                     </p>
                   </motion.div>

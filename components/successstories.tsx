@@ -52,10 +52,10 @@ export default function SuccessStoriesSection() {
       <div className="grid gap-8 p-8 md:grid-cols-2 md:p-12">
         {/* Left Content */}
         <div className="flex flex-col justify-center">
-          <h1 className="mb-2 text-3xl font-semibold text-gray-900 md:text-4xl">Success Stories</h1>
-          <h2 className="mb-6 text-xl text-gray-700">Finding Innovative & Creative Solutions</h2>
+          <h1 className="mb-2 text-3xl font-semibold text-black md:text-4xl">Success Stories</h1>
+          <h2 className="mb-6 text-xl text-gray-900">Finding Innovative & Creative Solutions</h2>
 
-          <div className="space-y-4 text-gray-600">
+          <div className="space-y-4 text-gray-800">
             <p>
               FICS promotes entrepreneurship and innovation by allowing participants to address the most pressing social
               and environmental issues at the core of society. More than an annual competition, FICS has proven to be a
@@ -80,15 +80,16 @@ export default function SuccessStoriesSection() {
               <video
                 ref={videoRef}
                 className="object-cover w-full h-full"
-                
-                controls={false}
+                autoPlay={false}
+                controls={true}
+                controlsList="nodownload"
               >
-                <source src="https://res.cloudinary.com/dxh8rsy7p/video/upload/f_auto,q_auto/v1744663859/ltjf9v2gpz7xkgsyypdj.mp4" type="video/mp4" />
+                <source  src="https://res.cloudinary.com/dxh8rsy7p/video/upload/v1746813977/FICS_NUST_Islamabad_success_full_stories_zni8tp.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
 
               {/* Custom play/pause button */}
-              <button
+              {/* <button
                 onClick={togglePlayPause}
                 className="absolute inset-0 flex items-center justify-center transition-colors bg-black/30 hover:bg-black/40"
               >
@@ -99,7 +100,7 @@ export default function SuccessStoriesSection() {
                     <Play className="h-8 w-8 text-[#2980b9] ml-1" />
                   )}
                 </div>
-              </button>
+              </button> */}
             </>
           )}
         </div>

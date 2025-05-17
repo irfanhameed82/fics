@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const VIDEO_URL = "https://res.cloudinary.com/dxh8rsy7p/video/upload/f_auto,q_auto/v1744663859/ltjf9v2gpz7xkgsyypdj.mp4"
 
@@ -46,11 +47,12 @@ export default function HeroSection() {
             </div>
             </div>
             <Button
-              className="bg-[#29b6f6] hover:bg-[#0288d1] text-white border-none transition-colors rounded-non outline-none duration-300"
-              onClick={() => alert("Registered!")}
+              className="bg-[#29b6f6] hover:bg-[#0288d1] cursor-pointer text-white border-none transition-colors rounded-non outline-none duration-300"
               aria-label="Register for FICS 2025"
             >
+              <Link href="/register/student">
               Register Now
+              </Link>
             </Button>
           </div>
         </div>

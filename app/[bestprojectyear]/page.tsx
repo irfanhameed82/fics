@@ -28,7 +28,7 @@ export default async function BestProjectPage({
 
   return (
     <div className="min-h-screen pb-16 bg-slate-50">
-      <div className="relative h-52 w-full bg-[#248ABD] flex items-center justify-center mb-10">
+      <div className="relative h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex items-center justify-center mb-10">
         <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
           BEST PROJECTS {year}
         </h1>

@@ -2,7 +2,7 @@
 "use client"
 import React from 'react';
 import { motion } from "framer-motion"
-import { Code, Lightbulb, Users, Briefcase, Globe } from "lucide-react"
+import { Code, Lightbulb, Users, Briefcase, Globe, LightbulbIcon } from "lucide-react"
 
 export function Objectives() {
   const objectives = [
@@ -11,35 +11,42 @@ export function Objectives() {
       icon: <Code className="w-5 h-5" />,
       title: "Technical Innovation",
       description:
-        "To encourage students to become valuable members of society and contribute towards societal / community development by deploying technical knowledge and scientific tools.",
+        "To inspire students to give back to the society, by acknowledging and researching its problems and nurturing solutions through innovation, technology and creative skills",
     },
     {
       id: 2,
       icon: <Lightbulb className="w-5 h-5" />,
       title: "Creative Solutions",
       description:
-        "To allow students to think creatively and develop the latest applications and innovative technology based-solutions, hence encouraging them to work on practical utilization of knowledge.",
+        "To give students a platform where they can fill the gap between practical applications and theoretical studies. This gives them the push to develop innovative technology based solutions using the knowledge they can apply.",
     },
     {
       id: 3,
       icon: <Users className="w-5 h-5" />,
       title: "Commercialization Platform",
       description:
-        "To serve as a platform for identifying ideas and technologies that can be commercialized and converted into viable products and services.",
+        "To serve as a platform for ideas to become a reality by providing the necessary commercialisation and marketing opportunities so that the technologies they develop take the form of viable products and services to the consumers.",
     },
     {
       id: 4,
       icon: <Briefcase className="w-5 h-5" />,
       title: "Industry Collaboration",
       description:
-        "To bring the Industry on board to provide regular mentorship to the participating students and thereby provide an opportunity not only for the students to learn from the expertise and experience of Industry partners but also for the Industry to discover the potential of our students and engage with the students and the Institute on a more long-term basis.",
+        "To bring not only the industry within the reach of students so that they can receive proper mentorship and market relevance, but also bring the academic capabilities within the grasp of major market tycoons so that they can see the potential of students present in the society.",
     },
     {
       id: 5,
       icon: <Globe className="w-5 h-5" />,
       title: "Entrepreneurial Culture",
       description:
-        "To foster an entrepreneurial culture within NUST and at a national & international level; a culture that facilitates and supports innovation and its translation into benefits for our society and our economy.",
+        "To foster an entrepreneurial culture nationally and internationally; a culture that supports innovation and its benefits for our society and economy, by bringing venture capitalists to students and conversely.",
+    },
+    {
+      id: 6,
+      icon: <LightbulbIcon className="w-5 h-5" />,
+      title: "Global Innovation Platform",
+      description:
+        "To connect creative minds across the world to come together and exchange information to enhance our understanding of the world and develop a collective response to serious global challenges.",
     },
   ]
 
@@ -74,9 +81,8 @@ export function Objectives() {
               {/* Title with decorative line */}
               
               <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
-                Project
-                <br />
-                Objective
+                
+                Objectives
               </h2>
               <div className="h-1 mb-4 w-36 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
             </motion.div>
@@ -92,9 +98,12 @@ export function Objectives() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mb-8 text-md sm:text-xl text-slate-600"
             >
-              FICS is part of an on-going and continuous exercise at NUST aimed at facilitating entrepreneurship, which
-              is in line with the NUST mission. FICS concentrates more on Social Entrepreneurship. Some of the
-              objectives of FICS are given below:-
+            Anchored in NUST’s mission to foster knowledge-based economic development, FICS places a strong emphasis on technology-driven social entrepreneurship. The program empowers students to develop impactful solutions that address real-world societal challenges.
+            <br/>
+            Key objectives of FICS include:
+
+
+
             </motion.div>
 
             {/* Timeline container */}

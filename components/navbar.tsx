@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { AlignJustify, ChevronDown, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
@@ -33,7 +33,7 @@ export default function Navbar() {
       links: [
         { href: "/about", label: "About FICS" },
         { href: "/about/testimonials", label: "Testimonials" },
-        { href: "/about/vision", label: "Vision 2025" },
+        
       ],
     },
     {
@@ -58,7 +58,7 @@ export default function Navbar() {
       key: "fics-2025",
       links: [
         { href: "/ideas-submit", label: "Ideas Submit" },
-        { href: "/projects-shortlisted", label: "Projects Shortlisted" },
+        // { href: "/projects-shortlisted", label: "Projects Shortlisted" },
       ],
     },
     ];
@@ -75,8 +75,8 @@ export default function Navbar() {
     ];
 
   return (
-    <nav className="bg-white shadow-md z-100" ref={navRef}>
-      <div className="container flex items-center justify-between px-4 py-4 mx-auto">
+    <nav className="bg-white z-100" ref={navRef}>
+      <div className="flex items-center justify-between px-8 py-1">
         <Link
           href="/"
           className="flex items-center transition-opacity duration-200 cursor-pointer hover:opacity-90"
@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="items-center hidden space-x-6 md:flex">
           <Link
             href="/"
-            className="text-gray-600 transition-colors duration-200 cursor-pointer hover:text-gray-800"
+            className="text-lg text-gray-900 transition-colors duration-200 cursor-pointer hover:text-gray-800"
           >
             Home
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
             >
               <button
                 onClick={() => toggleDropdown(`${item.key}-desktop`)}
-                className="flex items-center py-4 text-gray-600 transition-colors duration-200 cursor-pointer hover:text-gray-800"
+                className="flex items-center py-4 text-lg duration-200 cursor-pointer text-gray-900transition-colors hover:text-gray-800"
               >
                 {item.label}
                 <ChevronDown
@@ -141,7 +141,7 @@ export default function Navbar() {
             >
               <button
                 onClick={() => toggleDropdown(`${item.key}-desktop`)}
-                className="flex items-center py-4 text-gray-600 transition-colors duration-200 cursor-pointer hover:text-gray-800"
+                className="flex items-center py-4 text-lg text-gray-900 transition-colors duration-200 cursor-pointer hover:text-gray-800"
               >
                 {item.label}
                 <ChevronDown
@@ -178,19 +178,11 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          {isMenuOpen ?
+          <X/>:
+          <AlignJustify />
+          }
+         
         </button>
       </div>
 
