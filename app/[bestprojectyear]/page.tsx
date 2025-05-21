@@ -4,9 +4,9 @@ import { ProjectCard } from "@/components/project-card";
 
 interface BestProjectPageProps {
   // Next.js passes params as a Promise in v15+
-  params: Promise<{ bestprojectyear: string }>;
+  params: Promise<{ bestprojectyear: any }>;
   // Likewise for searchParams (even if you don’t use it)
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Promise<Record<string, string | string[] | any | undefined>>;
 }
 
 export default async function BestProjectPage({

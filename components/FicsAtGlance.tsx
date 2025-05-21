@@ -31,7 +31,7 @@ export default function FicsAtGlance() {
     },
     {
       icon: social,
-      title: "Technology-Driven Social Entrepreneurshi",
+      title: "Technology-Driven Social Entrepreneurship",
       description: "FICS is a leading international platform for tech-based social entrepreneurship",
     },
     {
@@ -56,7 +56,7 @@ export default function FicsAtGlance() {
           className="absolute w-20 h-20 bg-blue-500 rounded-full md:w-40 md:h-40"
           animate={{
             x: ["0%", "25%", "0%", "-5%", "0%"],
-            y: ["0%", "5%", "0%", "-5%", "0%"],
+            y: ["0%", "25%", "0%", "-45%", "0%"],
           }}
           transition={{
             duration: 15,
@@ -74,7 +74,7 @@ export default function FicsAtGlance() {
           className="absolute bg-purple-500 rounded-full w-40 h-40 md:w-60 md:h-60"
           animate={{
             x: ["0%", "10%", "0%", "-10%", "0%"],
-            y: ["0%", "5%", "0%", "-5%", "0%"],
+            y: ["0%", "35%", "0%", "-15%", "0%"],
           }}
           transition={{
             duration: 20,
@@ -86,7 +86,22 @@ export default function FicsAtGlance() {
             right: "10%",
           }}
         ></motion.div>
-        
+        <motion.div 
+          className="absolute bg-orange-500 rounded-full w-25 h-25 md:w-30 md:h-30"
+          animate={{
+            x: ["0%", "10%", "0%", "-10%", "0%"],
+            y: ["0%", "35%", "0%", "-15%", "0%"],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            bottom: "30%",
+            right: "60%",
+          }}
+        ></motion.div>
         {/* Green circle - positioned relative to viewport */}
         <motion.div 
           className="absolute w-20 h-20 bg-green-500 rounded-full md:w-40 md:h-40"
@@ -149,7 +164,7 @@ export default function FicsAtGlance() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-6 py-5 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, index) => (
-            <div key={index} className="overflow-hidden border border-gray-100 shadow-lg rounded-xl ">
+            <div key={index} className="overflow-hidden border border-gray-100 shadow-md rounded-xl ">
               <div className="flex flex-col items-center p-6 text-center">
                 {/* Icon Circle */}
                 <div className="flex items-center justify-center mb-4 text-white bg-gradient-to-b from-[#3BB0A1] to-[#00547E] rounded-full w-25 h-25 ">

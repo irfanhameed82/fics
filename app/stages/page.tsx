@@ -45,7 +45,7 @@ export default function Stage() {
     <div>
       <div className="relative h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] animate-gradient-x flex items-center justify-center mb-5 overflow-hidden">
         <h1 className="pb-4 text-4xl font-semibold tracking-widest text-white text-border-1 text-border-black">Stages</h1>
-        <Image alt="stages" src={stagesicons} width={120}  className="absolute right-4 sm:right-12 bottom-1/11 sm:bottom-1/6"/>
+        <Image alt="stages" src={stagesicons} width={90}  className="absolute right-4 sm:right-12 -bottom-1 sm:bottom-1"/>
       </div>
       <div className="grid grid-cols-1 gap-4 px-5 mb-10 md:grid-cols-2 lg:grid-cols-3">
         {stagesInfo.map((stage, index) => (
@@ -72,7 +72,7 @@ export default function Stage() {
                 alt="Stage 1"
                 width={500}
                 height={500}
-                className="object-contain w-full rounded-lg shadow-lg sm:w-full h-96"
+                className="object-contain w-full rounded-lg shadow-lg sm:w-full h-86"
                 priority
             />
             </div>

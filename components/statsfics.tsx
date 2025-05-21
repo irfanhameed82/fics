@@ -87,7 +87,7 @@ export default function StatisticsFics() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center justify-center px-4 py-1.5 mb-4 text-xs font-medium rounded-full bg-blue-50 text-[#393e41]"
+            className="inline-flex items-center justify-center px-4 py-1.5 mb-4  text-md font-medium rounded-full bg-blue-50 text-[#393e41]"
           >
             OUR IMPACT
           </motion.div>

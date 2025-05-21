@@ -40,8 +40,14 @@ export default function Event() {
       </div>
 
       {/* Tabs Section */}
-      <Tabs defaultValue="Pakistan" className="w-full ">
-      <TabsList className="flex flex-col justify-center w-full gap-2  bg-white sm:py-1 sm:flex-row ">
+      <Tabs defaultValue="Upcoming" className="w-full ">
+      <TabsList className="flex flex-col justify-center w-full gap-2  bg-white my-5 sm:my-0 sm:py-1 sm:flex-row ">
+         <TabsTrigger
+                value="Upcoming"
+                className="data-[state=active]:bg-[#1a9a9a] tracking-widest w-full rounded-none data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
+            >
+                Upcoming Events
+            </TabsTrigger>
             <TabsTrigger
                 value="Pakistan"
                 className="data-[state=active]:bg-[#1a9a9a]  tracking-widest data-[state=active]:text-white data-[state=active]:shadow-md   text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300 rounded-none w-full"
@@ -54,13 +60,6 @@ export default function Event() {
             >
                 International Events
             </TabsTrigger>
-             <TabsTrigger
-                value="Upcoming"
-                className="data-[state=active]:bg-[#1a9a9a] tracking-widest w-full rounded-none data-[state=active]:text-white data-[state=active]:shadow-md  text-gray-700 text-xl  hover:bg-[#2a9d8f]/20 transition-all duration-300"
-            >
-                Upcoming Events
-            </TabsTrigger>
-            
         </TabsList>
 
 

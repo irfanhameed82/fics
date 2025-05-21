@@ -15,8 +15,9 @@ export default function Home() {
       <div >
         <StatisticsFics/>
       <FicsAtGlance/>
-      
+      <section id="event">
       <Event/>
+      </section>
       <SuccessStoriesSection/>
 
       <Partners/>

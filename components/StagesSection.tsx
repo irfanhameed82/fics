@@ -108,13 +108,17 @@ export default function StagesSection() {
                 <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
                     Shortlisted teams advance to the pitching phase where they formally present their ideas in front of a panel of industry experts and academic mentors. These sessions are conducted both locally and internationally in collaboration with partner universities, creating inclusive platforms for idea evaluation and community engagement. Presentations are assessed based on the innovation, impact, practicality, and potential for commercialization.
+
                   </p>
 
                   <p className="mb-2 font-medium text-slate-700">Event Timeline:</p>
                   <ul className="mb-4 space-y-1 list-none text-slate-600">
                     <li>National Pitching Sessions: April-May 2025</li>
-                    <li>For International Teams: June 2025</li>
+                    <li>International Pitching Sessions: May-July 2025</li>
                   </ul>
+                  <p className="mb-4 text-slate-600">
+                    <span className="text-black">Evaluation Criteria:</span> Presentation clarity, innovation, scalability, technical feasibility, and social impact.
+                  </p>
 
                   <Link href="/rubrics/stage2" className="font-medium transition-colors text-cyan-600 hover:text-cyan-800">
                     Rubric for Stage 2
@@ -145,17 +149,16 @@ export default function StagesSection() {
 
                 <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
-                    A complete synopsis for review, according to the provided outline. The teams are also encouraged to
-                    submit a presentation or a video of their idea along with the synopsis. Any additional materials
-                    supporting the idea must also be provided as a separate file.
+                    Finalist teams develop working prototypes of their proposed solutions under the guidance of assigned academic and industry mentors. These prototypes are showcased at the Grand Finale event, where a distinguished panel of judges evaluates their functionality, effectiveness, and readiness for deployment or commercialization.
                   </p>
 
-                  <p className="mb-2 font-medium text-slate-700">Synopsis Deadline:</p>
+                  <p className="mb-2 font-medium text-slate-700">Event timeline:</p>
                   <ul className="mb-4 space-y-1 list-none text-slate-600">
-                    <li>For National Teams: Jan 2025</li>
-                    <li>For International Teams: June 2025c</li>
+                    <li>Grand Finale - August 2025</li>
                   </ul>
-
+                  <p className="mb-4 text-slate-600">
+                    <span className="text-black">Evaluation Criteria:</span> Prototype functionality, user-friendliness, real-world applicability, and potential for market deployment.
+                  </p>  
                   <Link href="/rubrics/stage3" className="font-medium transition-colors text-cyan-600 hover:text-cyan-800">
                     Rubric for Stage 3
                   </Link>
@@ -187,22 +190,18 @@ export default function StagesSection() {
 
                 <div className="py-2 bg-transparent">
                   <p className="mb-4 text-slate-600">
-                    Cash prizes will be awarded to the following winning teams of Stage 3
+                    Cash prizes and recognition will be given to the top-performing teams in the following categories at the Grand Finale of FICS 2025:
                   </p>
 
                   <ul className="pl-5 mb-4 space-y-2 list-disc text-slate-700">
-                    <li>Winner FICS - (Cash Prize *)</li>
-                    <li>First Runner-Up - (Cash Prize *)</li>
-                    <li>Second Runner-Up - (Cash Prize *)</li>
-                    <li>Special Prize Categories</li>
+                    <li>National Winner – FICS 2025</li>
+                    <li>Global Champion – FICS 2025</li>
+                    <li>Social Impact Award</li>
+                    <li>First Runner-Up</li>
+                    <li>Second Runner-Up</li>
                   </ul>
-
-                  <p className="mb-4 text-slate-600">Prize amounts will be announced soon.</p>
-
                   <p className="mb-4 text-slate-600">
-                    Since this Stage witnesses a high level of interest and attendance from the Industry, students also
-                    have the incentive of finding a long-term mentor and possibly sponsor for their idea. We also offer
-                    free incubation space to the winner in our TechOne incubation space.
+                    This stage attracts significant interest from industry partners, offering participants valuable opportunities for mentorship, sponsorship, and industry exposure. The Winners will also be offered free incubation space at NUST’s TechOne Incubation Centre, supporting the transformation of their idea into a viable startup.
                   </p>
                 </div>
               </div>

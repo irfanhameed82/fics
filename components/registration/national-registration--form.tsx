@@ -24,24 +24,25 @@ export default function NationalRegistrationForm() {
   } = useNationalFormStore()
 
   // Handle text input changes
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field:string , value: string | Number | boolean | any) => {
     setFormField(field, value)
   }
 
   // Handle character count for textareas with limits
-  const handleTextAreaChange = (field, value, maxLength) => {
+    const handleTextAreaChange = (field: string, value: any, maxLength: string | Number) => {
     if (value.length <= maxLength) {
       setFormField(field, value)
     }
   }
-
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log("National form submitted:", formData)
-    // Here you would typically send the data to your backend
-    alert("National Registration Form Submitted Successfully!")
-  }
+  const response = await fetch('/api/domestric_form', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+  return response.json();
+};
 
   return (
     <Card className="border-0 shadow-md">

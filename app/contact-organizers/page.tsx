@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub, MapPin } from "lucide-react"
+import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub, MapPin, Phone } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 // Define TypeScript interface for team members
 interface TeamMember {
@@ -62,6 +63,8 @@ const ExecutiveMembers: TeamMember[] = [
 interface OrganizationLeader {
   name: string
   designation: string
+  email?: string
+  phone?: string
   department: string
 }
 
@@ -70,22 +73,29 @@ const organizationLeaders: OrganizationLeader[] = [
   {
     name: "Ms Sana Maqbool",
     designation: "Acting Director",
+    email: "sanamaqbool1990@gmail.com",
+    phone: "+92-51-90856240",
     department: "Innovation & Commercialization Office NUST (ICON)",
   },
   {
     name: "Ms Sundas Imran",
     designation: "Senior Manager",
+    phone: "+92-51-90851456",
+   email: "managercac@ric.nust.edu.pk",
     department: "CAC - ICON",
   },
   {
-    name: "Mrs Fawad kashan",
+    name: "Mr Fawad kashan",
     designation: "Senior Manager Corporate Relations",
+    phone: "+92-51-90856243",
+    email: "manager.cr@nust.edu.pk",
     department: "CAC - ICON",
   },
   {
-    name: "Mrs Muhammad Shahzada Ali",
+    name: "Mr Muhammad Shahzada Ali",
     designation: "Assistant Manager",
     department: "CAC - ICON",
+    email: "am.icon@nust.edu.pk"
   },
 ]
 
@@ -117,7 +127,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Hero Section with Tech-inspired Background */}
-      <div className="relative overflow-hidden bg-[#248ABD]">
+      <div className="relative overflow-hidden bg-gradient-to-b from-[#3BB0A1] to-[#00547E]">
         {/* Tech Pattern Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -150,22 +160,23 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <div className="relative z-10 px-4 py-8 mx-auto text-center max-w-7xl">
+        <div className="relative z-10 px-4 py-2 mx-auto text-center max-w-7xl">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-2xl font-semibold tracking-tight text-white sm:text-4xl"
+            className="text-xl font-semibold tracking-tight text-white sm:text-4xl"
           >
-            Our Team
+            Organizers
+
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl mx-auto mt-4 text-xl text-blue-100"
+            className="max-w-2xl mx-auto mt-4 text-base text-blue-100 sm:text-xl"
           >
-            Meet the innovative minds behind our technology solutions
+            For all general questions related to FICS, including participation, guidelines, and partnerships. Contact our organizing team here.
           </motion.p>
         </div>
       </div>
@@ -225,6 +236,8 @@ export default function ContactPage() {
                     {leader.designation}
                   </div>
                   <p className="mt-2 text-sm text-gray-600">{leader.department}</p>
+                 {leader.email && <p className="flex mt-2 text-sm text-gray-600"><Mail/> <a href={`mailto:${leader.email}`}>{leader.email}</a></p>}
+                  {leader.phone && <p className="flex mt-2 text-sm text-gray-600"><Phone/> <span>{leader.phone}</span></p>}
                 </div>
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-16 h-16 -mt-6 -mr-6 bg-blue-100 rounded-full opacity-20"></div>

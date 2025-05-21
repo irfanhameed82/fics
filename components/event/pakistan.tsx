@@ -14,7 +14,7 @@ import {
 const events = [
   {
     id: 1,
-    image: "/ficsimage.jpg",
+    image: "/national/grandfinale.jpg",
     title: "FICS 2024 Grand Finale",
     month: "Aug",
     date: "27",
@@ -34,7 +34,7 @@ FICS is fortunate to have the patronage of diverse industrial partners providing
   },
   {
     id: 2,
-    image: "/ficsimage.jpg",
+    image: "/national/pitchingislamabad.jpg",
     title: "FICS 2025 Islamabad Pitching Event",
     month: "Apr ",
     date: "24",
@@ -47,7 +47,7 @@ FICS is fortunate to have the patronage of diverse industrial partners providing
 
   {
     id: 3,
-    image: "/ficsimage.jpg",
+    image: "/national/karachipatching.jpg",
     title: "FICS 2025 Karachi Pitching Event",
     month: "Apr",
     date: "28",
@@ -95,7 +95,7 @@ function EventCard({ image, title, month, date, description, details }: EventCar
           className="object-cover" 
         />
       </div>
-      <div className="bg-gradient-to-b from-[#3BB0A1] to-[#00547E] text-white p-4">
+      <div className="bg-gradient-to-b from-[#3BB0A1] to-[#00547E] text-white p-4 h-full">
         <div className="flex items-start gap-3">
           <div className="text-center">
             <div className="text-sm font-normal">{month}</div>

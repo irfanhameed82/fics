@@ -34,9 +34,13 @@ export default function CoordinatorsPage() {
   return (
     <div>
          <div className="pb-5 bg-white">
-             <div className="relative  h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex items-center justify-center mb-5">
+             <div className="relative  h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex flex-col items-center justify-center mb-5">
         <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
-Global Point of Contact</h1>
+International Contacts
+</h1>
+<p className="text">
+  Connect with regional coordinators and partner universities worldwide who can assist international participants.
+</p>
       </div>
       </div>
     

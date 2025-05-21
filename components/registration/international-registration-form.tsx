@@ -24,25 +24,26 @@ export default function InternationalRegistrationForm() {
   } = useInternationalFormStore()
 
   // Handle text input changes
-  const handleInputChange = (field, value) => {
-    setFormField(field, value)
-  }
-
+const handleInputChange = (field: string, value: string | Number | boolean) => {
+  setFormField(field, value);
+};
   // Handle character count for textareas with limits
-  const handleTextAreaChange = (field, value, maxLength) => {
+  const handleTextAreaChange = (field: string, value: any, maxLength: string | Number) => {
     if (value.length <= maxLength) {
       setFormField(field, value)
     }
   }
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("International form submitted:", formData)
-    // Here you would typically send the data to your backend
-    alert("International Registration Form Submitted Successfully!")
-  }
-
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const response = await fetch('/api/international_form', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+  return response.json();
+};
   return (
     <Card className="border-0 shadow-md">
       <CardContent className="p-6">

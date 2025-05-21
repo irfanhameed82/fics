@@ -69,7 +69,7 @@ export default function Footer() {
                 </p>
                 <div className="pt-4">
                   <Link
-                    href="/contact"
+                    href="/contact-organizers"
                     className="bg-[#1e6091] hover:bg-[#164e78] px-4 py-2 rounded-md transition-colors inline-block"
                   >
                     Contact Us
@@ -84,7 +84,7 @@ export default function Footer() {
       {/* Copyright Bar */}
       <div className="px-4 py-4 text-white bg-transparent md:px-8">
         <div className="container mx-auto text-center">
-          <p>Copyright © 2015-2024 NUST. All rights reserved.</p>
+          <p>Copyright © 2015-2025 NUST. All rights reserved.</p>
         </div>
       </div>
     </footer>
