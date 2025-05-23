@@ -1,5 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
@@ -42,6 +44,8 @@ export default function RootLayout({
         <MarqueeBanner />
         {children}
         <Footer />
+<ToastContainer position="top-right" autoClose={3000} />
+
       </body>
     </html>
   );

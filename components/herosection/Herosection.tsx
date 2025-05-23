@@ -38,10 +38,25 @@ export default function HeroSection() {
     }
   ]
 
-  // Optimized video loading
+  // Optimized video loading with IntersectionObserver
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.src = "https://res.cloudinary.com/dxh8rsy7p/video/upload/q_auto:low/v1746812854/FICS_highlight_2024_ep48hr.mp4"
+            video.load()
+            observer.unobserve(video)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(video)
 
     const handleCanPlay = () => {
       setIsVideoLoaded(true)
@@ -50,11 +65,11 @@ export default function HeroSection() {
 
     video.addEventListener('canplay', handleCanPlay)
     video.muted = true
-    video.preload = "auto"
-    video.load()
+    video.preload = "none"
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay)
+      observer.unobserve(video)
     }
   }, [])
 
@@ -79,7 +94,7 @@ export default function HeroSection() {
       <div className="relative flex w-full">
         <div className="grid w-full grid-cols-1 max-w-7xl lg:grid-cols-2">
           {/* Left Column - Text Content */}
-          <div className="flex flex-col items-center py-4 sm:py-16 md:py-24 px-4">
+          <div className="flex flex-col items-center px-4 py-4 sm:py-16 md:py-24">
             <div className="max-w-lg text-center lg:text-left">
               <h1 className="mb-4 text-2xl font-bold tracking-tight text-white md:text-4xl">
                 Transforming Ideas Into
@@ -119,13 +134,17 @@ export default function HeroSection() {
               <video
                 ref={videoRef}
                 className="object-cover w-full h-full"
-                src="https://res.cloudinary.com/dxh8rsy7p/video/upload/v1746812854/FICS_highlight_2024_ep48hr.mp4"
                 playsInline
                 loop
                 muted={isMuted}
                 autoPlay
-                poster="/placeholder.svg?height=720&width=1280"
-              />
+                poster="/video-poster.jpg"
+              >
+                <source 
+                  src="https://res.cloudinary.com/dxh8rsy7p/video/upload/q_auto:low/v1746812854/FICS_highlight_2024_ep48hr.mp4" 
+                  type="video/mp4" 
+                />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0d3b4f]/20 to-transparent rounded-lg"></div>
 
               <button
@@ -176,7 +195,6 @@ export default function HeroSection() {
   )
 }
 
-// Optimized EventCard component with memoization
 const EventCard = React.memo(function EventCard({
   title,
   imagePath,

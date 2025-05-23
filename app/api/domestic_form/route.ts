@@ -1,59 +1,71 @@
-// app/api/users/domestic_form/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/dbconfig';
+import { type NextRequest, NextResponse } from "next/server"
+import { db } from "@/lib/dbconfig"
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const { projectDetail, supervisorDetail, teamMembers } = body;
+  const body = await req.json()
+  const { projectDetail, supervisorDetail, teamMembers } = body
 
+  // Validate project details
   const requiredProjectFields = [
-    'idea_name', 'slogan', 'startup_domain', 'abstract', 'unmet_need',
-    'how_solution_works', 'who_are_competitors', 'interschool_idea',
-    'need_expertises', 'previously_applied_in_fics', 'project_is_fyp'
-  ];
+    "idea_name",
+    "slogan",
+    "startup_domain",
+    "abstract",
+    "unmet_need",
+    "how_solution_works",
+    "who_are_competitors",
+    "interschool_idea",
+    "need_expertises",
+    "previously_applied_in_fics",
+    "project_is_fyp",
+  ]
 
   for (const field of requiredProjectFields) {
-    if (!projectDetail?.[field]) {
-      return NextResponse.json({ error: `Missing required project field: ${field}` }, { status: 400 });
+    if (!projectDetail?.[field] && projectDetail?.[field] !== false) {
+      return NextResponse.json({ error: `Missing required project field: ${field}` }, { status: 400 })
     }
   }
 
+  // Validate supervisor details
   if (
     !supervisorDetail?.name_of_supervisor ||
     !supervisorDetail?.supervisor_email ||
     !supervisorDetail?.supervisor_designation ||
     !supervisorDetail?.supervisor_uni ||
-    !supervisorDetail?.supervisor_uni_school ||
     !supervisorDetail?.supervisor_department
   ) {
-    return NextResponse.json({ error: 'Missing required supervisor details' }, { status: 400 });
+    return NextResponse.json({ error: "Missing required supervisor details" }, { status: 400 })
   }
 
-  if (!Array.isArray(teamMembers) || teamMembers.length === 0) {
-    return NextResponse.json({ error: 'At least one team member is required' }, { status: 400 });
+  // Validate team members
+  if (!Array.isArray(teamMembers) || teamMembers.length < 2) {
+    return NextResponse.json({ error: "At least two team members are required (leader and member)" }, { status: 400 })
   }
 
   for (const [i, member] of teamMembers.entries()) {
-    const requiredFields = ['name', 'email', 'gender', 'university', 'degree', 'year', 'school'];
+    const requiredFields = ["name", "email", "gender", "university", "degree", "year", "school"]
     for (const field of requiredFields) {
       if (!member?.[field]) {
-        return NextResponse.json({ error: `Missing required field '${field}' for team member at index ${i}` }, { status: 400 });
+        return NextResponse.json(
+          { error: `Missing required field '${field}' for team member at index ${i}` },
+          { status: 400 },
+        )
       }
     }
 
-    if (member.international_student !== 'no') {
-      return NextResponse.json({ error: `Team member at index ${i} must be a national student (international_student = 'no')` }, { status: 400 });
-    }
-
-    if (member.internationalcountry) {
-      return NextResponse.json({ error: `National student at index ${i} should not provide 'internationalcountry'` }, { status: 400 });
+    if (member.international_student !== "no") {
+      return NextResponse.json(
+        { error: `Team member at index ${i} must be a national student (international_student = 'no')` },
+        { status: 400 },
+      )
     }
   }
 
-  const conn = await db.getConnection();
+  const conn = await db.getConnection()
   try {
-    await conn.beginTransaction();
+    await conn.beginTransaction()
 
+    // Insert project details
     const [projectRes] = await conn.execute(
       `INSERT INTO project_detail (
         idea_name, slogan, startup_domain, startup_domain_other, abstract, unmet_need,
@@ -75,10 +87,10 @@ export async function POST(req: NextRequest) {
         projectDetail.benefit ?? null,
         projectDetail.how_solution_works,
         projectDetail.who_are_competitors,
-        projectDetail.entry_date ?? null,
-        projectDetail.entry_time ?? null,
+        projectDetail.entry_date ?? new Date().toISOString().split("T")[0],
+        projectDetail.entry_time ?? new Date().toTimeString().split(" ")[0],
         projectDetail.status_of_project ?? null,
-        projectDetail.publish ?? null,
+        projectDetail.publish ?? 0,
         projectDetail.shortlist ?? 0,
         projectDetail.shortlist_stage2 ?? null,
         projectDetail.display_stage2 ?? null,
@@ -86,8 +98,8 @@ export async function POST(req: NextRequest) {
         projectDetail.display_stage3 ?? null,
         projectDetail.interschool_idea,
         projectDetail.need_expertises,
-        projectDetail.project_is_fyp ?? null,
-        projectDetail.previously_applied_in_fics ?? null,
+        projectDetail.project_is_fyp,
+        projectDetail.previously_applied_in_fics,
         projectDetail.previously_participating_year ?? null,
         projectDetail.previously_applied_project_title ?? null,
         projectDetail.previously_stage_reached ?? null,
@@ -96,11 +108,12 @@ export async function POST(req: NextRequest) {
         projectDetail.prize_won ?? null,
         projectDetail.beneficiary ?? null,
         projectDetail.panel ?? null,
-      ]
-    );
+      ],
+    )
 
-    const projectId = (projectRes as any).insertId;
+    const projectId = (projectRes as any).insertId
 
+    // Insert supervisor details
     const [supervisorRes] = await conn.execute(
       `INSERT INTO supervisor_detail (
         project_id, name_of_supervisor, supervisor_email, supervisor_contact_number,
@@ -114,14 +127,15 @@ export async function POST(req: NextRequest) {
         supervisorDetail.supervisor_contact_number ?? null,
         supervisorDetail.supervisor_designation,
         supervisorDetail.supervisor_uni,
-        supervisorDetail.supervisor_uni_school,
+        supervisorDetail.supervisor_uni_school ?? supervisorDetail.supervisor_department,
         supervisorDetail.supervisor_department,
         supervisorDetail.expertises_detail ?? null,
-      ]
-    );
+      ],
+    )
 
-    const supervisorId = (supervisorRes as any).insertId;
+    const supervisorId = (supervisorRes as any).insertId
 
+    // Insert team members
     for (const member of teamMembers) {
       await conn.execute(
         `INSERT INTO team_detail (
@@ -144,20 +158,30 @@ export async function POST(req: NextRequest) {
           member.cgpa ?? null,
           member.other_uni ?? null,
           member.other_nust_school ?? null,
-          'no',
+          "no",
           null,
-          member.country ?? 'Pakistan',
-        ]
-      );
+          member.country ?? "Pakistan",
+        ],
+      )
     }
 
-    await conn.commit();
-    return NextResponse.json({ message: 'National student data submitted successfully' });
-  } catch (error) {
-    await conn.rollback();
-    console.error('Error:', error);
-    return NextResponse.json({ error: 'Server error during submission' }, { status: 500 });
+    await conn.commit()
+    return NextResponse.json({
+      success: true,
+      message: "National student data submitted successfully",
+      projectId,
+    })
+  } catch (error: any) {
+    await conn.rollback()
+    console.error("Error:", error)
+    return NextResponse.json(
+      {
+        error: "Server error during submission",
+        details: error.message,
+      },
+      { status: 500 },
+    )
   } finally {
-    conn.release();
+    conn.release()
   }
 }

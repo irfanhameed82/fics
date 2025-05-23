@@ -1,18 +1,29 @@
 "use client"
+
+import type React from "react"
+import { toast } from "react-toastify"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent } from "@/components/ui/card"
-import { PlusCircle, Trash2 } from "lucide-react"
+import { PlusCircle, Trash2, AlertCircle, CheckCircle2 } from "lucide-react"
 import { useNationalFormStore } from "@/lib/stores/national-form-store"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { useRouter } from "next/navigation"
 
 export default function NationalRegistrationForm() {
+  const router = useRouter()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formErrors, setFormErrors] = useState<string[]>([])
+  const [formSuccess, setFormSuccess] = useState<string | null>(null)
+
   const {
     formData,
     setFormField,
-    teamMembers,
+    updateTeamMember,
     addTeamMember,
     removeTeamMember,
     showPreviousProject,
@@ -21,32 +32,153 @@ export default function NationalRegistrationForm() {
     setShowOtherCompetition,
     showExpertise,
     setShowExpertise,
+    validateForm,
   } = useNationalFormStore()
 
   // Handle text input changes
-  const handleInputChange = (field:string , value: string | Number | boolean | any) => {
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
     setFormField(field, value)
   }
 
   // Handle character count for textareas with limits
-    const handleTextAreaChange = (field: string, value: any, maxLength: string | Number) => {
+  const handleTextAreaChange = (field: keyof typeof formData, value: string, maxLength: number) => {
     if (value.length <= maxLength) {
       setFormField(field, value)
     }
   }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
     e.preventDefault()
-  const response = await fetch('/api/domestric_form', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  });
-  return response.json();
-};
+    setFormErrors([])
+    setFormSuccess(null)
+
+    // Validate form
+    const validation = validateForm()
+    if (!validation.isValid) {
+      setFormErrors(validation.errors)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      // Map form data to API expected format
+      const projectDetail: Record<string, any> = {
+        idea_name: formData.ideaName,
+        slogan: formData.slogan,
+        startup_domain: formData.applicationDomain,
+        abstract: formData.abstract,
+        unmet_need: formData.unmetNeed,
+        benefit: formData.beneficiaries,
+        how_solution_works: formData.solution,
+        who_are_competitors: formData.competitors,
+        interschool_idea: formData.multiDiscipline,
+        need_expertises: formData.needExpertise,
+        project_is_fyp: formData.isFYP,
+        previously_applied_in_fics: formData.previouslyApplied,
+        participate_in_other_competition: formData.otherCompetition,
+        entry_date: new Date().toISOString().split("T")[0],
+        entry_time: new Date().toTimeString().split(" ")[0],
+      }
+
+      // Add conditional fields
+      if (formData.previouslyApplied === "yes") {
+        projectDetail.previously_participating_year = formData.previousYear
+        projectDetail.previously_applied_project_title = formData.previousTitle
+        projectDetail.previously_stage_reached = formData.previousStage
+      }
+
+      if (formData.otherCompetition === "yes") {
+        projectDetail.name_of_competition = formData.competitionName
+        projectDetail.prize_won = formData.prizeWon
+      }
+
+      const supervisorDetail: Record<string, any> = {
+        name_of_supervisor: formData.supervisorName,
+        supervisor_email: formData.supervisorEmail,
+        supervisor_contact_number: formData.supervisorContact,
+        supervisor_designation: formData.designation,
+        supervisor_uni: formData.university,
+        supervisor_department: formData.department,
+        supervisor_uni_school: formData.department,
+        expertises_detail: formData.needExpertise === "yes" ? formData.expertiseNeeded : null,
+      }
+
+      const teamMembers = formData.teamMembers.map((member) => ({
+        name: member.name,
+        university: member.university,
+        school: member.department,
+        year: member.year,
+        degree: member.degree,
+        email: member.email,
+        mobile: member.mobile || null,
+        gender: member.gender,
+        cgpa: member.cgpa || null,
+        province: null,
+        other_uni: null,
+        other_nust_school: null,
+        country: member.country || "Pakistan",
+        international_student: "no",
+        internationalcountry: null,
+      }))
+
+      const payload = {
+        projectDetail,
+        supervisorDetail,
+        teamMembers,
+      }
+setFormSuccess("Form submitted successfully! Thank you for your registration.")
+      const response = await fetch("/api/domestic_form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        
+        toast.success("Form submitted successfully! Thank you for your registration.");
+      } else {
+        
+        toast.error(data.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err)
+      setFormErrors(["An unexpected error occurred. Please try again."])
+    } finally {
+      setIsSubmitting(false)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
 
   return (
     <Card className="border-0 shadow-md">
       <CardContent className="p-6">
+        {formErrors.length > 0 && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertCircle className="w-4 h-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>
+              <ul className="pl-5 mt-2 list-disc">
+                {formErrors.map((error, index) => (
+                  <li key={index}>{error}</li>
+                ))}
+              </ul>
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {formSuccess && (
+          <Alert className="mb-6 border-green-200 bg-green-50">
+            <CheckCircle2 className="w-4 h-4 text-green-600" />
+            <AlertTitle className="text-green-800">Success</AlertTitle>
+            <AlertDescription className="text-green-700">{formSuccess}</AlertDescription>
+          </Alert>
+        )}
+
         <form onSubmit={handleSubmit}>
           {/* Project Details Section */}
           <div className="mb-8">
@@ -65,6 +197,7 @@ export default function NationalRegistrationForm() {
                         className="w-4 h-4"
                         checked={formData.isFYP === "yes"}
                         onChange={() => handleInputChange("isFYP", "yes")}
+                        required
                       />
                       <span>Yes</span>
                     </label>
@@ -76,6 +209,7 @@ export default function NationalRegistrationForm() {
                         className="w-4 h-4"
                         checked={formData.isFYP === "no"}
                         onChange={() => handleInputChange("isFYP", "no")}
+                        required
                       />
                       <span>No</span>
                     </label>
@@ -96,6 +230,7 @@ export default function NationalRegistrationForm() {
                           handleInputChange("previouslyApplied", "yes")
                           setShowPreviousProject(true)
                         }}
+                        required
                       />
                       <span>Yes</span>
                     </label>
@@ -110,6 +245,7 @@ export default function NationalRegistrationForm() {
                           handleInputChange("previouslyApplied", "no")
                           setShowPreviousProject(false)
                         }}
+                        required
                       />
                       <span>No</span>
                     </label>
@@ -122,11 +258,12 @@ export default function NationalRegistrationForm() {
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     <div>
                       <Label htmlFor="previous-year" className="block mb-2">
-                        Previously participating year
+                        Previously participating year*
                       </Label>
                       <Select
                         value={formData.previousYear}
                         onValueChange={(value) => handleInputChange("previousYear", value)}
+                        required={formData.previouslyApplied === "yes"}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Select year" />
@@ -147,8 +284,9 @@ export default function NationalRegistrationForm() {
                       </Label>
                       <Input
                         id="previous-title"
-                        value={formData.previousTitle}
+                        value={formData.previousTitle || ""}
                         onChange={(e) => handleInputChange("previousTitle", e.target.value)}
+                        required={formData.previouslyApplied === "yes"}
                       />
                     </div>
 
@@ -158,8 +296,9 @@ export default function NationalRegistrationForm() {
                       </Label>
                       <Input
                         id="previous-stage"
-                        value={formData.previousStage}
+                        value={formData.previousStage || ""}
                         onChange={(e) => handleInputChange("previousStage", e.target.value)}
+                        required={formData.previouslyApplied === "yes"}
                       />
                     </div>
                   </div>
@@ -181,6 +320,7 @@ export default function NationalRegistrationForm() {
                           handleInputChange("otherCompetition", "yes")
                           setShowOtherCompetition(true)
                         }}
+                        required
                       />
                       <span>Yes</span>
                     </label>
@@ -195,6 +335,7 @@ export default function NationalRegistrationForm() {
                           handleInputChange("otherCompetition", "no")
                           setShowOtherCompetition(false)
                         }}
+                        required
                       />
                       <span>No</span>
                     </label>
@@ -213,6 +354,7 @@ export default function NationalRegistrationForm() {
                           className="w-4 h-4"
                           checked={formData.multiDiscipline === "yes"}
                           onChange={() => handleInputChange("multiDiscipline", "yes")}
+                          required
                         />
                         <span>Yes</span>
                       </label>
@@ -224,6 +366,7 @@ export default function NationalRegistrationForm() {
                           className="w-4 h-4"
                           checked={formData.multiDiscipline === "no"}
                           onChange={() => handleInputChange("multiDiscipline", "no")}
+                          required
                         />
                         <span>No</span>
                       </label>
@@ -242,8 +385,9 @@ export default function NationalRegistrationForm() {
                       </Label>
                       <Input
                         id="competition-name"
-                        value={formData.competitionName}
+                        value={formData.competitionName || ""}
                         onChange={(e) => handleInputChange("competitionName", e.target.value)}
+                        required={formData.otherCompetition === "yes"}
                       />
                     </div>
 
@@ -253,8 +397,9 @@ export default function NationalRegistrationForm() {
                       </Label>
                       <Input
                         id="prize-won"
-                        value={formData.prizeWon}
+                        value={formData.prizeWon || ""}
                         onChange={(e) => handleInputChange("prizeWon", e.target.value)}
+                        required={formData.otherCompetition === "yes"}
                       />
                     </div>
                   </div>
@@ -275,6 +420,7 @@ export default function NationalRegistrationForm() {
                         handleInputChange("needExpertise", "yes")
                         setShowExpertise(true)
                       }}
+                      required
                     />
                     <span>Yes</span>
                   </label>
@@ -289,6 +435,7 @@ export default function NationalRegistrationForm() {
                         handleInputChange("needExpertise", "no")
                         setShowExpertise(false)
                       }}
+                      required
                     />
                     <span>No</span>
                   </label>
@@ -303,8 +450,9 @@ export default function NationalRegistrationForm() {
                   <Input
                     id="expertise-needed"
                     maxLength={50}
-                    value={formData.expertiseNeeded}
+                    value={formData.expertiseNeeded || ""}
                     onChange={(e) => handleInputChange("expertiseNeeded", e.target.value)}
+                    required={formData.needExpertise === "yes"}
                   />
                   <div className="mt-1 text-xs text-right text-gray-500">
                     {formData.expertiseNeeded?.length || 0}/50
@@ -328,6 +476,7 @@ export default function NationalRegistrationForm() {
                     id="idea-name"
                     value={formData.ideaName}
                     onChange={(e) => handleInputChange("ideaName", e.target.value)}
+                    required
                   />
                 </div>
 
@@ -339,6 +488,7 @@ export default function NationalRegistrationForm() {
                     id="slogan"
                     value={formData.slogan}
                     onChange={(e) => handleInputChange("slogan", e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -350,6 +500,7 @@ export default function NationalRegistrationForm() {
                 <Select
                   value={formData.applicationDomain}
                   onValueChange={(value) => handleInputChange("applicationDomain", value)}
+                  required
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select domain" />
@@ -385,6 +536,7 @@ export default function NationalRegistrationForm() {
                   className="min-h-[80px]"
                   value={formData.description}
                   onChange={(e) => handleInputChange("description", e.target.value)}
+                  required
                 />
               </div>
 
@@ -398,8 +550,9 @@ export default function NationalRegistrationForm() {
                   maxLength={400}
                   value={formData.abstract}
                   onChange={(e) => handleTextAreaChange("abstract", e.target.value, 400)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.abstract?.length || 0}/400</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.abstract.length}/400</div>
               </div>
 
               <div>
@@ -412,8 +565,9 @@ export default function NationalRegistrationForm() {
                   maxLength={300}
                   value={formData.unmetNeed}
                   onChange={(e) => handleTextAreaChange("unmetNeed", e.target.value, 300)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.unmetNeed?.length || 0}/300</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.unmetNeed.length}/300</div>
               </div>
 
               <div>
@@ -426,8 +580,9 @@ export default function NationalRegistrationForm() {
                   maxLength={300}
                   value={formData.beneficiaries}
                   onChange={(e) => handleTextAreaChange("beneficiaries", e.target.value, 300)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.beneficiaries?.length || 0}/300</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.beneficiaries.length}/300</div>
               </div>
 
               <div>
@@ -441,8 +596,9 @@ export default function NationalRegistrationForm() {
                   maxLength={500}
                   value={formData.solution}
                   onChange={(e) => handleTextAreaChange("solution", e.target.value, 500)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.solution?.length || 0}/500</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.solution.length}/500</div>
               </div>
 
               <div>
@@ -456,8 +612,9 @@ export default function NationalRegistrationForm() {
                   maxLength={300}
                   value={formData.adoption}
                   onChange={(e) => handleTextAreaChange("adoption", e.target.value, 300)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.adoption?.length || 0}/300</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.adoption.length}/300</div>
               </div>
 
               <div>
@@ -470,8 +627,9 @@ export default function NationalRegistrationForm() {
                   maxLength={300}
                   value={formData.competitors}
                   onChange={(e) => handleTextAreaChange("competitors", e.target.value, 300)}
+                  required
                 />
-                <div className="mt-1 text-xs text-right text-gray-500">{formData.competitors?.length || 0}/300</div>
+                <div className="mt-1 text-xs text-right text-gray-500">{formData.competitors.length}/300</div>
               </div>
             </div>
           </div>
@@ -501,6 +659,7 @@ export default function NationalRegistrationForm() {
                     id="supervisor-name"
                     value={formData.supervisorName}
                     onChange={(e) => handleInputChange("supervisorName", e.target.value)}
+                    required
                   />
                 </div>
 
@@ -512,6 +671,7 @@ export default function NationalRegistrationForm() {
                     id="designation"
                     value={formData.designation}
                     onChange={(e) => handleInputChange("designation", e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -525,6 +685,7 @@ export default function NationalRegistrationForm() {
                     id="university"
                     value={formData.university}
                     onChange={(e) => handleInputChange("university", e.target.value)}
+                    required
                   />
                 </div>
 
@@ -536,6 +697,7 @@ export default function NationalRegistrationForm() {
                     id="department"
                     value={formData.department}
                     onChange={(e) => handleInputChange("department", e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -549,6 +711,7 @@ export default function NationalRegistrationForm() {
                     id="supervisor-contact"
                     value={formData.supervisorContact}
                     onChange={(e) => handleInputChange("supervisorContact", e.target.value)}
+                    required
                   />
                 </div>
 
@@ -561,6 +724,7 @@ export default function NationalRegistrationForm() {
                     type="email"
                     value={formData.supervisorEmail}
                     onChange={(e) => handleInputChange("supervisorEmail", e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -581,7 +745,7 @@ export default function NationalRegistrationForm() {
             </ul>
 
             {/* Dynamic Team Members */}
-            {teamMembers.map((member, index) => (
+            {formData.teamMembers.map((member, index) => (
               <div key={member.id} className="p-4 mb-8 rounded-md bg-gray-50">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-medium text-gray-800">
@@ -609,11 +773,8 @@ export default function NationalRegistrationForm() {
                       <Input
                         id={`member${member.id}-name`}
                         value={member.name || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, name: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "name", e.target.value)}
+                        required
                       />
                     </div>
 
@@ -622,14 +783,11 @@ export default function NationalRegistrationForm() {
                         Gender*
                       </Label>
                       <Select
-                        value={member.gender || "female"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, gender: value } : m)),
-                          ])
-                        }
+                        value={member.gender || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "gender", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-gender`}>
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
                         <SelectContent>
@@ -650,11 +808,8 @@ export default function NationalRegistrationForm() {
                         id={`member${member.id}-email`}
                         type="email"
                         value={member.email || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, email: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "email", e.target.value)}
+                        required
                       />
                     </div>
 
@@ -665,11 +820,8 @@ export default function NationalRegistrationForm() {
                       <Input
                         id={`member${member.id}-mobile`}
                         value={member.mobile || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, mobile: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "mobile", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -682,11 +834,8 @@ export default function NationalRegistrationForm() {
                       <Input
                         id={`member${member.id}-cgpa`}
                         value={member.cgpa || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, cgpa: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "cgpa", e.target.value)}
+                        required
                       />
                     </div>
 
@@ -697,11 +846,8 @@ export default function NationalRegistrationForm() {
                       <Input
                         id={`member${member.id}-university`}
                         value={member.university || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, university: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "university", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -714,11 +860,8 @@ export default function NationalRegistrationForm() {
                       <Input
                         id={`member${member.id}-department`}
                         value={member.department || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, department: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "department", e.target.value)}
+                        required
                       />
                     </div>
 
@@ -728,12 +871,9 @@ export default function NationalRegistrationForm() {
                       </Label>
                       <Input
                         id={`member${member.id}-country`}
-                        value={member.country || (index === 0 ? "Pakistan" : "")}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, country: e.target.value } : m)),
-                          ])
-                        }
+                        value={member.country || "Pakistan"}
+                        onChange={(e) => updateTeamMember(member.id, "country", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -744,14 +884,11 @@ export default function NationalRegistrationForm() {
                         Degree*
                       </Label>
                       <Select
-                        value={member.degree || "undergraduate"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, degree: value } : m)),
-                          ])
-                        }
+                        value={member.degree || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "degree", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-degree`}>
                           <SelectValue placeholder="Select degree" />
                         </SelectTrigger>
                         <SelectContent>
@@ -766,14 +903,11 @@ export default function NationalRegistrationForm() {
                         Year of Study*
                       </Label>
                       <Select
-                        value={member.year || "fourth"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, year: value } : m)),
-                          ])
-                        }
+                        value={member.year || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "year", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-year`}>
                           <SelectValue placeholder="Select year" />
                         </SelectTrigger>
                         <SelectContent>
@@ -790,7 +924,7 @@ export default function NationalRegistrationForm() {
             ))}
 
             {/* Add More Members Button */}
-            {teamMembers.length < 5 && (
+            {formData.teamMembers.length < 5 && (
               <div className="flex justify-center mt-4">
                 <Button type="button" variant="outline" onClick={addTeamMember} className="flex items-center gap-1">
                   <PlusCircle className="w-4 h-4" /> Add Team Member
@@ -800,8 +934,12 @@ export default function NationalRegistrationForm() {
 
             {/* Submit Button */}
             <div className="flex justify-center mt-8">
-              <Button type="submit" className="bg-[#248ABD] hover:bg-[#1a6d94] px-8 py-2 text-lg">
-                Submit Registration
+              <Button
+                type="submit"
+                className="bg-[#248ABD] hover:bg-[#1a6d94] px-8 py-2 text-lg"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit Registration"}
               </Button>
             </div>
           </div>
