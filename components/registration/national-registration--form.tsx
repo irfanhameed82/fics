@@ -643,7 +643,7 @@ setFormSuccess("Form submitted successfully! Thank you for your registration.")
             <p className="mb-4 text-sm">
               <span className="font-medium">Note:</span> Having a faculty supervisor is mandatory. In case you don't
               have a supervisor, contact your{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="/nust-contacts" className="text-blue-600 hover:underline">
                 school's representatives for FICS
               </a>{" "}
               or FICS Core Team.

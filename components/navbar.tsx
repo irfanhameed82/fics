@@ -157,14 +157,14 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50"
+             className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
 
             {[...navItems, ...contactlist].map((item) => (
-              <div key={item.key} className="px-3 py-2">
+              <div key={item.key} className=" py-2">
                 <button
                   onClick={() => toggleDropdown(`${item.key}-mobile`)}
                   className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
