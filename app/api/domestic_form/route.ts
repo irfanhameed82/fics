@@ -1,11 +1,11 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { db } from "@/lib/dbconfig"
+import { type NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/dbconfig";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json()
-  const { projectDetail, supervisorDetail, teamMembers } = body
+  const body = await req.json();
+  const { projectDetail, supervisorDetail, teamMembers } = body;
 
-  // Validate project details
+  // Validate required project fields
   const requiredProjectFields = [
     "idea_name",
     "slogan",
@@ -18,56 +18,94 @@ export async function POST(req: NextRequest) {
     "need_expertises",
     "previously_applied_in_fics",
     "project_is_fyp",
-  ]
+  ];
 
   for (const field of requiredProjectFields) {
-    if (!projectDetail?.[field] && projectDetail?.[field] !== false) {
-      return NextResponse.json({ error: `Missing required project field: ${field}` }, { status: 400 })
+    if (
+      projectDetail[field] === undefined ||
+      projectDetail[field] === null ||
+      (typeof projectDetail[field] === "string" && projectDetail[field].trim() === "")
+    ) {
+      return NextResponse.json(
+        { error: `Missing required project field: ${field}` },
+        { status: 400 }
+      );
     }
   }
 
-  // Validate supervisor details
-  if (
-    !supervisorDetail?.name_of_supervisor ||
-    !supervisorDetail?.supervisor_email ||
-    !supervisorDetail?.supervisor_designation ||
-    !supervisorDetail?.supervisor_uni ||
-    !supervisorDetail?.supervisor_department
-  ) {
-    return NextResponse.json({ error: "Missing required supervisor details" }, { status: 400 })
+  // Validate required supervisor fields
+  const requiredSupervisorFields = [
+    "name_of_supervisor",
+    "supervisor_email",
+    "supervisor_designation",
+    "supervisor_uni",
+    "supervisor_department",
+  ];
+
+  for (const field of requiredSupervisorFields) {
+    if (
+      supervisorDetail[field] === undefined ||
+      supervisorDetail[field] === null ||
+      (typeof supervisorDetail[field] === "string" && supervisorDetail[field].trim() === "")
+    ) {
+      return NextResponse.json(
+        { error: `Missing required supervisor field: ${field}` },
+        { status: 400 }
+      );
+    }
   }
 
-  // Validate team members
+  // Validate team members: array with minimum 2 members
   if (!Array.isArray(teamMembers) || teamMembers.length < 2) {
-    return NextResponse.json({ error: "At least two team members are required (leader and member)" }, { status: 400 })
+    return NextResponse.json(
+      { error: "At least two team members are required (leader and member)" },
+      { status: 400 }
+    );
   }
+
+  const requiredMemberFields = [
+    "name",
+    "email",
+    "gender",
+    "university",
+    "degree",
+    "year",
+    "school",
+  ];
 
   for (const [i, member] of teamMembers.entries()) {
-    const requiredFields = ["name", "email", "gender", "university", "degree", "year", "school"]
-    for (const field of requiredFields) {
-      if (!member?.[field]) {
+    for (const field of requiredMemberFields) {
+      if (
+        member[field] === undefined ||
+        member[field] === null ||
+        (typeof member[field] === "string" && member[field].trim() === "")
+      ) {
         return NextResponse.json(
           { error: `Missing required field '${field}' for team member at index ${i}` },
-          { status: 400 },
-        )
+          { status: 400 }
+        );
       }
     }
 
+    // International student must be 'no'
     if (member.international_student !== "no") {
       return NextResponse.json(
-        { error: `Team member at index ${i} must be a national student (international_student = 'no')` },
-        { status: 400 },
-      )
+        {
+          error: `Team member at index ${i} must be a national student (international_student = 'no')`,
+        },
+        { status: 400 }
+      );
     }
   }
 
-  const conn = await db.getConnection()
+  const conn = await db.getConnection();
+
   try {
-    await conn.beginTransaction()
+    await conn.beginTransaction();
 
     // Insert project details
-    const [projectRes] = await conn.execute(
-      `INSERT INTO project_detail (
+    const [projectResult] = await conn.execute(
+      `INSERT INTO domestic_applications (
         idea_name, slogan, startup_domain, startup_domain_other, abstract, unmet_need,
         benefit, how_solution_works, who_are_competitors, entry_date, entry_time,
         status_of_project, publish, shortlist, shortlist_stage2, display_stage2,
@@ -89,13 +127,13 @@ export async function POST(req: NextRequest) {
         projectDetail.who_are_competitors,
         projectDetail.entry_date ?? new Date().toISOString().split("T")[0],
         projectDetail.entry_time ?? new Date().toTimeString().split(" ")[0],
-        projectDetail.status_of_project ?? null,
-        projectDetail.publish ?? 0,
-        projectDetail.shortlist ?? 0,
-        projectDetail.shortlist_stage2 ?? null,
-        projectDetail.display_stage2 ?? null,
-        projectDetail.shortlist_stage3 ?? null,
-        projectDetail.display_stage3 ?? null,
+        projectDetail.status_of_project ?? "new",
+        projectDetail.publish ?? false,
+        projectDetail.shortlist ?? false,
+        projectDetail.shortlist_stage2 ?? false,
+        projectDetail.display_stage2 ?? false,
+        projectDetail.shortlist_stage3 ?? false,
+        projectDetail.display_stage3 ?? false,
         projectDetail.interschool_idea,
         projectDetail.need_expertises,
         projectDetail.project_is_fyp,
@@ -108,15 +146,15 @@ export async function POST(req: NextRequest) {
         projectDetail.prize_won ?? null,
         projectDetail.beneficiary ?? null,
         projectDetail.panel ?? null,
-      ],
-    )
+      ]
+    );
 
-    const projectId = (projectRes as any).insertId
+    const projectId = (projectResult as any).insertId;
 
     // Insert supervisor details
-    const [supervisorRes] = await conn.execute(
-      `INSERT INTO supervisor_detail (
-        project_id, name_of_supervisor, supervisor_email, supervisor_contact_number,
+    const [supervisorResult] = await conn.execute(
+      `INSERT INTO domestic_supervisors (
+        application_id, name_of_supervisor, supervisor_email, supervisor_contact_number,
         supervisor_designation, supervisor_uni, supervisor_uni_school,
         supervisor_department, expertises_detail
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -130,22 +168,22 @@ export async function POST(req: NextRequest) {
         supervisorDetail.supervisor_uni_school ?? supervisorDetail.supervisor_department,
         supervisorDetail.supervisor_department,
         supervisorDetail.expertises_detail ?? null,
-      ],
-    )
+      ]
+    );
 
-    const supervisorId = (supervisorRes as any).insertId
+    const supervisorId = (supervisorResult as any).insertId;
 
     // Insert team members
     for (const member of teamMembers) {
       await conn.execute(
-        `INSERT INTO team_detail (
-          supervisor_id, project_id, name, university, school, year, degree, email,
+        `INSERT INTO domestic_team_members (
+          application_id, supervisor_id, name, university, school, year, degree, email,
           mobile, gender, province, cgpa, other_uni, other_nust_school,
           international_student, internationalcountry, country
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
-          supervisorId,
           projectId,
+          supervisorId,
           member.name,
           member.university,
           member.school,
@@ -159,29 +197,31 @@ export async function POST(req: NextRequest) {
           member.other_uni ?? null,
           member.other_nust_school ?? null,
           "no",
-          null,
+          member.internationalcountry ?? null,
           member.country ?? "Pakistan",
-        ],
-      )
+        ]
+      );
     }
 
-    await conn.commit()
+    await conn.commit();
+
     return NextResponse.json({
       success: true,
-      message: "National student data submitted successfully",
-      projectId,
-    })
+      message: "Domestic application submitted successfully",
+      applicationId: projectId,
+      supervisorId: supervisorId,
+    });
   } catch (error: any) {
-    await conn.rollback()
-    console.error("Error:", error)
+    await conn.rollback();
+    console.error("Error creating domestic application:", error);
     return NextResponse.json(
       {
         error: "Server error during submission",
         details: error.message,
       },
-      { status: 500 },
-    )
+      { status: 500 }
+    );
   } finally {
-    conn.release()
+    conn.release();
   }
 }

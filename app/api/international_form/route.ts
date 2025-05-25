@@ -1,57 +1,72 @@
-import { db } from '@/lib/dbconfig';
-import { NextRequest, NextResponse } from 'next/server';
+import { db } from "@/lib/dbconfig"
+import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
   try {
-    const { projectDetail, supervisorDetail, teamMembers } = await req.json();
+    const { projectDetail, supervisorDetail, teamMembers } = await req.json()
 
-    // ✅ Validate project fields
+    // ✅ Validate project fields - EXACTLY AS IN ORIGINAL
     const requiredProjectFields = [
-      'idea_name', 'slogan', 'startup_domain', 'abstract', 'unmet_need',
-      'how_solution_works', 'who_are_competitors', 'interschool_idea',
-      'need_expertises', 'previously_applied_in_fics', 'project_is_fyp'
-    ];
+      "idea_name",
+      "slogan",
+      "startup_domain",
+      "abstract",
+      "unmet_need",
+      "how_solution_works",
+      "who_are_competitors",
+      "interschool_idea",
+      "need_expertises",
+      "previously_applied_in_fics",
+      "project_is_fyp",
+    ]
     for (const field of requiredProjectFields) {
       if (!projectDetail?.[field]) {
-        return NextResponse.json({ error: `Missing required field: ${field}` }, { status: 400 });
+        return NextResponse.json({ error: `Missing required field: ${field}` }, { status: 400 })
       }
     }
 
-    // ✅ Validate supervisor fields
+    // ✅ Validate supervisor fields - EXACTLY AS IN ORIGINAL
     const requiredSupervisorFields = [
-      'name_of_supervisor', 'supervisor_email', 'supervisor_designation',
-      'supervisor_uni', 'supervisor_uni_school', 'supervisor_department'
-    ];
+      "name_of_supervisor",
+      "supervisor_email",
+      "supervisor_designation",
+      "supervisor_uni",
+      "supervisor_uni_school",
+      "supervisor_department",
+    ]
     for (const field of requiredSupervisorFields) {
       if (!supervisorDetail?.[field]) {
-        return NextResponse.json({ error: `Missing required supervisor field: ${field}` }, { status: 400 });
+        return NextResponse.json({ error: `Missing required supervisor field: ${field}` }, { status: 400 })
       }
     }
 
-    // ✅ Validate team members
+    // ✅ Validate team members - EXACTLY AS IN ORIGINAL
     if (!Array.isArray(teamMembers) || teamMembers.length === 0) {
-      return NextResponse.json({ error: 'At least one team member is required.' }, { status: 400 });
+      return NextResponse.json({ error: "At least one team member is required." }, { status: 400 })
     }
 
     for (const [i, member] of teamMembers.entries()) {
-      const memberFields = ['name', 'email', 'gender', 'university', 'degree', 'year', 'school'];
+      const memberFields = ["name", "email", "gender", "university", "degree", "year", "school"]
       for (const field of memberFields) {
         if (!member?.[field]) {
-          return NextResponse.json({ error: `Missing '${field}' for team member at index ${i}` }, { status: 400 });
+          return NextResponse.json({ error: `Missing '${field}' for team member at index ${i}` }, { status: 400 })
         }
       }
-      if (member.international_student === 'yes' && !member.internationalcountry) {
-        return NextResponse.json({ error: `International student at index ${i} must provide 'internationalcountry'` }, { status: 400 });
+      if (member.international_student === "yes" && !member.internationalcountry) {
+        return NextResponse.json(
+          { error: `International student at index ${i} must provide 'internationalcountry'` },
+          { status: 400 },
+        )
       }
     }
 
-    const conn = await db.getConnection();
+    const conn = await db.getConnection()
     try {
-      await conn.beginTransaction();
+      await conn.beginTransaction()
 
-      // ✅ Insert project
+      // ✅ Insert project - ALL FIELDS FROM ORIGINAL
       const [projectRes] = await conn.execute(
-        `INSERT INTO project_detail (
+        `INSERT INTO international_applications (
           idea_name, slogan, startup_domain, startup_domain_other, abstract, unmet_need,
           benefit, how_solution_works, who_are_competitors, entry_date, entry_time,
           status_of_project, publish, shortlist, shortlist_stage2, display_stage2,
@@ -91,16 +106,16 @@ export async function POST(req: NextRequest) {
           projectDetail.name_of_competition ?? null,
           projectDetail.prize_won ?? null,
           projectDetail.beneficiary ?? null,
-          projectDetail.panel ?? null
-        ]
-      );
+          projectDetail.panel ?? null,
+        ],
+      )
 
-      const projectId = (projectRes as any).insertId;
+      const projectId = (projectRes as any).insertId
 
-      // ✅ Insert supervisor
+      // ✅ Insert supervisor - ALL FIELDS FROM ORIGINAL
       const [supervisorRes] = await conn.execute(
-        `INSERT INTO supervisor_detail (
-          project_id, name_of_supervisor, supervisor_email, supervisor_contact_number,
+        `INSERT INTO international_supervisors (
+          application_id, name_of_supervisor, supervisor_email, supervisor_contact_number,
           supervisor_designation, supervisor_uni, supervisor_uni_school,
           supervisor_department, expertises_detail
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -113,23 +128,23 @@ export async function POST(req: NextRequest) {
           supervisorDetail.supervisor_uni,
           supervisorDetail.supervisor_uni_school,
           supervisorDetail.supervisor_department,
-          supervisorDetail.expertises_detail ?? null
-        ]
-      );
+          supervisorDetail.expertises_detail ?? null,
+        ],
+      )
 
-      const supervisorId = (supervisorRes as any).insertId;
+      const supervisorId = (supervisorRes as any).insertId
 
-      // ✅ Insert team members
+      // ✅ Insert team members - ALL FIELDS FROM ORIGINAL
       for (const member of teamMembers) {
         await conn.execute(
-          `INSERT INTO team_detail (
-            supervisor_id, project_id, name, university, school, year, degree, email,
+          `INSERT INTO international_team_members (
+            application_id, supervisor_id, name, university, school, year, degree, email,
             mobile, gender, province, cgpa, other_uni, other_nust_school,
             international_student, internationalcountry, country
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           [
-            supervisorId,
             projectId,
+            supervisorId,
             member.name,
             member.university,
             member.school,
@@ -142,26 +157,24 @@ export async function POST(req: NextRequest) {
             member.cgpa ?? null,
             member.other_uni ?? null,
             member.other_nust_school ?? null,
-            'yes',
+            "yes",
             member.internationalcountry ?? null,
-            member.country ?? null
-          ]
-        );
+            member.country ?? null,
+          ],
+        )
       }
 
-      await conn.commit();
-      return NextResponse.json({ message: 'International team submitted successfully.' }, { status: 200 });
-
+      await conn.commit()
+      return NextResponse.json({ message: "International team submitted successfully." }, { status: 200 })
     } catch (err) {
-      await conn.rollback();
-      console.error('Error inserting international form:', err);
-      return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
+      await conn.rollback()
+      console.error("Error inserting international form:", err)
+      return NextResponse.json({ error: "Internal server error." }, { status: 500 })
     } finally {
-      conn.release();
+      conn.release()
     }
-
   } catch (error) {
-    console.error('Error parsing request:', error);
-    return NextResponse.json({ error: 'Invalid request body or method.' }, { status: 400 });
+    console.error("Error parsing request:", error)
+    return NextResponse.json({ error: "Invalid request body or method." }, { status: 400 })
   }
 }
