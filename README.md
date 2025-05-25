@@ -37,8 +37,8 @@ To run the project locally or deploy it to production:
 
 1. **Clone the Repository**
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git https://github.com/themohdishaq/fics.git
+cd fics
 ```
 
 2. **Set Environment Variables**

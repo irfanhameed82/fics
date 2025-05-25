@@ -39,13 +39,13 @@ export default function Page() {
           <TabsList className="flex w-full mb-8 bg-white rounded-md shadow-sm">
             <TabsTrigger
               value="National"
-              className="flex-1 py-3 data-[state=active]:bg-[#248ABD] data-[state=active]:text-white"
+              className="flex-1 cursor-pointer py-3 data-[state=active]:bg-[#248ABD] data-[state=active]:text-white"
             >
               National Registration
             </TabsTrigger>
             <TabsTrigger
               value="International"
-              className="flex-1 py-3 data-[state=active]:bg-[#248ABD] data-[state=active]:text-white"
+              className="flex-1 py-3 cursor-pointer data-[state=active]:bg-[#248ABD] data-[state=active]:text-white"
             >
               International Registration
             </TabsTrigger>
