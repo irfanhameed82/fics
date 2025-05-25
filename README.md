@@ -37,7 +37,7 @@ To run the project locally or deploy it to production:
 
 1. **Clone the Repository**
 ```bash
-git https://github.com/themohdishaq/fics.git
+git clone https://github.com/themohdishaq/fics.git
 cd fics
 ```
 
