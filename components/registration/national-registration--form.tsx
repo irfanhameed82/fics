@@ -129,7 +129,7 @@ export default function NationalRegistrationForm() {
         supervisorDetail,
         teamMembers,
       }
-setFormSuccess("Form submitted successfully! Thank you for your registration.")
+
       const response = await fetch("/api/domestic_form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

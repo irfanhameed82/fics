@@ -60,6 +60,7 @@ type InternationalFormState = {
   showOtherCompetition: boolean
   showExpertise: boolean
   setFormField: (field: keyof InternationalFormData | string, value: any) => void
+  updateTeamMember: (id: number, field: keyof TeamMember, value: string) => void
   addTeamMember: () => void
   removeTeamMember: (id: number) => void
   setShowPreviousProject: (show: boolean) => void
@@ -117,6 +118,12 @@ export const useInternationalFormStore = create<InternationalFormState>((set) =>
         ...state.formData,
         [field]: value,
       },
+    })),
+
+  // Update team member field
+  updateTeamMember: (id, field, value) =>
+    set((state) => ({
+      teamMembers: state.teamMembers.map((member) => (member.id === id ? { ...member, [field]: value } : member)),
     })),
 
   // Add a new team member

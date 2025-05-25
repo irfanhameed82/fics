@@ -1,5 +1,8 @@
 "use client"
+
+import type React from "react"
 import { Button } from "@/components/ui/button"
+import { toast } from "react-toastify"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
@@ -7,12 +10,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent } from "@/components/ui/card"
 import { PlusCircle, Trash2 } from "lucide-react"
 import { useInternationalFormStore } from "@/lib/stores/international-form-store"
+import { useState } from "react"
 
 export default function InternationalRegistrationForm() {
   const {
     formData,
     setFormField,
     teamMembers,
+    updateTeamMember,
     addTeamMember,
     removeTeamMember,
     showPreviousProject,
@@ -23,27 +28,206 @@ export default function InternationalRegistrationForm() {
     setShowExpertise,
   } = useInternationalFormStore()
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   // Handle text input changes
-const handleInputChange = (field: string, value: string | Number | boolean) => {
-  setFormField(field, value);
-};
+  const handleInputChange = (field: string, value: string | number | boolean) => {
+    setFormField(field, value)
+  }
+
   // Handle character count for textareas with limits
-  const handleTextAreaChange = (field: string, value: any, maxLength: string | Number) => {
+  const handleTextAreaChange = (field: string, value: string, maxLength: number) => {
     if (value.length <= maxLength) {
       setFormField(field, value)
     }
   }
 
+  // Validate form before submission
+  const validateForm = () => {
+    const errors: string[] = []
+
+    // Required project fields
+    if (!formData.ideaName) errors.push("Idea Name is required")
+    if (!formData.slogan) errors.push("Slogan is required")
+    if (!formData.applicationDomain) errors.push("Application Domain is required")
+    if (!formData.abstract) errors.push("Abstract is required")
+    if (!formData.unmetNeed) errors.push("Unmet Need is required")
+    if (!formData.solution) errors.push("Solution description is required")
+    if (!formData.competitors) errors.push("Competitors information is required")
+    if (!formData.multiDiscipline) errors.push("Multi-discipline selection is required")
+    if (!formData.needExpertise) errors.push("Expertise need selection is required")
+    if (!formData.previouslyApplied) errors.push("Previous FICS application status is required")
+    if (!formData.isFYP) errors.push("FYP status is required")
+
+    // Required supervisor fields
+    if (!formData.supervisorName) errors.push("Supervisor Name is required")
+    if (!formData.supervisorEmail) errors.push("Supervisor Email is required")
+    if (!formData.designation) errors.push("Supervisor Designation is required")
+    if (!formData.university) errors.push("University is required")
+    if (!formData.department) errors.push("Department is required")
+
+    // Validate team members
+    if (teamMembers.length < 2) {
+      errors.push("At least 2 team members are required")
+    }
+
+    teamMembers.forEach((member, index) => {
+      if (!member.name) errors.push(`Team member ${index + 1}: Name is required`)
+      if (!member.email) errors.push(`Team member ${index + 1}: Email is required`)
+      if (!member.gender) errors.push(`Team member ${index + 1}: Gender is required`)
+      if (!member.university) errors.push(`Team member ${index + 1}: University is required`)
+      if (!member.degree) errors.push(`Team member ${index + 1}: Degree is required`)
+      if (!member.year) errors.push(`Team member ${index + 1}: Year is required`)
+      if (!member.department) errors.push(`Team member ${index + 1}: Department is required`)
+      if (!member.country) errors.push(`Team member ${index + 1}: Country is required`)
+    })
+
+    return errors
+  }
+
   // Handle form submission
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const response = await fetch('/api/international_form', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  });
-  return response.json();
-};
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    // Validate form
+    const errors = validateForm()
+    if (errors.length > 0) {
+      toast.error(`Please fix the following errors:\n${errors.join("\n")}`)
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      console.log("=== FORM SUBMISSION DEBUG ===")
+      console.log("Form Data:", formData)
+      console.log("Team Members:", teamMembers)
+
+      // Map form data to API expected format
+      const projectDetail = {
+        idea_name: formData.ideaName,
+        slogan: formData.slogan,
+        startup_domain: formData.applicationDomain,
+        startup_domain_other: null,
+        abstract: formData.abstract,
+        unmet_need: formData.unmetNeed,
+        benefit: formData.beneficiaries || null,
+        how_solution_works: formData.solution,
+        who_are_competitors: formData.competitors,
+        entry_date: new Date().toISOString().split("T")[0],
+        entry_time: new Date().toTimeString().split(" ")[0],
+        status_of_project: null,
+        publish: false,
+        shortlist: false,
+        shortlist_stage2: null,
+        display_stage2: null,
+        shortlist_stage3: null,
+        display_stage3: null,
+        interschool_idea: formData.multiDiscipline,
+        need_expertises: formData.needExpertise,
+        project_is_fyp: formData.isFYP,
+        previously_applied_in_fics: formData.previouslyApplied,
+        previously_participating_year: formData.previousYear || null,
+        previously_applied_project_title: formData.previousTitle || null,
+        previously_stage_reached: formData.previousStage || null,
+        participate_in_other_competition: formData.otherCompetition || null,
+        name_of_competition: formData.competitionName || null,
+        prize_won: formData.prizeWon || null,
+        beneficiary: formData.beneficiaries || null,
+        panel: null,
+      }
+
+      const supervisorDetail = {
+        name_of_supervisor: formData.supervisorName,
+        supervisor_email: formData.supervisorEmail,
+        supervisor_contact_number: formData.supervisorContact || null,
+        supervisor_designation: formData.designation,
+        supervisor_uni: formData.university,
+        supervisor_uni_school: formData.department,
+        supervisor_department: formData.department,
+        expertises_detail: null,
+      }
+
+      const teamMembersFormatted = teamMembers.map((member) => ({
+        name: member.name,
+        university: member.university,
+        school: member.department,
+        year: member.year,
+        degree: member.degree,
+        email: member.email,
+        mobile: member.mobile || null,
+        gender: member.gender,
+        province: null,
+        cgpa: member.cgpa || null,
+        other_uni: null,
+        other_nust_school: null,
+        international_student: "yes",
+        internationalcountry: member.country,
+        country: member.country,
+      }))
+
+      const payload = {
+        projectDetail,
+        supervisorDetail,
+        teamMembers: teamMembersFormatted,
+      }
+
+      console.log("=== PAYLOAD TO SEND ===")
+      console.log("Project Detail:", projectDetail)
+      console.log("Supervisor Detail:", supervisorDetail)
+      console.log("Team Members:", teamMembersFormatted)
+      console.log("Full Payload:", JSON.stringify(payload, null, 2))
+
+      const response = await fetch("/api/international_form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+
+      console.log("=== RESPONSE DEBUG ===")
+      console.log("Response status:", response.status)
+      console.log("Response ok:", response.ok)
+      console.log("Response headers:", Object.fromEntries(response.headers.entries()))
+
+      const responseText = await response.text()
+      console.log("Raw response text:", responseText)
+
+      let data
+      try {
+        data = JSON.parse(responseText)
+        console.log("Parsed response data:", data)
+      } catch (parseError) {
+        console.error("Failed to parse response as JSON:", parseError)
+        console.error("Response was:", responseText)
+        throw new Error(
+          `Server returned invalid JSON. Status: ${response.status}. Response: ${responseText.substring(0, 200)}...`,
+        )
+      }
+
+      if (!response.ok) {
+        throw new Error(data.error || `HTTP ${response.status}: ${data.message || "Unknown error"}`)
+      }
+
+      toast.success("Form submitted successfully!")
+      console.log("=== SUCCESS ===")
+      console.log("Success response:", data)
+
+      // Reset form after successful submission
+      window.location.reload()
+    } catch (error) {
+      console.error("=== SUBMISSION ERROR ===")
+      console.error("Error details:", error)
+      console.error("Error message:", (error as Error).message)
+      console.error("Error stack:", (error as Error).stack)
+      toast.error(`Error: ${(error as Error).message}`)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <Card className="border-0 shadow-md">
       <CardContent className="p-6">
@@ -125,7 +309,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                         Previously participating year
                       </Label>
                       <Select
-                        value={formData.previousYear}
+                        value={formData.previousYear || ""}
                         onValueChange={(value) => handleInputChange("previousYear", value)}
                       >
                         <SelectTrigger>
@@ -133,8 +317,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                         </SelectTrigger>
                         <SelectContent>
                           {[...Array(10)].map((_, i) => (
-                            <SelectItem key={i} value={`${2023 - i}`}>
-                              {2023 - i}
+                            <SelectItem key={i} value={`${2024 - i}`}>
+                              {2024 - i}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -147,7 +331,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Label>
                       <Input
                         id="int-previous-title"
-                        value={formData.previousTitle}
+                        value={formData.previousTitle || ""}
                         onChange={(e) => handleInputChange("previousTitle", e.target.value)}
                       />
                     </div>
@@ -158,7 +342,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Label>
                       <Input
                         id="int-previous-stage"
-                        value={formData.previousStage}
+                        value={formData.previousStage || ""}
                         onChange={(e) => handleInputChange("previousStage", e.target.value)}
                       />
                     </div>
@@ -242,7 +426,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Label>
                       <Input
                         id="int-competition-name"
-                        value={formData.competitionName}
+                        value={formData.competitionName || ""}
                         onChange={(e) => handleInputChange("competitionName", e.target.value)}
                       />
                     </div>
@@ -253,7 +437,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Label>
                       <Input
                         id="int-prize-won"
-                        value={formData.prizeWon}
+                        value={formData.prizeWon || ""}
                         onChange={(e) => handleInputChange("prizeWon", e.target.value)}
                       />
                     </div>
@@ -303,7 +487,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <Input
                     id="int-expertise-needed"
                     maxLength={50}
-                    value={formData.expertiseNeeded}
+                    value={formData.expertiseNeeded || ""}
                     onChange={(e) => handleInputChange("expertiseNeeded", e.target.value)}
                   />
                   <div className="mt-1 text-xs text-right text-gray-500">
@@ -357,21 +541,29 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <SelectContent>
                     <SelectItem value="no-poverty">No Poverty</SelectItem>
                     <SelectItem value="zero-hunger">Zero Hunger</SelectItem>
-                    <SelectItem value="good-health">Good Health and Well-being</SelectItem>
+                    <SelectItem value="good-health-and-well-being">Good Health and Well-being</SelectItem>
                     <SelectItem value="quality-education">Quality Education</SelectItem>
                     <SelectItem value="gender-equality">Gender Equality</SelectItem>
-                    <SelectItem value="clean-water">Clean Water and Sanitation</SelectItem>
-                    <SelectItem value="affordable-energy">Affordable and Clean Energy</SelectItem>
-                    <SelectItem value="economic-growth">Decent Work and Economic Growth</SelectItem>
-                    <SelectItem value="industry-innovation">Industry, Innovation and Infrastructure</SelectItem>
+                    <SelectItem value="clean-water-and-sanitation">Clean Water and Sanitation</SelectItem>
+                    <SelectItem value="affordable-and-clean-energy">Affordable and Clean Energy</SelectItem>
+                    <SelectItem value="decent-work-and-economic-growth">Decent Work and Economic Growth</SelectItem>
+                    <SelectItem value="industry-innovation-and-infrastructure">
+                      Industry, Innovation and Infrastructure
+                    </SelectItem>
                     <SelectItem value="reduced-inequalities">Reduced Inequalities</SelectItem>
-                    <SelectItem value="sustainable-cities">Sustainable Cities and Communities</SelectItem>
-                    <SelectItem value="responsible-consumption">Responsible Consumption and Production</SelectItem>
+                    <SelectItem value="sustainable-cities-and-communities">
+                      Sustainable Cities and Communities
+                    </SelectItem>
+                    <SelectItem value="responsible-consumption-and-production">
+                      Responsible Consumption and Production
+                    </SelectItem>
                     <SelectItem value="climate-action">Climate Action</SelectItem>
                     <SelectItem value="life-below-water">Life Below Water</SelectItem>
                     <SelectItem value="life-on-land">Life on Land</SelectItem>
-                    <SelectItem value="peace-justice">Peace, Justice and Strong Institutions</SelectItem>
-                    <SelectItem value="partnerships">Partnerships for the Goals</SelectItem>
+                    <SelectItem value="peace-justice-and-strong-institutions">
+                      Peace, Justice and Strong Institutions
+                    </SelectItem>
+                    <SelectItem value="partnerships-for-the-goals">Partnerships for the Goals</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -603,33 +795,27 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <Label htmlFor={`int-member${member.id}-name`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-name`} className="block mb-2">
                         Name*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-name`}
+                        id={`member${member.id}-name`}
                         value={member.name || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, name: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "name", e.target.value)}
+                        required
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor={`int-member${member.id}-gender`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-gender`} className="block mb-2">
                         Gender*
                       </Label>
                       <Select
-                        value={member.gender || "female"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, gender: value } : m)),
-                          ])
-                        }
+                        value={member.gender || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "gender", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-gender`}>
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
                         <SelectContent>
@@ -643,115 +829,96 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <Label htmlFor={`int-member${member.id}-email`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-email`} className="block mb-2">
                         Email*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-email`}
+                        id={`member${member.id}-email`}
                         type="email"
                         value={member.email || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, email: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "email", e.target.value)}
+                        required
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor={`int-member${member.id}-mobile`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-mobile`} className="block mb-2">
                         Mobile #*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-mobile`}
+                        id={`member${member.id}-mobile`}
                         value={member.mobile || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, mobile: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "mobile", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <Label htmlFor={`int-member${member.id}-cgpa`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-cgpa`} className="block mb-2">
                         CGPA*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-cgpa`}
+                        id={`member${member.id}-cgpa`}
                         value={member.cgpa || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, cgpa: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "cgpa", e.target.value)}
+                        required
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor={`int-member${member.id}-university`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-university`} className="block mb-2">
                         University Name with City*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-university`}
+                        id={`member${member.id}-university`}
                         value={member.university || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, university: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "university", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <Label htmlFor={`int-member${member.id}-department`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-department`} className="block mb-2">
                         Department/School Name*
                       </Label>
                       <Input
-                        id={`int-member${member.id}-department`}
+                        id={`member${member.id}-department`}
                         value={member.department || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, department: e.target.value } : m)),
-                          ])
-                        }
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor={`int-member${member.id}-country`} className="block mb-2">
-                        Country*
-                      </Label>
-                      <Input
-                        id={`int-member${member.id}-country`}
-                        value={member.country || ""}
-                        onChange={(e) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, country: e.target.value } : m)),
-                          ])
-                        }
+                        onChange={(e) => updateTeamMember(member.id, "department", e.target.value)}
+                        required
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <Label htmlFor={`int-member${member.id}-degree`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-country`} className="block mb-2">
+                        Country*
+                      </Label>
+                      <Input
+                        id={`member${member.id}-country`}
+                        value={member.country || ""}
+                        onChange={(e) => updateTeamMember(member.id, "country", e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div>
+                      <Label htmlFor={`member${member.id}-degree`} className="block mb-2">
                         Degree*
                       </Label>
                       <Select
-                        value={member.degree || "undergraduate"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, degree: value } : m)),
-                          ])
-                        }
+                        value={member.degree || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "degree", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-degree`}>
                           <SelectValue placeholder="Select degree" />
                         </SelectTrigger>
                         <SelectContent>
@@ -762,18 +929,15 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor={`int-member${member.id}-year`} className="block mb-2">
+                      <Label htmlFor={`member${member.id}-year`} className="block mb-2">
                         Year of Study*
                       </Label>
                       <Select
-                        value={member.year || "fourth"}
-                        onValueChange={(value) =>
-                          setFormField("teamMembers", [
-                            ...teamMembers.map((m) => (m.id === member.id ? { ...m, year: value } : m)),
-                          ])
-                        }
+                        value={member.year || ""}
+                        onValueChange={(value) => updateTeamMember(member.id, "year", value)}
+                        required
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={`member${member.id}-year`}>
                           <SelectValue placeholder="Select year" />
                         </SelectTrigger>
                         <SelectContent>
@@ -781,6 +945,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                           <SelectItem value="second">Second</SelectItem>
                           <SelectItem value="third">Third</SelectItem>
                           <SelectItem value="fourth">Fourth</SelectItem>
+                          <SelectItem value="final">Final</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -800,8 +965,12 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
             {/* Submit Button */}
             <div className="flex justify-center mt-8">
-              <Button type="submit" className="bg-[#248ABD] hover:bg-[#1a6d94] px-8 py-2 text-lg">
-                Submit Registration
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-[#248ABD] hover:bg-[#1a6d94] px-8 py-2 text-lg"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Registration"}
               </Button>
             </div>
           </div>
