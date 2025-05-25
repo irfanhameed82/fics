@@ -11,7 +11,7 @@ DB_HOST=your_database_host
 DB_USER=your_database_user
 DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
-DB_PORT = port_number
+DB_PORT=your_database_port
 ```
 
 ---
@@ -32,7 +32,7 @@ These videos are accessed via their **Cloudinary links**.
 
 ### 3. Getting Started (Installation & Setup)
 
-To run the project locally or deploy to production:
+To run the project locally or deploy it to production:
 
 1. **Clone the Repository**
 ```bash
@@ -41,7 +41,7 @@ cd <project-folder>
 ```
 
 2. **Set Environment Variables**
-   - Add `.env.local` file with appropriate keys as described above.
+   - Add a `.env.local` file with appropriate keys as described above.
 
 3. **Install Dependencies**
 ```bash
@@ -63,8 +63,7 @@ npm run build
 ## 🔧 Notes
 
 - Ensure Node.js and npm are installed in your environment.
-- Cloudinary credentials and access URLs should be kept secure.
-- For deployment, refer to the hosting provider's specific documentation (e.g., Vercel, Netlify, etc.).
+- Videos will be provided for storage in your environment. For now, due to GitHub limitations, they are stored in the **"ishaq" Cloudinary account**.
 
 ---
 
@@ -73,4 +72,5 @@ For any questions or clarifications, please feel free to reach out.
 ---
 
 **Project by:** Muhammad Ishaq  
-**Technologies:** Next.js, MySQL, Cloudinary, Node.js, Typescript, Tailwindcss, Shadcnn
+**Email:** muhammadishaq@mohdishaq.com  
+**Technologies:** Next.js, MySQL, Cloudinary, Node.js, TypeScript, Tailwind CSS, Shadcn
