@@ -172,12 +172,6 @@ export default function InternationalRegistrationForm() {
         teamMembers: teamMembersFormatted,
       }
 
-      console.log("=== PAYLOAD TO SEND ===")
-      console.log("Project Detail:", projectDetail)
-      console.log("Supervisor Detail:", supervisorDetail)
-      console.log("Team Members:", teamMembersFormatted)
-      console.log("Full Payload:", JSON.stringify(payload, null, 2))
-
       const response = await fetch("/api/international_form", {
         method: "POST",
         headers: {
@@ -187,41 +181,22 @@ export default function InternationalRegistrationForm() {
         body: JSON.stringify(payload),
       })
 
-      console.log("=== RESPONSE DEBUG ===")
-      console.log("Response status:", response.status)
-      console.log("Response ok:", response.ok)
-      console.log("Response headers:", Object.fromEntries(response.headers.entries()))
 
       const responseText = await response.text()
-      console.log("Raw response text:", responseText)
+   
 
-      let data
-      try {
-        data = JSON.parse(responseText)
-        console.log("Parsed response data:", data)
-      } catch (parseError) {
-        console.error("Failed to parse response as JSON:", parseError)
-        console.error("Response was:", responseText)
-        throw new Error(
-          `Server returned invalid JSON. Status: ${response.status}. Response: ${responseText.substring(0, 200)}...`,
-        )
-      }
+      let data = JSON.parse(responseText)
+       
 
       if (!response.ok) {
         throw new Error(data.error || `HTTP ${response.status}: ${data.message || "Unknown error"}`)
       }
 
       toast.success("Form submitted successfully!")
-      console.log("=== SUCCESS ===")
-      console.log("Success response:", data)
-
-      // Reset form after successful submission
-      window.location.reload()
+   
+  
     } catch (error) {
-      console.error("=== SUBMISSION ERROR ===")
-      console.error("Error details:", error)
-      console.error("Error message:", (error as Error).message)
-      console.error("Error stack:", (error as Error).stack)
+
       toast.error(`Error: ${(error as Error).message}`)
     } finally {
       setIsSubmitting(false)
