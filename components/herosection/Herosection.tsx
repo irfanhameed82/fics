@@ -133,7 +133,7 @@ export default function HeroSection() {
               )}
               <video
                 ref={videoRef}
-                className="object-cover w-full h-full"
+                className="object-fill w-full h-full"
                 playsInline
                 loop
                 muted={isMuted}
