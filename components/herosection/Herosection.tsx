@@ -89,12 +89,12 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#47a196] to-[#00547E]">
+    <section className="relative w-full bg-gradient-to-b from-[#47a196] to-[#00547E]">
       {/* Main Content */}
-      <div className="relative flex w-full">
-        <div className="grid w-full grid-cols-1 max-w-7xl lg:grid-cols-2">
+      <div className="relative flex py-8 lg:py-16 ">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-8 px-4">
           {/* Left Column - Text Content */}
-          <div className="flex flex-col items-center px-4 py-4 sm:py-16 md:py-24">
+          <div className="flex w-full flex-col items-center justify-center px-4 ">
             <div className="max-w-lg text-center lg:text-left">
               <h1 className="mb-4 text-2xl font-bold tracking-tight text-white md:text-4xl">
                 Transforming Ideas Into
@@ -124,8 +124,8 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Video */}
-          <div className="flex px-4 py-4 sm:py-4 md:py-12">
-            <div className="relative w-full max-w-2xl overflow-hidden rounded-lg aspect-video">
+          <div className="flex items-center justify-center ">
+            <div className="relative w-full   aspect-video">
               {!isVideoLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-[#0d3b4f]">
                   <div className="w-10 h-10 border-4 border-white rounded-full border-t-transparent animate-spin"></div>
@@ -145,8 +145,7 @@ export default function HeroSection() {
                   type="video/mp4" 
                 />
               </video>
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0d3b4f]/20 to-transparent rounded-lg"></div>
-
+              
               <button
                 onClick={toggleMute}
                 className="absolute z-20 p-2 transition-colors rounded-full bg-black/30 backdrop-blur-sm bottom-4 right-4 hover:bg-black/50"
@@ -158,10 +157,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Background decorative elements */}
-      <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#7eeee2]/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-[#7eeee2]/10 rounded-full blur-3xl"></div>
 
       {/* Event Modal */}
       <Dialog open={selectedEvent !== null} onOpenChange={open => !open && closeEventModal()}>
