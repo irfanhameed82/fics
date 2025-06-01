@@ -169,7 +169,7 @@ export default function FicsAtGlance() {
                 {/* Icon Circle */}
                 <div className="flex items-center justify-center mb-4 text-white bg-gradient-to-b from-[#3BB0A1] to-[#00547E] rounded-full w-25 h-25 ">
                   <Image
-                    src={card.icon || "/placeholder.svg"}
+                    src={card.icon}
                     alt={card.title}
                     width={40}
                     height={40}
@@ -181,7 +181,7 @@ export default function FicsAtGlance() {
                 <h3 className="mb-2 text-lg font-semibold text-gray-900 sm:text-2xl">{card.title}</h3>
 
                 {/* Description */}
-                <p className="text-sm sm:text-gray-080 text-md">{card.description}</p>
+                <p className="text-sm sm:text-gray-800 text-md">{card.description}</p>
               </div>
             </div>
           ))}

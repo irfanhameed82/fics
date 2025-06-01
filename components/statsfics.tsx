@@ -87,16 +87,16 @@ export default function StatisticsFics() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center justify-center px-4 py-1.5 mb-4  text-md font-medium rounded-full bg-blue-50 text-[#393e41]"
+            className="inline-flex items-center justify-center px-4 py-1.5 mb-4  text-3xl font-semibold rounded-full bg-blue-50 text-[#393e41]"
           >
-            OUR IMPACT
+            Our Impact
           </motion.div>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-3xl mx-auto  text-md text-gray-600"
+            className="max-w-3xl mx-auto  text-md text-gray-900 "
           >
             FICS has been at the forefront of fostering innovation and entrepreneurship among university students. Our
             platform has enabled thousands of ideas to transform into impactful projects addressing real-world
@@ -148,7 +148,7 @@ export default function StatisticsFics() {
                 />
 
                 <motion.p
-                  className="text-sm font-normal text-gray-600"
+                  className="text-sm font-normal text-gray-800"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}

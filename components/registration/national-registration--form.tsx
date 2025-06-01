@@ -646,7 +646,9 @@ export default function NationalRegistrationForm() {
               <a href="/nust-contacts" className="text-blue-600 hover:underline">
                 school's representatives for FICS
               </a>{" "}
-              or FICS Core Team.
+              or   <a href="/nust-organizers" className="text-blue-600 hover:underline">
+              FICS Core Team.
+              </a>
             </p>
 
             <div className="space-y-4">

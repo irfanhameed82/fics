@@ -4,7 +4,7 @@ import React from 'react';
 const MarqueeBanner: React.FC = () => {
   return (
     <div className="w-full h-12 bg-[#00547E] overflow-hidden flex items-center">
-      <div className="whitespace-nowrap animate-marquee">
+      <div className="whitespace-nowrap animate-marquee ">
         <span className="inline-block px-6 text-white">
             FICS Junior 2025{' '}
           <a
@@ -36,6 +36,9 @@ const MarqueeBanner: React.FC = () => {
         .animate-marquee {
           display: inline-block;
           animation: marquee 15s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
         }
       `}</style>
     </div>

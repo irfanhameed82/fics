@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import Link from "next/link"
-import { ArrowRight, Play, Pause } from "lucide-react"
 
 export default function SuccessStoriesSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -55,7 +53,7 @@ export default function SuccessStoriesSection() {
           <h1 className="mb-2 text-3xl font-semibold text-black md:text-4xl">Success Stories</h1>
           <h2 className="mb-6 text-xl text-gray-900">Finding Innovative & Creative Solutions</h2>
 
-          <div className="space-y-4 text-gray-800">
+          <div className="space-y-4 text-gray-900">
             <p>
               FICS promotes entrepreneurship and innovation by allowing participants to address the most pressing social
               and environmental issues at the core of society. More than an annual competition, FICS has proven to be a
@@ -87,20 +85,6 @@ export default function SuccessStoriesSection() {
                 <source  src="https://res.cloudinary.com/dxh8rsy7p/video/upload/v1746813977/FICS_NUST_Islamabad_success_full_stories_zni8tp.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-
-              {/* Custom play/pause button */}
-              {/* <button
-                onClick={togglePlayPause}
-                className="absolute inset-0 flex items-center justify-center transition-colors bg-black/30 hover:bg-black/40"
-              >
-                <div className="p-4 rounded-full shadow-lg bg-white/90">
-                  {isPlaying ? (
-                    <Pause className="h-8 w-8 text-[#2980b9]" />
-                  ) : (
-                    <Play className="h-8 w-8 text-[#2980b9] ml-1" />
-                  )}
-                </div>
-              </button> */}
             </>
           )}
         </div>

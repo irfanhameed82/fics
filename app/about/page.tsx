@@ -20,10 +20,10 @@ export default function Page() {
                 <Globe className="w-4 h-4 mr-2" />
                 Global Innovation Platform
               </div>
-              <h1 className="text-3xl font-semibold tracking-wide text-[#0D0D0D] sm:text-5xl md:text-6xl">
+              <h1 className="text-2xl font-semibold tracking-wide text-[#0D0D0D] sm:text-4xl md:text-5xl">
                 About FICS
               </h1>
-              <p className="text-lg font-medium text-slate-700">
+              <p className="text-lg leading-relaxed text-slate-700">
                 Finding Innovative & Creative Solutions for a sustainable future
               </p>
               <div className="flex flex-wrap gap-4">
@@ -42,6 +42,7 @@ export default function Page() {
                   src="/ficsimage.jpg"
                   alt="FICS Global Innovation"
                   fill
+                  
                   className="object-cover"
                   priority
                 />

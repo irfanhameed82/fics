@@ -47,11 +47,15 @@ const studentTestimonials = [
 
 const TestimonialsPage: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto py-12 px-4">
-      <h1 className="text-4xl font-bold text-center mb-12">Testimonials</h1>
+    <div className="w-full">
+      <div className="relative h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex items-center justify-center mb-10">
+        <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
+          Testimonials
+        </h1>
+      </div>
 
       {/* Industry Section */}
-      <section className="mb-16 relative">
+      <section className="mb-16 relative max-w-4xl mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-4">What the Industry Says</h2>
         <p className="text-gray-700 mb-6">
           FICS has emerged as a dynamic platform that bridges the gap between academia and industry.
@@ -82,7 +86,7 @@ const TestimonialsPage: React.FC = () => {
       </section>
 
       {/* Student Section */}
-      <section className="relative">
+      <section className="relative max-w-4xl mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-4">What our Students Say?</h2>
         <p className="text-gray-700 mb-6">
           FICS is a journey of discovery, growth, and real-world impact. For students, it's more than just a

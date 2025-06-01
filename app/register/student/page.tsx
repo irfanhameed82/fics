@@ -30,8 +30,8 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative py-8 bg-[#2980b9] flex items-center justify-center mb-5">
-        <h1 className="text-3xl font-semibold text-white sm:text-4xl">Registration</h1>
+      <div className="relative py-8 bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex items-center justify-center mb-5">
+        <h1 className="text-3xl font-semibold tracking-wider text-white sm:text-4xl">Registration</h1>
       </div>
       {/* Tabs Section */}
       <div className="container px-4 pb-16 mx-auto">
@@ -53,11 +53,17 @@ export default function Page() {
 
           {/* National Registration Form */}
           <TabsContent value="National">
+            <h2 className="mb-4 text-2xl font-semibold text-center text-gray-800">
+              National Registration Form
+            </h2>
             <NationalRegistrationForm />
           </TabsContent>
 
           {/* International Registration Form */}
           <TabsContent value="International">
+            <h2 className="mb-4 text-2xl font-semibold text-center text-gray-800">
+              International Registration Form
+            </h2>
             <InternationalRegistrationForm />
           </TabsContent>
         </Tabs>

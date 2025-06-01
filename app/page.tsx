@@ -1,12 +1,9 @@
 import Event from "@/components/event/event";
 import FicsAtGlance from "@/components/FicsAtGlance";
-import Timeline from "@/components/GenesisofFics";
 import HeroSection from "@/components/herosection/Herosection";
 import Partners from "@/components/partners/partners";
-import StatisticsSection from "@/components/statistics";
 import StatisticsFics from "@/components/statsfics";
 import SuccessStoriesSection from "@/components/successstories";
-
 
 export default function Home() {
   return (
@@ -19,9 +16,7 @@ export default function Home() {
       <Event/>
       </section>
       <SuccessStoriesSection/>
-
       <Partners/>
-      {/* <StatisticsSection/> */}
       </div>
     </div>
   );

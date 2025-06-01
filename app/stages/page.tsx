@@ -68,7 +68,7 @@ export default function Stage() {
             <div
            >
             <Image
-                src="/stages-banner_colore.jpg"
+                src="/stages-banner_colored_final.jpg"
                 alt="Stage 1"
                 width={500}
                 height={500}

@@ -481,10 +481,11 @@ export default function InternationalRegistrationForm() {
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
                   <Label htmlFor="int-idea-name" className="block mb-2">
-                    Idea Name (max two words)*
+                    Idea Name *
                   </Label>
                   <Input
                     id="int-idea-name"
+                    required
                     value={formData.ideaName}
                     onChange={(e) => handleInputChange("ideaName", e.target.value)}
                   />
@@ -492,10 +493,11 @@ export default function InternationalRegistrationForm() {
 
                 <div>
                   <Label htmlFor="int-slogan" className="block mb-2">
-                    Slogan (max five words)*
+                    Slogan (max 10 words)*
                   </Label>
                   <Input
                     id="int-slogan"
+                    required
                     value={formData.slogan}
                     onChange={(e) => handleInputChange("slogan", e.target.value)}
                   />
@@ -550,6 +552,7 @@ export default function InternationalRegistrationForm() {
                 <Textarea
                   id="int-description"
                   className="min-h-[80px]"
+                  required
                   value={formData.description}
                   onChange={(e) => handleInputChange("description", e.target.value)}
                 />
@@ -563,6 +566,7 @@ export default function InternationalRegistrationForm() {
                   id="int-abstract"
                   className="min-h-[80px]"
                   maxLength={400}
+                  required
                   value={formData.abstract}
                   onChange={(e) => handleTextAreaChange("abstract", e.target.value, 400)}
                 />
@@ -577,6 +581,7 @@ export default function InternationalRegistrationForm() {
                   id="int-unmet-need"
                   className="min-h-[80px]"
                   maxLength={300}
+                  required
                   value={formData.unmetNeed}
                   onChange={(e) => handleTextAreaChange("unmetNeed", e.target.value, 300)}
                 />
@@ -591,6 +596,7 @@ export default function InternationalRegistrationForm() {
                   id="int-beneficiaries"
                   className="min-h-[80px]"
                   maxLength={300}
+                  required
                   value={formData.beneficiaries}
                   onChange={(e) => handleTextAreaChange("beneficiaries", e.target.value, 300)}
                 />
@@ -607,6 +613,7 @@ export default function InternationalRegistrationForm() {
                   className="min-h-[80px]"
                   maxLength={500}
                   value={formData.solution}
+                  required
                   onChange={(e) => handleTextAreaChange("solution", e.target.value, 500)}
                 />
                 <div className="mt-1 text-xs text-right text-gray-500">{formData.solution?.length || 0}/500</div>
@@ -635,6 +642,8 @@ export default function InternationalRegistrationForm() {
                   id="int-competitors"
                   className="min-h-[80px]"
                   maxLength={300}
+
+                  required
                   value={formData.competitors}
                   onChange={(e) => handleTextAreaChange("competitors", e.target.value, 300)}
                 />
@@ -649,15 +658,16 @@ export default function InternationalRegistrationForm() {
             <p className="mb-4 text-sm text-red-500">
               Please fill the form carefully, after your form is submitted, no changes can be made
             </p>
-            <p className="mb-4 text-sm">
+           <p className="mb-4 text-sm">
               <span className="font-medium">Note:</span> Having a faculty supervisor is mandatory. In case you don't
               have a supervisor, contact your{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="/global-contacts" className="text-blue-600 hover:underline">
                 school's representatives for FICS
               </a>{" "}
-              or FICS Core Team.
-            </p>
-
+              or   <a href="/nust-organizers" className="text-blue-600 hover:underline">
+              FICS Core Team.
+              </a>
+            </p> 
             <div className="space-y-4">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>

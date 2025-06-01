@@ -32,16 +32,18 @@ const coordinators = [
 
 export default function CoordinatorsPage() {
   return (
-    <div>
          <div className="pb-5 bg-white">
              <div className="relative  h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex flex-col items-center justify-center mb-5">
         <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
 International Contacts
 </h1>
-<p className="text">
-  Connect with regional coordinators and partner universities worldwide who can assist international participants.
-</p>
       </div>
+      <div className="container px-4 mx-auto">
+        <p className="flex justify-center items-center mb-6 text-lg text-gray-900">
+    
+  Connect with regional coordinators and partner universities worldwide who can assist international participants.
+
+        </p>
       </div>
     
     <div className="container grid grid-cols-1 gap-6 p-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">

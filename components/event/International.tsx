@@ -43,6 +43,7 @@ export default function International() {
           date={event.date}
           month={event.month}
           description={event.description}
+          detail={event.detail}
         />
       ))}
     </div>
@@ -72,11 +73,11 @@ function EventCard({ image, title, date, description, month, detail }: EventCard
           </div>
           <div className="flex-1">
             <h3 className="mb-1 text-lg font-semibold">{title}</h3>
-            <p className="mb-3 text-sm opacity-90">{description}</p>
+            <p className="mb-3 text-sm">{description}</p>
             {detail && (
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full cursor-pointer text-gray-800">
+                  <Button variant="secondary" className="w-full cursor-pointer text-gray-800">
                     Read more
                   </Button>
                 </DialogTrigger>

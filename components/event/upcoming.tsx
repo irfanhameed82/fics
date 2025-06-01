@@ -87,7 +87,7 @@ function EventCard({ image, title, date, description, month, details}: EventCard
   return (
     <div className="overflow-hidden border border-gray-200 rounded-lg shadow-sm">
       <div className="relative w-full h-48">
-        <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        <Image src={image} alt={title} fill className="object-cover" />
       </div>
       <div className="bg-gradient-to-b from-[#3BB0A1] to-[#00547E] text-white p-4 h-full">
         <div className="flex items-start gap-3">
@@ -97,11 +97,11 @@ function EventCard({ image, title, date, description, month, details}: EventCard
           </div>
           <div className="flex-1">
             <h3 className="mb-1 text-lg font-semibold">{title}</h3>
-            <p className="mb-3 text-sm opacity-90">{description}</p>
+            <p className="mb-3 text-sm">{description}</p>
             {details && (
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full cursor-pointer text-gray-800">
+                  <Button variant="secondary" className="w-full  cursor-pointer text-gray-800">
                     Read more
                   </Button>
                 </DialogTrigger>

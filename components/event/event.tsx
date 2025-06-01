@@ -62,16 +62,16 @@ export default function Event() {
             </TabsTrigger>
         </TabsList>
 
-
+<TabsContent value="Upcoming">
+          <UpcomingEvents/>
+        </TabsContent>
         <TabsContent value="Pakistan">
         <Pakistan />
         </TabsContent>
         <TabsContent value="International">
           <International />
         </TabsContent>
-          <TabsContent value="Upcoming">
-          <UpcomingEvents/>
-        </TabsContent>
+          
       </Tabs>
     </div>
   )

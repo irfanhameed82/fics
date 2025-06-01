@@ -2,7 +2,7 @@
 "use client"
 import React from 'react';
 import { motion } from "framer-motion"
-import { Code, Lightbulb, Users, Briefcase, Globe, LightbulbIcon } from "lucide-react"
+import { Code, Lightbulb, Users, Briefcase, Globe, LightbulbIcon, Rocket } from "lucide-react"
 
 export function Objectives() {
   const objectives = [
@@ -36,14 +36,14 @@ export function Objectives() {
     },
     {
       id: 5,
-      icon: <Globe className="w-5 h-5" />,
+      icon: <Rocket className="w-5 h-5" />,
       title: "Entrepreneurial Culture",
       description:
         "To foster an entrepreneurial culture nationally and internationally; a culture that supports innovation and its benefits for our society and economy, by bringing venture capitalists to students and conversely.",
     },
     {
       id: 6,
-      icon: <LightbulbIcon className="w-5 h-5" />,
+      icon: <Globe className="w-5 h-5" />,
       title: "Global Innovation Platform",
       description:
         "To connect creative minds across the world to come together and exchange information to enhance our understanding of the world and develop a collective response to serious global challenges.",
@@ -90,13 +90,13 @@ export function Objectives() {
           </div>
 
           {/* Right side with timeline */}
-          <div className="md:w-2/3 lg:w-3/4 md:pl-8 lg:pl-16">
+          <div className="md:w-2/3 lg:w-3/4 ">
             {/* Introduction text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-3xl mb-8 text-md sm:text-xl text-slate-600"
+              className="max-w-4xl mb-8 text-md sm:text-xl text-slate-600"
             >
             Anchored in NUST’s mission to foster knowledge-based economic development, FICS places a strong emphasis on technology-driven social entrepreneurship. The program empowers students to develop impactful solutions that address real-world societal challenges.
             <br/>
@@ -118,14 +118,14 @@ export function Objectives() {
                     {/* Timeline dot */}
                     <div className="relative z-10 flex-shrink-0 mr-4 md:mr-6">
                       <div className="flex items-center justify-center bg-white border-2 rounded-full w-9 h-9 md:w-11 md:h-11 border-cyan-500">
-                        <div className="w-4 h-4 rounded-full md:w-5 md:h-5 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                        <div className="w-4 h-4 rounded-full md:w-5 md:h-5 text-cyan-600">{objective.icon}</div>
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="flex-1 pt-1">
                       <div className="flex items-center mb-1">
-                        <div className="mr-2 text-xl text-cyan-600">{objective.icon}</div>
+                        
                         <h3 className="text-xl font-semibold text-slate-800">{objective.title}</h3>
                       </div>
                       <p className="text-sm leading-relaxed text-slate-600">{objective.description}</p>

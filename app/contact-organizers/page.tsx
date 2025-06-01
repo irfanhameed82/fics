@@ -66,6 +66,7 @@ interface OrganizationLeader {
   email?: string
   phone?: string
   department: string
+  image: string
 }
 
 // Organization leaders data
@@ -76,6 +77,7 @@ const organizationLeaders: OrganizationLeader[] = [
     email: "sanamaqbool1990@gmail.com",
     phone: "+92-51-90856240",
     department: "Innovation & Commercialization Office NUST (ICON)",
+    image: "/ficsteam/Sana Maqbool(Acting Director).jpg",
   },
   {
     name: "Ms Sundas Imran",
@@ -83,6 +85,7 @@ const organizationLeaders: OrganizationLeader[] = [
     phone: "+92-51-90851456",
    email: "managercac@ric.nust.edu.pk",
     department: "CAC - ICON",
+    image: "/ficsteam/Sundas Imran(Senior Manager).jpg",
   },
   {
     name: "Mr Fawad kashan",
@@ -90,12 +93,14 @@ const organizationLeaders: OrganizationLeader[] = [
     phone: "+92-51-90856243",
     email: "manager.cr@nust.edu.pk",
     department: "CAC - ICON",
+    image: "/ficsteam/Fawad Kashan(Senior Manager Corporate Relations).jpg",
   },
   {
     name: "Mr Muhammad Shahzada Ali",
     designation: "Assistant Manager",
     department: "CAC - ICON",
-    email: "am.icon@nust.edu.pk"
+    email: "am.icon@nust.edu.pk",
+    image: "/ficsteam/Muhammad Shahzada Ali(Assistant Manager).jpg",
   },
 ]
 
@@ -127,64 +132,21 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Hero Section with Tech-inspired Background */}
-      <div className="relative overflow-hidden bg-gradient-to-b from-[#3BB0A1] to-[#00547E]">
-        {/* Tech Pattern Background */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute bg-white rounded-full"
-                style={{
-                  width: `${Math.random() * 5 + 1}px`,
-                  height: `${Math.random() * 5 + 1}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  opacity: Math.random() * 0.5 + 0.3,
-                }}
-              />
-            ))}
-          </div>
-          {[...Array(5)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-white rounded-full"
-              style={{
-                width: `${Math.random() * 300 + 100}px`,
-                height: `${Math.random() * 300 + 100}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: 0.1,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 px-4 py-2 mx-auto text-center max-w-7xl">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl font-semibold tracking-tight text-white sm:text-4xl"
-          >
-            Organizers
-
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl mx-auto mt-4 text-base text-blue-100 sm:text-xl"
-          >
-            For all general questions related to FICS, including participation, guidelines, and partnerships. Contact our organizing team here.
-          </motion.p>
-        </div>
+      <div className="relative h-20 sm:h-24 w-full bg-gradient-to-b from-[#3BB0A1] to-[#00547E] flex items-center justify-center mb-10">
+        <h1 className="text-xl font-semibold tracking-widest text-white sm:text-4xl">
+          Organizers
+        </h1>
+      </div>
+      {/* Main Content */}
+      <div className="container px-4 mx-auto">
+        <p className="max-w-3xl mx-auto mb-8 text-lg text-center text-gray-900">
+          For all general questions related to FICS, including participation, guidelines, and partnerships. Contact our organizing team here.
+        </p>
       </div>
 
-      <div className="container px-4 py-16 mx-auto">
+      <div className="container px-4 pb-12 py-4 mx-auto">
         {/* Leadership Section */}
         <section className="mb-24">
-      
           {/* Main Leader - Featured */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,27 +155,34 @@ export default function ContactPage() {
             className="p-8 mb-16 overflow-hidden bg-white border-t-4 border-blue-500 rounded-lg shadow-xl"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 mb-6 text-white rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
+              {/* <div className="relative w-48 h-48 mb-6 overflow-hidden rounded-full">
+                <Image
+                  src={organizationLeaders[0].image}
+                  alt={organizationLeaders[0].name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div> */}
               <h3 className="text-2xl font-bold text-gray-900">{organizationLeaders[0].name}</h3>
               <div className="px-4 py-1 mt-2 mb-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
                 {organizationLeaders[0].designation}
               </div>
               <p className="mt-2 text-gray-600">{organizationLeaders[0].department}</p>
+              <div className="flex gap-4 mt-4">
+                {organizationLeaders[0].email && (
+                  <a href={`mailto:${organizationLeaders[0].email}`} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800">
+                    <Mail className="w-4 h-4" />
+                    <span>Email</span>
+                  </a>
+                )}
+                {organizationLeaders[0].phone && (
+                  <a href={`tel:${organizationLeaders[0].phone.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800">
+                    <Phone className="w-4 h-4" />
+                    <span>Call</span>
+                  </a>
+                )}
+              </div>
             </div>
           </motion.div>
 
@@ -231,13 +200,34 @@ export default function ContactPage() {
                 className="relative p-6 overflow-hidden transition-all bg-white border-t-4 border-blue-400 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="flex flex-col items-center text-center">
+                  {/* <div className="relative w-40 h-40 mb-4 overflow-hidden rounded-full">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div> */}
                   <h3 className="text-xl font-bold text-gray-900">{leader.name}</h3>
                   <div className="px-3 py-1 mt-2 mb-1 text-xs font-medium text-blue-800 bg-blue-100 rounded-full">
                     {leader.designation}
                   </div>
                   <p className="mt-2 text-sm text-gray-600">{leader.department}</p>
-                 {leader.email && <p className="flex mt-2 text-sm text-gray-600"><Mail/> <a href={`mailto:${leader.email}`}>{leader.email}</a></p>}
-                  {leader.phone && <p className="flex mt-2 text-sm text-gray-600"><Phone/> <span>{leader.phone}</span></p>}
+                  <div className="flex flex-col gap-2 mt-4">
+                    {leader.email && (
+                      <a href={`mailto:${leader.email}`} className="flex items-center justify-center gap-2 text-sm text-blue-600 hover:text-blue-800">
+                        <Mail className="w-4 h-4" />
+                        <span>Email</span>
+                      </a>
+                    )}
+                    {leader.phone && (
+                      <a href={`tel:${leader.phone.replace(/\D/g, '')}`} className="flex items-center justify-center gap-2 text-sm text-blue-600 hover:text-blue-800">
+                        <Phone className="w-4 h-4" />
+                        <span>Call</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-16 h-16 -mt-6 -mr-6 bg-blue-100 rounded-full opacity-20"></div>
@@ -245,7 +235,6 @@ export default function ContactPage() {
             ))}
           </motion.div>
         </section>
-
         {/* Contact Information Section */}
         <section className="p-8 mb-24 overflow-hidden bg-white rounded-lg shadow-lg">
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row">

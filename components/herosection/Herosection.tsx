@@ -94,7 +94,7 @@ export default function HeroSection() {
       <div className="relative flex py-8 lg:py-16 ">
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-8 px-4">
           {/* Left Column - Text Content */}
-          <div className="flex w-full flex-col items-center justify-center px-4 ">
+          <div className="flex w-full flex-col items-center justify-center  ">
             <div className="max-w-lg text-center lg:text-left">
               <h1 className="mb-4 text-2xl font-bold tracking-tight text-white md:text-4xl">
                 Transforming Ideas Into
@@ -118,7 +118,7 @@ export default function HeroSection() {
                 />
               ))}
               <Button asChild className="col-span-3 mt-4 text-white bg-gradient-to-b from-[#3BB0A1] to-[#00547E] hover:from-[#3BB0A1]/90 hover:to-[#00547E]/90">
-                <Link href="/#event">See All Events</Link>
+                <Link href="/#event" scroll={true}>See All Events</Link>
               </Button>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function HeroSection() {
                 loop
                 muted={isMuted}
                 autoPlay
-                poster="/video-poster.jpg"
+                poster="/logo.png"
               >
                 <source 
                   src="https://res.cloudinary.com/dxh8rsy7p/video/upload/q_auto:low/v1746812854/FICS_highlight_2024_ep48hr.mp4" 

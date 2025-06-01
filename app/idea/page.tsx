@@ -12,26 +12,16 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-transparent">
       {/* Header Section */}
-      <div className="relative overflow-hidden shadow-xl bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 ">
+      <div className="relative overflow-hidden shadow-xl bg-gradient-to-b from-[#3BB0A1] to-[#00547E] ">
         
 
-        <div className="container px-4 py-8 mx-auto text-center ">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center justify-center mb-4"
-          >
-            <div className="p-3 rounded-full bg-white/20 backdrop-blur-sm">
-              <Lightbulb size={40} className="text-white" strokeWidth={1.5} />
-            </div>
-          </motion.div>
-
+        <div className="container px-4 py-4 mx-auto text-center ">
+        
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl"
+            className="text-xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
           >
             <span className="block">Innovate</span>
             <span className="block mt-1 text-white/90">Submit</span>
@@ -61,7 +51,7 @@ export default function Page() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="relative p-8 overflow-hidden bg-white shadow-lg rounded-2xl"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 -mt-20 -mr-20 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 opacity-70"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 -mt-20 -mr-20 "></div>
 
           <h2 className="relative mb-6 text-3xl font-semibold text-gray-900">Submit an Idea</h2>
           <div className="relative space-y-6 text-lg text-gray-700">
@@ -110,13 +100,13 @@ export default function Page() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="relative p-2 overflow-hidden bg-white shadow-lg rounded-2xl"
+          className="relative p-2 overflow-hidden bg-white "
         >
           
           <div className="relative flex justify-center">
             <Button
               size="lg"
-              className="px-8 py-6 text-lg font-semibold cursor-pointer text-white transition-all duration-300 bg-[#2980b9]  hover:bg-[#2980b9]"
+              className="px-8 py-6 text-lg  font-semibold cursor-pointer text-white transition-all duration-300 bg-[#2980b9]  hover:bg-[#2980b9]"
               
             >
                  <Link href="/register/student">Register Your Idea</Link>

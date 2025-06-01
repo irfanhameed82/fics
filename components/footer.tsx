@@ -49,7 +49,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="flex items-center transition-colors hover:text-gray-200">
+                  <Link href="/contact-organizers" className="flex items-center transition-colors hover:text-gray-200">
                     <Phone size={16} className="mr-2" />
                     Contact
                   </Link>
@@ -67,14 +67,7 @@ export default function Footer() {
                 <p className="transition-colors hover:text-gray-200">
                   <Link href="mailto:fics_nust@icon.nust.edu.pk">fics_nust@icon.nust.edu.pk</Link>
                 </p>
-                <div className="pt-4">
-                  <Link
-                    href="/contact-organizers"
-                    className="bg-[#1e6091] hover:bg-[#164e78] px-4 py-2 rounded-md transition-colors inline-block"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
+                
               </div>
             </div>
           </div>
