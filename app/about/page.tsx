@@ -76,19 +76,11 @@ export default function Page() {
                 <span className="text-2xl font-semibold text-cyan-600"> C</span>
                 reative
                 <span className="text-2xl font-semibold text-cyan-600"> S</span>
-                olutions (FICS) is the flagship international entrepreneurship
-                program of the National University of Sciences & Technology
-                (NUST) that encourages Undergraduate and Postgraduate students
-                to devise technology-based solutions with a focus on real-world
-                problems.
+               olutions (FICS) is Pakistan’s first and only international university-based entrepreneurship program, led by the National University of Sciences and Technology (NUST) since 2013. The program provides students a platform to develop and showcase technology-driven, socially impactful solutions aligned with the UN Sustainable Development Goals (SDGs).
               </p>
 
               <p>
-                It is a global competition between the brightest minds who
-                present innovative solutions to some of the world's most
-                challenging issues. FICS is aligned with the United Nations 17
-                Sustainable Development Goals (SDGs) and is held annually with
-                participation from universities all across the world.
+               Initially launched as an internal competition within NUST, FICS rapidly evolved—becoming a national platform in 2021, and expanding to the international stage in 2022. Today, FICS is a recognized global initiative promoting innovation, research commercialization, and industry-academia collaboration.
               </p>
 
               <div className="p-6 my-8 border bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border-cyan-100">

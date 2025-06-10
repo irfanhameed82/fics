@@ -7,7 +7,7 @@ const coordinators = [
     school: "Azerbaijan Technical University (AzTU)",
     members: [
       {
-        name: "Orkhan Vatankhah",
+        name: "Mr. Orkhan Vatankhah",
         position: "Head of International Relations Department",
         phone: "+9294125391348",
         email: "international@aztu.edu.az",
@@ -16,10 +16,10 @@ const coordinators = [
     },
     {
     id: 2,
-    school: "Chiang mai University (CMU) Thailand",
+    school: "Chiang Mai University (CMU) Thailand",
     members: [
       {
-        name: "Mrs. Praeploy Soonthornpruek",
+        name: "Mr. Praeploy Soonthornpruek",
         position: "Focal Person",
         phone: "+66-93-137-5227",
         email: "praeploy@iagency.co.th",

@@ -11,7 +11,7 @@ export function Objectives() {
       icon: <Code className="w-5 h-5" />,
       title: "Technical Innovation",
       description:
-        "To inspire students to give back to the society, by acknowledging and researching its problems and nurturing solutions through innovation, technology and creative skills",
+        "Empowers students to solve pressing societal challenges using innovative, tech-driven solutions aligned with the UN Sustainable Development Goals (SDGs).",
     },
     {
       id: 2,

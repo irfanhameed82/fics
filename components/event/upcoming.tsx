@@ -51,7 +51,7 @@ const events = [
     month: "June",
     date: "27",
     description:
-      "The event is being conducted in collaboration with Chaing Mail University Thailand.So, join us for an exciting day of innovation and entrepreneurship.",
+      "The event is being conducted in collaboration with Chaing Mai University Thailand.So, join us for an exciting day of innovation and entrepreneurship.",
     details:"The event is being conducted in collaboration with Chaing Mail University Thailand.So, join us for an exciting day of innovation and entrepreneurship."
   },
 ]

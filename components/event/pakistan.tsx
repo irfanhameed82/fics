@@ -37,7 +37,7 @@ FICS is fortunate to have the patronage of diverse industrial partners providing
     image: "/national/pitchingislamabad.jpg",
     title: "FICS 2025 Islamabad Pitching Event",
     month: "Apr ",
-    date: "24",
+    date: "23-24",
     description:
       "On April 23-24, 2025, FICS held a pitching event in Islamabad, Pakistan.",
     details: `Finding Innovative & Creative Solutions (FICS '25) is a flagship initiative of NUST towards fostering social entrepreneurship. The 12th edition of FICS expanded its international footprint to Turkiye and Azerbaijan in partnership with Azerbaijan Technical University and Altinbas University, Turkiye. The robust competition witnessed as many as 800 project submissions from over 30 NUST Schools & Colleges, and national and international institutions. Mr Mohyuddin Ahmed Wani, Secretary Ministry of Federal Education & Professional Training, graced the event as chief guest. Prominent amongst others were Lt Gen (Retd) Engr Javed Mahmood Bukhari, Rector NUST, and Ambassadors and esteemed educationists from Azerbaijan, Turkiye and Brunei Darussalam.

@@ -30,18 +30,11 @@ const statistics: Statistic[] = [
     color: "from-purple-500 to-pink-400",
   },
   {
-    value: 10,
+    value: 50,
     suffix: "+",
-    label: "National & International Partners",
+    label: "International and National Academic Partners",
     icon: <Building size={24} />,
     color: "from-amber-500 to-orange-400",
-  },
-  {
-    value: 20,
-    suffix: "",
-    label: "Schools and Departments",
-    icon: <Globe size={24} />,
-    color: "from-emerald-500 to-teal-400",
   },
   {
     value: 12,
@@ -58,9 +51,9 @@ const statistics: Statistic[] = [
     color: "from-indigo-500 to-blue-400",
   },
   {
-    value: 12,
+    value: 100,
     suffix: "+",
-    label: "Intellectual Properties",
+    label: "Intellectual Properties Filed",
     icon: <Award size={24} />,
     color: "from-green-500 to-emerald-400",
   },
@@ -105,7 +98,7 @@ export default function StatisticsFics() {
         </div>
 
         {/* Statistics grid */}
-        <div ref={ref} className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+        <div ref={ref} className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
           {statistics.map((stat, index) => (
             <motion.div
               key={index}

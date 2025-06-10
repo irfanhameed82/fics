@@ -88,7 +88,7 @@ const organizationLeaders: OrganizationLeader[] = [
     image: "/ficsteam/Sundas Imran(Senior Manager).jpg",
   },
   {
-    name: "Mr Fawad kashan",
+    name: "Mr Fawad Kashan",
     designation: "Senior Manager Corporate Relations",
     phone: "+92-51-90856243",
     email: "manager.cr@nust.edu.pk",
@@ -96,7 +96,7 @@ const organizationLeaders: OrganizationLeader[] = [
     image: "/ficsteam/Fawad Kashan(Senior Manager Corporate Relations).jpg",
   },
   {
-    name: "Mr Muhammad Shahzada Ali",
+    name: "Mr Shahzada Muhammad Ali ",
     designation: "Assistant Manager",
     department: "CAC - ICON",
     email: "am.icon@nust.edu.pk",
@@ -173,13 +173,14 @@ export default function ContactPage() {
                 {organizationLeaders[0].email && (
                   <a href={`mailto:${organizationLeaders[0].email}`} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800">
                     <Mail className="w-4 h-4" />
-                    <span>Email</span>
+                    <span>{organizationLeaders[0].email}</span>
                   </a>
                 )}
                 {organizationLeaders[0].phone && (
                   <a href={`tel:${organizationLeaders[0].phone.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800">
                     <Phone className="w-4 h-4" />
-                    <span>Call</span>
+                    <span>{organizationLeaders[0].phone}</span>
+            
                   </a>
                 )}
               </div>
@@ -218,13 +219,13 @@ export default function ContactPage() {
                     {leader.email && (
                       <a href={`mailto:${leader.email}`} className="flex items-center justify-center gap-2 text-sm text-blue-600 hover:text-blue-800">
                         <Mail className="w-4 h-4" />
-                        <span>Email</span>
+                        <span>{leader.email}</span>
                       </a>
                     )}
                     {leader.phone && (
                       <a href={`tel:${leader.phone.replace(/\D/g, '')}`} className="flex items-center justify-center gap-2 text-sm text-blue-600 hover:text-blue-800">
                         <Phone className="w-4 h-4" />
-                        <span>Call</span>
+                        <span>{leader.phone}</span>
                       </a>
                     )}
                   </div>

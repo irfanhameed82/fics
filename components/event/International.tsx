@@ -12,7 +12,7 @@ const events = [
   {
     id: 1,
     image: "/ficsazerbaijan/azerbaijaan.jpg",
-    title: "1st International Azerbaijan Pitching Event 2025",
+    title: "1st International Azerbaijan Pitching Event 2024",
      month: "May",
     date: "8",
     description:
@@ -22,12 +22,34 @@ const events = [
    {
     id: 2,
     image: "/ficsturkey/turkey9.jpg",
-    title: "2nd International Turkiye Pitching Event 2025",
+    title: "2nd International Turkiye Pitching Event 2024",
       month: "June",
     date: "12",
     description:
       "FICS organized its second international pitching event in Turkiye, showcasing innovative startups and investment opportunities.",
     detail: "FICS organized its second international pitching event in Turkiye, showcasing innovative startups and investment opportunities."
+  },
+   {
+    id: 3,
+    image: "/ficsazerbaijan/secondazerbaijan.jpg",
+    title: "2nd International FICS 2025 Azerbaijan Pitching Event",
+     month: "May",
+    date: "27",
+    description:
+      "Held on 27th May 2025 at Azerbaijan Technical University (AzTU), Baku",
+    detail: `As part of NUST’s ongoing commitment to fostering global innovation and entrepreneurship, the 2nd International Chapter of FICS 2025 was successfully hosted by AzTU, in partnership with the National University of Sciences and Technology (NUST), Pakistan.
+Pakistan’s first and only international entrepreneurship competition — Finding Innovative & Creative Solutions (FICS) — brought together over 62 dynamic student teams from 21+ universities across Azerbaijan, along with 2 teams from Al-Farabi Kazakh National University 🇰🇿. AzTU proudly fielded 9 teams, presenting impactful startup ideas across diverse domains.
+The event opened with the national anthems of Pakistan and Azerbaijan, reflecting the strong cultural and academic ties between the two countries. Distinguished guests, including rectors from AzTU, BHOS, and Karabakh University, as well as Pro-Rector (RIC), NUST, Dr. Rizwan Riaz, emphasized the significance of FICS in enabling youth-driven innovation across borders.
+Competing teams pitched to a jury comprising leading academics and industry professionals.
+1st Prize: CleanX – Baku Higher Oil School
+2nd Prize: InSight Glasses – Baku Higher Oil School
+1st Runner Up: Irrigo – Baku State University
+2nd Runner Up: Agrowise – Baku Higher Oil School
+3rd Runner Up: CO2toD Projects - Azerbaijan Technical University (AzTU)
+Special Innovation Award: Guide Wear - Baku Engineering University
+Special Innovation Award: RoboSpider Rescuer - Al-Farabi Kazakh National University (KazNU), Kazakhstan
+Emerging Institution – Special Impact Award: Harvest Together - Karabakh University, Khankendi
+The winners will advance to the FICS 2025 Grand Finale at NUST Islamabad this August, joining a global community of changemakers working to solve real-world problems through technology and innovation.`
   },
   
 ]

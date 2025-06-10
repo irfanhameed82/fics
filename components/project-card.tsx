@@ -29,13 +29,13 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
 
       <CardContent className="pb-2">
         <p className="text-sm leading-relaxed text-slate-600">{project.description}</p>
-
+{/* 
         {project.prizeMoney && (
           <div className="flex items-center gap-2 mt-4 text-amber-700">
             <Award className="w-5 h-5" />
             <p className="font-medium">{project.prizeMoney}</p>
           </div>
-        )}
+        )} */}
       </CardContent>
 
       <CardFooter className="pt-0 mt-auto border-t ">
