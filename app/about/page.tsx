@@ -5,7 +5,8 @@ import Link from "next/link";
 
 const metadata = {
   title: "About FICS",
-  description: "Finding Innovative & Creative Solutions for a sustainable future",
+  description:
+    "Finding Innovative & Creative Solutions for a sustainable future",
 };
 
 export default function Page() {
@@ -42,7 +43,6 @@ export default function Page() {
                   src="/ficsimage.jpg"
                   alt="FICS Global Innovation"
                   fill
-                  
                   className="object-cover"
                   priority
                 />
@@ -76,11 +76,20 @@ export default function Page() {
                 <span className="text-2xl font-semibold text-cyan-600"> C</span>
                 reative
                 <span className="text-2xl font-semibold text-cyan-600"> S</span>
-               olutions (FICS) is Pakistan’s first and only international university-based entrepreneurship program, led by the National University of Sciences and Technology (NUST) since 2013. The program provides students a platform to develop and showcase technology-driven, socially impactful solutions aligned with the UN Sustainable Development Goals (SDGs).
+                olutions (FICS) is Pakistan’s first and only international
+                university-based entrepreneurship program, led by the National
+                University of Sciences and Technology (NUST) since 2013. The
+                program provides students a platform to develop and showcase
+                technology-driven, socially impactful solutions aligned with the
+                UN Sustainable Development Goals (SDGs).
               </p>
 
               <p>
-               Initially launched as an internal competition within NUST, FICS rapidly evolved—becoming a national platform in 2021, and expanding to the international stage in 2022. Today, FICS is a recognized global initiative promoting innovation, research commercialization, and industry-academia collaboration.
+                Initially launched as an internal competition within NUST, FICS
+                rapidly evolved—becoming a national platform in 2021, and
+                expanding to the international stage in 2022. Today, FICS is a
+                recognized global initiative promoting innovation, research
+                commercialization, and industry-academia collaboration.
               </p>
 
               <div className="p-6 my-8 border bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border-cyan-100">
@@ -88,33 +97,61 @@ export default function Page() {
                   <div className="flex-shrink-0 p-3 mr-4 text-white rounded-full bg-gradient-to-r from-cyan-500 to-blue-600">
                     <Target className="w-6 h-6" />
                   </div>
-                  <div>
-                    <h3 className="mb-2 text-xl font-semibold text-slate-800">
-                      Global Expansion Timeline
-                    </h3>
+                <div>
+                   <h3 className="mb-2 text-xl font-semibold text-slate-800">
+                    Global Expansion Timeline
+                  </h3>
                     <div className="space-y-4 text-slate-700">
                       <div className="p-4 bg-white rounded-lg">
-                        <h4 className="font-bold text-cyan-600">2022 - The Beginning</h4>
-                        <p>FICS went international for the first time with participants from Malaysia, Indonesia, and Egypt, marking the beginning of its global journey.</p>
+                        <h4 className="font-bold text-cyan-600">
+                          2022 - The Beginning
+                        </h4>
+                        <p>
+                          FICS went international for the first time with
+                          participants from Malaysia, Indonesia, and Egypt,
+                          marking the beginning of its global journey.
+                        </p>
                       </div>
-                      
+
                       <div className="p-4 bg-white rounded-lg">
-                        <h4 className="font-bold text-cyan-600">2023 - First International Pitching Event</h4>
-                        <p>Hosted at Gazi University, Ankara, Türkiye, featuring participants from over 30 universities across multiple countries.</p>
+                        <h4 className="font-bold text-cyan-600">
+                          2023 - First International Pitching Event
+                        </h4>
+                        <p>
+                          Hosted at Gazi University, Ankara, Türkiye, featuring
+                          participants from over 30 universities across multiple
+                          countries.
+                        </p>
                       </div>
-                      
+
                       <div className="p-4 bg-white rounded-lg">
-                        <h4 className="font-bold text-cyan-600">2024 - Regional Expansion</h4>
-                        <p>The program expanded to Azerbaijan and Türkiye, strengthening regional ties and impact through academic partnerships.</p>
+                        <h4 className="font-bold text-cyan-600">
+                          2024 - Regional Expansion
+                        </h4>
+                        <p>
+                          The program expanded to Azerbaijan and Türkiye,
+                          strengthening regional ties and impact through
+                          academic partnerships.
+                        </p>
                       </div>
-                      
+
                       <div className="p-4 bg-white rounded-lg">
-                        <h4 className="font-bold text-cyan-600">2025 - Global Reach</h4>
-                        <p>Broadened footprint across Thailand, Sri Lanka, Central Asian states, Russia, while maintaining strong engagement with Azerbaijan and Türkiye.</p>
+                        <h4 className="font-bold text-cyan-600">
+                          2025 - Global Reach
+                        </h4>
+                        <p>
+                          Broadened footprint across Thailand, Sri Lanka,
+                          Central Asian states, Russia, while maintaining strong
+                          engagement with Azerbaijan and Türkiye.
+                        </p>
                       </div>
-                      
+
                       <p className="mt-4 italic">
-                        These international engagements have reinforced FICS's position as a globally recognized platform for student innovation, building bridges between countries and cultivating a shared commitment to solving pressing global issues.
+                        These international engagements have reinforced FICS's
+                        position as a globally recognized platform for student
+                        innovation, building bridges between countries and
+                        cultivating a shared commitment to solving pressing
+                        global issues.
                       </p>
                     </div>
                   </div>

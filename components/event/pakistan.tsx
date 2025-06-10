@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 
 // Event card data
 const events = [
@@ -30,7 +30,7 @@ The chief guest, Mr Mohyuddin Ahmed Wani, Secretary Ministry of Federal Educatio
 
 In his address, Lt Gen (Retd) Engr Javed Mahmood Bukhari, Rector NUST, highlighted that FICS is the university's flagship project that leverages upon NUST's comprehensive startup ecosystem towards developing sustainable businesses, while manifesting 4th generation entrepreneurial character of the university. The initiative, he maintained, is aimed at providing brilliant young minds with a chance to convert societal challenges into entrepreneurial opportunities. He further said, "Our faculty, in collaboration with our industrial partners, mentor the participants in refining their ideas while creating prototypes, systems, products and devices." He also highlighted that after a rigorous three-stage competition, the successful entrepreneurial ventures are offered free incubation services at the National Science & Technology Park (NSTP) based at NUST.  He made special mention of FICS '24 marking a historic moment in the relationship between Pakistan, Turkiye, and Azerbaijan, paving the way for enhanced tripartite cooperation in youth entrepreneurship and innovation.
 
-FICS is fortunate to have the patronage of diverse industrial partners providing seed fund and cash prizes for promising projects. The sponsors of FICS '24 included National Radio Telecommunication Company (NRTC), Crescent Steel & Allied Products Ltd (CSAPL), Allied Bank Limited (ABL), Askari Bank Limited, and Central Asian Cellular Forum (CACF) and Alfoze Technologies Pvt. Ltd. Knowledge Partners for FICS 2024 included Intellectual Property Office (IPO) Pakistan, Pakistan Software Houses Association for IT and ITES (P@SHA), Change Mechanics Pvt. Ltd., Sustainable Development Policy Institute (SDPI), etc.`
+FICS is fortunate to have the patronage of diverse industrial partners providing seed fund and cash prizes for promising projects. The sponsors of FICS '24 included National Radio Telecommunication Company (NRTC), Crescent Steel & Allied Products Ltd (CSAPL), Allied Bank Limited (ABL), Askari Bank Limited, and Central Asian Cellular Forum (CACF) and Alfoze Technologies Pvt. Ltd. Knowledge Partners for FICS 2024 included Intellectual Property Office (IPO) Pakistan, Pakistan Software Houses Association for IT and ITES (P@SHA), Change Mechanics Pvt. Ltd., Sustainable Development Policy Institute (SDPI), etc.`,
   },
   {
     id: 2,
@@ -40,10 +40,8 @@ FICS is fortunate to have the patronage of diverse industrial partners providing
     date: "23-24",
     description:
       "On April 23-24, 2025, FICS held a pitching event in Islamabad, Pakistan.",
-    details: `Finding Innovative & Creative Solutions (FICS '25) is a flagship initiative of NUST towards fostering social entrepreneurship. The 12th edition of FICS expanded its international footprint to Turkiye and Azerbaijan in partnership with Azerbaijan Technical University and Altinbas University, Turkiye. The robust competition witnessed as many as 800 project submissions from over 30 NUST Schools & Colleges, and national and international institutions. Mr Mohyuddin Ahmed Wani, Secretary Ministry of Federal Education & Professional Training, graced the event as chief guest. Prominent amongst others were Lt Gen (Retd) Engr Javed Mahmood Bukhari, Rector NUST, and Ambassadors and esteemed educationists from Azerbaijan, Turkiye and Brunei Darussalam.
- .`
+    details: `On April 23-24, 2025, FICS held a pitching event in Islamabad, Pakistan.`,
   },
-  
 
   {
     id: 3,
@@ -53,9 +51,9 @@ FICS is fortunate to have the patronage of diverse industrial partners providing
     date: "28",
     description:
       "On April 28, 2025, FICS held a pitching event in Karachi, Pakistan.",
-    details: `Finding Innovative & Creative Solutions (FICS '25) is a flagship initiative of NUST towards fostering social entrepreneurship. The 12th edition of FICS expanded its international footprint to Turkiye and Azerbaijan in partnership with Azerbaijan Technical University and Altinbas University, Turkiye. The robust competition witnessed as many as 800 project submissions from over 30 NUST Schools & Colleges, and national and international institutions. Mr Mohyuddin Ahmed Wani, Secretary Ministry of Federal Education & Professional Training, graced the event as chief guest. Prominent amongst others were Lt Gen (Retd) Engr Javed Mahmood Bukhari, Rector NUST, and Ambassadors and esteemed educationists from Azerbaijan, Turkiye and Brunei Darussalam.`
+    details: `On April 28, 2025, FICS held a pitching event in Karachi, Pakistan.`,
   },
-]
+];
 
 export default function Pakistan() {
   return (
@@ -72,27 +70,34 @@ export default function Pakistan() {
         />
       ))}
     </div>
-  )
+  );
 }
 
 interface EventCardProps {
-  image: string
-  title: string
-  date: string
-  month: string
-  description: string
-  details?: string
+  image: string;
+  title: string;
+  date: string;
+  month: string;
+  description: string;
+  details?: string;
 }
 
-function EventCard({ image, title, month, date, description, details }: EventCardProps) {
+function EventCard({
+  image,
+  title,
+  month,
+  date,
+  description,
+  details,
+}: EventCardProps) {
   return (
     <div className="overflow-hidden border border-gray-200 rounded-lg shadow-sm">
       <div className="relative w-full h-48">
-        <Image 
-          src={image || "/placeholder.svg"} 
-          alt={title} 
-          fill 
-          className="object-cover" 
+        <Image
+          src={image || "/placeholder.svg"}
+          alt={title}
+          fill
+          className="object-cover"
         />
       </div>
       <div className="bg-gradient-to-b from-[#3BB0A1] to-[#00547E] text-white p-4 h-full">
@@ -104,11 +109,14 @@ function EventCard({ image, title, month, date, description, details }: EventCar
           <div className="flex-1">
             <h3 className="mb-1 text-lg font-semibold">{title}</h3>
             <p className="mb-3 text-sm ">{description}</p>
-            
+
             {details && (
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="secondary" className="w-full cursor-pointer text-gray-800">
+                  <Button
+                    variant="secondary"
+                    className="w-full cursor-pointer text-gray-800"
+                  >
                     Read more
                   </Button>
                 </DialogTrigger>
@@ -141,5 +149,5 @@ function EventCard({ image, title, month, date, description, details }: EventCar
         </div>
       </div>
     </div>
-  )
+  );
 }
