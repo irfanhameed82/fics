@@ -64,7 +64,7 @@ export default function StatisticsFics() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <section className="relative pt-8 pb-2 font-sans overflow-hidden">
+    <section className="relative pt-8 pb-2 overflow-hidden font-sans">
       {/* Background elements */}
       
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
@@ -89,7 +89,7 @@ export default function StatisticsFics() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-3xl mx-auto  text-md text-gray-900 "
+            className="max-w-3xl mx-auto text-gray-900 text-md "
           >
             FICS has been at the forefront of fostering innovation and entrepreneurship among university students. Our
             platform has enabled thousands of ideas to transform into impactful projects addressing real-world
