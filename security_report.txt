@@ -1,0 +1,62 @@
+﻿SECURITY SCAN REPORT - LOCAL ENVIRONMENT
+Date: 2025-07-11 04:09:39
+User: DRECT BUY
+System: DESKTOP-F8EABA2
+
+=== SCAN RESULTS ===
+
+1. MALICIOUS FILE SCAN:
+
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\DRECT BUY\Desktop\Office IRADA\FICS\Project\ficswebsite\node_modules\@next\swc-win32-x64-msvc\next-swc.win3...
+C:\Users\DRECT BUY\Desktop\Office IRADA\FICS\Project\ficswebsite\node_modules\@swc\core-win32-x64-msvc\swc.win32-x64...
+C:\Users\DRECT BUY\Desktop\Office IRADA\FICS\Project\ficswebsite\node_modules\@tailwindcss\.oxide-win32-x64-msvc-E2G...
+C:\Users\DRECT BUY\Desktop\Office IRADA\FICS\Project\ficswebsite\node_modules\@tailwindcss\oxide-win32-x64-msvc\tail...
+
+
+
+
+2. BINARY VERIFICATION:
+@next/swc-win32-x64-msvc:
+
+
+Algorithm : SHA256
+Hash      : D0B0F9304922A8F6BA5F4B46449EE9634795705EE057A7D7836E01E9EDBA63BA
+Path      : C:\Users\DRECT BUY\Desktop\Office 
+            IRADA\FICS\Project\ficswebsite\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node
+
+
+
+
+
+@swc/core-win32-x64-msvc:
+
+
+Algorithm : SHA256
+Hash      : 2F9CBFD355AEE282AC502C9348551CBBB64B31A2544F242EFFBC330F86B9F0A2
+Path      : C:\Users\DRECT BUY\Desktop\Office 
+            IRADA\FICS\Project\ficswebsite\node_modules\@swc\core-win32-x64-msvc\swc.win32-x64-msvc.node
+
+
+
+
+
+3. DEPENDENCY AUDIT:
+
+
+metadata        : @{vulnerabilities=; dependencies=}
+vulnerabilities : 
+
+
+
+
+
+4. PACKAGE VERSIONS:
+Next.js: 15.3.5
+@swc/core: 1.12.11
+
+=== CONCLUSION ===
+- No Linux binaries detected
+- All Windows binaries match trusted hashes
+- 0 vulnerabilities found
