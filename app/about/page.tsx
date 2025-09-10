@@ -14,46 +14,23 @@ export default function Page() {
     <div className="flex flex-col max-w-full min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="container px-4 py-20 mx-auto">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full text-cyan-700 bg-cyan-100">
-                <Globe className="w-4 h-4 mr-2" />
-                Global Innovation Platform
-              </div>
-              <h1 className="text-2xl font-semibold tracking-wide text-[#0D0D0D] sm:text-4xl md:text-5xl">
+        <div className="container px-4 py-8 mx-auto">
+          <div className="flex flex-col  items-center justify-center">
+
+              <h1 className="text-2xl mb-4 font-semibold tracking-wide text-[#0D0D0D] sm:text-4xl md:text-5xl">
                 About FICS
               </h1>
               <p className="text-lg leading-relaxed text-slate-700">
                 Finding Innovative & Creative Solutions for a sustainable future
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="#objectives"
-                  className="inline-flex items-center px-6 py-3 font-medium text-white transition-all rounded-lg bg-gradient-to-b from-[#3BB0A1] to-[#00547E]"
-                >
-                  Our Objectives
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </div>
-            </div>
-            <div className="relative flex items-center justify-center">
-              <div className="relative w-full overflow-hidden shadow-2xl h-80 rounded-xl">
-                <Image
-                  src="/ficsimage.jpg"
-                  alt="FICS Global Innovation"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+              
+            
           </div>
         </div>
       </section>
 
       {/* About Content Section */}
-      <section className="py-16 bg-white">
+      <section className="py-4 bg-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-10 space-x-4">
@@ -98,9 +75,9 @@ export default function Page() {
                     <Target className="w-6 h-6" />
                   </div>
                 <div>
-                   <h3 className="mb-2 text-xl font-semibold text-slate-800">
+                   {/* <h3 className="mb-2 text-xl font-semibold text-slate-800">
                     Global Expansion Timeline
-                  </h3>
+                  </h3> */}
                     <div className="space-y-4 text-slate-700">
                       <div className="p-4 bg-white rounded-lg">
                         <h4 className="font-bold text-cyan-600">
@@ -170,14 +147,14 @@ export default function Page() {
       </section>
 
       {/* Objectives Section */}
-      <section
+      {/* <section
         id="objectives"
         className="py-20 bg-gradient-to-b from-slate-50 to-slate-100"
       >
         <div className="container px-4 mx-auto">
           <Objectives />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

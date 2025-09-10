@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         <Navbar />
-        <MarqueeBanner />
+        {/* <MarqueeBanner /> */}
         {children}
         <Footer />
 <ToastContainer position="top-right" autoClose={3000} />

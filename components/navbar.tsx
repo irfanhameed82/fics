@@ -62,17 +62,18 @@ export default function Navbar() {
         { href: "/ideasubmitted", label: "Ideas Submitted" },
       ],
     },
+    {
+      label: "International",
+      key: "international",
+      href: "/international"
+    }
   ];
 
   const contactlist = [
     {
       label: "Contact Us",
       key: "contact-us",
-      links: [
-        { href: "/contact-organizers", label: "Organizers" },
-        { href: "/global-contacts", label: "International Contacts" },
-        { href: "/nust-contacts", label: "NUST Schools and Local University Partners" },
-      ],
+      href: "/contact-organizers"
     }
   ];
 
@@ -106,29 +107,39 @@ export default function Navbar() {
             <div className="hidden md:flex space-x-8">
               {[...navItems, ...contactlist].map((item) => (
                 <div key={item.key} className="relative group">
-                  <button
-                    className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium flex items-center transition-colors"
-                    onClick={() => toggleDropdown(`${item.key}-desktop`)}
-                  >
-                    {item.label}
-                    <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
-                  </button>
-                  
-                  <div className={`absolute z-10 hidden group-hover:block w-56 bg-white shadow-lg rounded-md overflow-hidden 
-  ${item.key === "contact-us" ? "right-0" : "left-0"}`}>
-
-                    <div className="py-1">
-                      {item.links.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                  {item.href && !item.links ? (
+                    <Link
+                      href={item.href}
+                      className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium flex items-center transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <>
+                      <button
+                        className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium flex items-center transition-colors"
+                        onClick={() => toggleDropdown(`${item.key}-desktop`)}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
+                      </button>
+                      
+                      <div className={`absolute z-10 hidden group-hover:block w-56 bg-white shadow-lg rounded-md overflow-hidden 
+        ${item.key === "contact-us" ? "right-0" : "left-0"}`}>
+                        <div className="py-1">
+                          {item.links?.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -164,32 +175,44 @@ export default function Navbar() {
             </Link>
 
             {[...navItems, ...contactlist].map((item) => (
-              <div key={item.key} className=" py-2">
-                <button
-                  onClick={() => toggleDropdown(`${item.key}-mobile`)}
-                  className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
-                >
-                  <span>{item.label}</span>
-                  {activeDropdown === `${item.key}-mobile` ? (
-                    <ChevronDown className="h-5 w-5" />
-                  ) : (
-                    <ChevronRight className="h-5 w-5" />
-                  )}
-                </button>
-                
-                {activeDropdown === `${item.key}-mobile` && (
-                  <div className="pl-4 mt-2 space-y-1">
-                    {item.links.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md text-base font-medium"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+              <div key={item.key} className="py-2">
+                {item.href && !item.links ? (
+                  <Link
+                    href={item.href}
+                    className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(`${item.key}-mobile`)}
+                      className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
+                    >
+                      <span>{item.label}</span>
+                      {activeDropdown === `${item.key}-mobile` ? (
+                        <ChevronDown className="h-5 w-5" />
+                      ) : (
+                        <ChevronRight className="h-5 w-5" />
+                      )}
+                    </button>
+                    
+                    {activeDropdown === `${item.key}-mobile` && (
+                      <div className="pl-4 mt-2 space-y-1">
+                        {item?.links?.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md text-base font-medium"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             ))}

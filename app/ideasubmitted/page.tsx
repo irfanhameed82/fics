@@ -18,16 +18,34 @@ interface ProjectGroup {
 
 interface ProjectEntry {
   rid: string;
-  abstract: string;
+  idea_name: string;
+  slogan: string;
   uni: string;
 }
 
 const typedProjectData = projectData as ProjectGroup[];
-
-const allEntries: ProjectEntry[] = typedProjectData.flatMap((group) =>
+// avoid the duplicate entries by flattening the data structure and red,  ideaname,
+const filteredProjectData = typedProjectData
+  .filter(group => group.entries?.length > 0) // First filter out empty groups
+  .map(group => {
+    // Get only the first entry for each unique rid + idea_name combination
+    const uniqueEntries = Array.from(
+      new Map(
+        group.entries
+          .filter(entry => entry.rid && entry.idea_name) // Ensure required fields exist
+          .map(entry => [`${entry.rid}-${entry.idea_name}`, entry])
+      ).values()
+    );
+    return {
+      ...group,
+      entries: uniqueEntries
+    };
+  });
+const allEntries: ProjectEntry[] = filteredProjectData.flatMap((group) =>
   group.entries.map((entry) => ({
     rid: entry.rid,
-    abstract: entry.abstract,
+    idea_name: entry.idea_name,
+    slogan: entry.slogan,
     uni: entry.uni,
   }))
 );
@@ -93,7 +111,8 @@ const ProjectsTablePage: React.FC = () => {
                 <TableRow>
                   <TableHead>S.No</TableHead>
                   <TableHead>Project ID</TableHead>
-                  <TableHead>Abstract</TableHead>
+                  <TableHead>Idea Name</TableHead>
+                  <TableHead>Slogan</TableHead>
                   <TableHead>University</TableHead>
                 </TableRow>
               </TableHeader>
@@ -102,7 +121,8 @@ const ProjectsTablePage: React.FC = () => {
                   <TableRow key={idx} className="hover:bg-gray-50">
                     <TableCell>{(page - 1) * pageSize + idx + 1}</TableCell>
                     <TableCell>{entry.rid}</TableCell>
-                    <TableCell className="whitespace-pre-wrap">{entry.abstract}</TableCell>
+                    <TableCell className="whitespace-pre-wrap">{entry.idea_name}</TableCell>
+                    <TableCell className="whitespace-pre-wrap">{entry.slogan}</TableCell>
                     <TableCell>{entry.uni}</TableCell>
                   </TableRow>
                 ))}
