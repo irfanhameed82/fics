@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, ExternalLink, Linkedin, GitlabIcon as GitHub, MapPin, Phone } from "lucide-react"
+import { Mail, ExternalLink,  MapPin, Phone } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 
@@ -144,7 +144,7 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="container px-4 pb-12 py-4 mx-auto">
+      <div className="container px-4 py-4 pb-12 mx-auto">
         {/* Leadership Section */}
         <section className="mb-24">
           {/* Main Leader - Featured */}
@@ -197,7 +197,7 @@ export default function ContactPage() {
             {organizationLeaders.slice(1).map((leader, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
+                // variants={itemVariants}
                 className="relative p-6 overflow-hidden transition-all bg-white border-t-4 border-blue-400 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="flex flex-col items-center text-center">
@@ -369,7 +369,7 @@ export default function ContactPage() {
             {ExecutiveMembers.slice(1).map((member, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
+                // variants={itemVariants}
                 className="relative overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-xl hover:shadow-xl hover:-translate-y-2"
               >
                 <div className="relative h-72">

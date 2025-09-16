@@ -129,23 +129,23 @@ const partnerUniversities: Country[] = [
 export default function International() {
   return (
     <section className="py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900">
             International Events & Partners
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
             Discover our global network of partner universities and exciting international events
             that make FICS a truly worldwide innovation platform.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 gap-8 mb-16 lg:grid-cols-2">
           {partnerUniversities.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -164,24 +164,24 @@ export default function International() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center"
         >
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          <h3 className="mb-6 text-2xl font-semibold text-gray-900">
             Global Impact
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-4">
             <div className="p-6 bg-white rounded-lg shadow">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{partnerUniversities.length}</div>
+              <div className="mb-2 text-3xl font-bold text-blue-600">{partnerUniversities.length}</div>
               <div className="text-gray-600">Partner Universities</div>
             </div>
             <div className="p-6 bg-white rounded-lg shadow">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{partnerUniversities.length}</div>
+              <div className="mb-2 text-3xl font-bold text-blue-600">{partnerUniversities.length}</div>
               <div className="text-gray-600">Partner Countries</div>
             </div>
             <div className="p-6 bg-white rounded-lg shadow">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{partnerUniversities.reduce((total, partner) => total + partner.events.length, 0)}</div>
+              <div className="mb-2 text-3xl font-bold text-blue-600">{partnerUniversities.reduce((total, partner) => total + partner.events.length, 0)}</div>
               <div className="text-gray-600">Upcoming Events</div>
             </div>
             <div className="p-6 bg-white rounded-lg shadow">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{partnerUniversities.reduce((total, partner) => total + partner.focalPersons.length, 0)}</div>
+              <div className="mb-2 text-3xl font-bold text-blue-600">{partnerUniversities.reduce((total, partner) => total + partner.focalPersons.length, 0)}</div>
               <div className="text-gray-600">Contact Persons</div>
             </div>
           </div>

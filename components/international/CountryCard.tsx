@@ -9,6 +9,7 @@ export interface Event {
   title: string
   date: string
   description: string
+  images?: string[];
   location: string
 }
 
@@ -36,11 +37,11 @@ interface CountryCardProps {
 
 export function CountryCard({ partner, index }: CountryCardProps) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
+    <Card className="h-full overflow-hidden transition-shadow hover:shadow-lg">
       <CardContent className="p-6">
         <div className="flex flex-col space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 relative flex-shrink-0">
+            <div className="relative flex-shrink-0 w-20 h-20">
               <Image
                 src={partner.logo}
                 alt={`${partner.name} logo`}
@@ -49,10 +50,10 @@ export function CountryCard({ partner, index }: CountryCardProps) {
               />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">
+              <h3 className="mb-1 text-xl font-semibold text-gray-900">
                 {partner.name}
               </h3>
-              <p className="text-lg text-gray-600 flex items-center gap-2">
+              <p className="flex items-center gap-2 text-lg text-gray-600">
                 <span className="text-2xl">{partner.countryFlag}</span>
                 {partner.country}
               </p>

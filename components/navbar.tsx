@@ -3,7 +3,16 @@ import Link from "next/link";
 import { AlignJustify, ChevronDown, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-
+interface NavLink {
+  href: string;
+  label: string;
+}
+interface NavItem {
+  label: string;
+  key: string;
+  href?: string;
+  links?: NavLink[];
+}
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -21,7 +30,7 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       label: "About",
       key: "about",
@@ -69,7 +78,7 @@ export default function Navbar() {
     }
   ];
 
-  const contactlist = [
+  const contactlist:NavItem[] = [
     {
       label: "Contact Us",
       key: "contact-us",
@@ -78,8 +87,8 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm z-50"  ref={navRef}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <nav className="z-50 bg-white shadow-sm"  ref={navRef}>
+      <div className="px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -89,35 +98,35 @@ export default function Navbar() {
                 alt="FICS Logo" 
                 width={100} 
                 height={50} 
-                className="h-12 w-auto"
+                className="w-auto h-12"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="items-center hidden space-x-8 md:flex">
             <Link
               href="/"
-              className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors"
+              className="px-3 py-2 font-medium text-gray-900 transition-colors hover:text-blue-600 text-md"
             >
               Home
             </Link>
 
             {/* Group hover dropdowns */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden space-x-8 md:flex">
               {[...navItems, ...contactlist].map((item) => (
                 <div key={item.key} className="relative group">
                   {item.href && !item.links ? (
                     <Link
                       href={item.href}
-                      className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium flex items-center transition-colors"
+                      className="flex items-center px-3 py-2 font-medium text-gray-900 transition-colors hover:text-blue-600 text-md"
                     >
                       {item.label}
                     </Link>
                   ) : (
                     <>
                       <button
-                        className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium flex items-center transition-colors"
+                        className="flex items-center px-3 py-2 font-medium text-gray-900 transition-colors hover:text-blue-600 text-md"
                         onClick={() => toggleDropdown(`${item.key}-desktop`)}
                       >
                         {item.label}
@@ -131,7 +140,7 @@ export default function Navbar() {
                             <Link
                               key={link.href}
                               href={link.href}
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                              className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100"
                             >
                               {link.label}
                             </Link>
@@ -149,13 +158,13 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-900 hover:text-blue-600 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+              className="inline-flex items-center justify-center p-2 text-gray-900 rounded-md hover:text-blue-600 focus:outline-none"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="w-6 h-6" />
               ) : (
-                <AlignJustify className="h-6 w-6" />
+                <AlignJustify className="w-6 h-6" />
               )}
             </button>
           </div>
@@ -164,11 +173,11 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t h-screen overflow-y-auto border-gray-200">
+        <div className="h-screen overflow-y-auto bg-white border-t border-gray-200 md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/"
-             className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
+             className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-900 rounded-md hover:text-blue-600 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
@@ -179,7 +188,7 @@ export default function Navbar() {
                 {item.href && !item.links ? (
                   <Link
                     href={item.href}
-                    className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
+                    className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-900 rounded-md hover:text-blue-600 hover:bg-gray-50"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span>{item.label}</span>
@@ -188,13 +197,13 @@ export default function Navbar() {
                   <>
                     <button
                       onClick={() => toggleDropdown(`${item.key}-mobile`)}
-                      className="w-full flex justify-between items-center text-gray-900 hover:text-blue-600 text-base font-medium rounded-md hover:bg-gray-50 px-3 py-2"
+                      className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-900 rounded-md hover:text-blue-600 hover:bg-gray-50"
                     >
                       <span>{item.label}</span>
                       {activeDropdown === `${item.key}-mobile` ? (
-                        <ChevronDown className="h-5 w-5" />
+                        <ChevronDown className="w-5 h-5" />
                       ) : (
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="w-5 h-5" />
                       )}
                     </button>
                     
@@ -204,7 +213,7 @@ export default function Navbar() {
                           <Link
                             key={link.href}
                             href={link.href}
-                            className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md text-base font-medium"
+                            className="block px-3 py-2 text-base font-medium text-gray-700 rounded-md hover:text-blue-600 hover:bg-gray-50"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {link.label}
